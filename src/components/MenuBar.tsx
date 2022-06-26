@@ -48,37 +48,6 @@ export default function MenuBar() {
                     />
                 }
             </header>
-            {/* {props.stateMenu ?
-                <>
-                    <VscChromeClose
-                        style={{ fill: 'var(--Main-White)' }}
-                        size={30}
-                        onClick={() => props.setStateMenu(!props.stateMenu)}
-                    />
-
-                    <nav className={styles.menuNav}>
-                        <ul>
-                            <li><a href="#">Vestimentas</a></li>
-                            <li><a href="#">Relógios</a></li>
-                            <li><a href="#">Inverno</a></li>
-                            <li><a href="#">Pour Moi</a></li>
-                        </ul>
-                    </nav>
-
-                    <nav className={styles.menuNavBtns}>
-                        <ul>
-                            <li>Perfil</li>
-                            <li>Carrinho</li>
-                        </ul>
-                    </nav>
-                </>
-                :
-                <BiMenu
-                    size={30}
-                    onClick={() => props.setStateMenu(!props.stateMenu)}
-                />
-
-            } */}
         </>
 
     )
