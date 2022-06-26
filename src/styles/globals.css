@@ -1,0 +1,34 @@
+:root {
+  /* Primary Colors */
+  --Main-Black: #1C1212;
+  --Main-White: #DBDBDB;
+  --Menu-Mobile-Bg: #4E4E4E;
+
+  /* 1rem = 10px */
+  font-size: 62.5%;
+}
+
+html,
+body {
+  font-family: Avenir Next, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  font-weight: 400;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

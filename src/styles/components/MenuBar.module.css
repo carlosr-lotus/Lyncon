@@ -1,0 +1,61 @@
+.homeHeader,
+.homeHeaderContainerMobile {
+    padding: 4rem 3.5rem;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: max-content 1fr .5fr;
+    align-items: center;
+}
+
+.homeHeaderContainerMobile {
+    height: 100vh;
+    background-color: var(--Menu-Mobile-Bg);
+    transition: .3s ease-in;
+}
+
+.homeHeaderContainerMobile h1 {
+    color: var(--Main-White);
+}
+
+.homeHeader svg,
+.homeHeaderContainerMobile svg {
+    place-self: end;
+    align-self: center;
+    cursor: pointer;
+}
+
+.menuNav {
+    place-self: center start;
+}
+
+.menuNav ul li a {
+    color: var(--Main-White);
+    font-size: 2rem;
+}
+
+.menuNav ul {
+    display: grid;
+    gap: 2.4rem;
+}
+
+.menuNavBtns {
+    place-self: center;
+    grid-column: 1 / span 2;
+}
+
+.menuNavBtns ul {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.menuNavBtns ul li {
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+
+    background-color: var(--Main-White);
+    border-radius: 100%;
+}
