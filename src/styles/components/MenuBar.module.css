@@ -99,7 +99,13 @@
         grid-column: 3;
     }
 
+    .menuNavBtns ul {
+        gap: 1.5rem;
+    }
+
     .menuNavBtns ul li {
+        width: 100%;
+        height: 100%;
         background-color: transparent;
     }
 }
