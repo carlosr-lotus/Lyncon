@@ -1,11 +1,16 @@
 .homeHeader,
-.homeHeaderContainerMobile {
+.homeHeaderContainerMobile,
+.homeHeaderContainer {
     padding: 4rem 3.5rem;
 
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: max-content 1fr .5fr;
     align-items: center;
+}
+
+.homeHeaderContainer {
+    display: none;
 }
 
 .homeHeaderContainerMobile {
@@ -58,4 +63,43 @@
 
     background-color: var(--Main-White);
     border-radius: 100%;
+}
+
+/* Responsive CSS */
+@media (min-width: 1024px) {
+    .homeHeader,
+    .homeHeaderContainerMobile {
+        display: none;
+    }
+
+    .homeHeaderContainer {
+        padding: 4rem 6.5rem;
+
+        display: grid;
+        grid-template-columns: max-content 1fr max-content;
+        grid-template-rows: 1fr;
+    }
+
+    .menuNav {
+        place-self: center;
+    }
+
+    .menuNav ul {
+        display: flex;
+        align-items: center;
+    }
+
+    .menuNav ul li a {
+        color: var(--Main-Black);
+        font-size: 1.5rem;
+    }
+
+    /* Cart + Account Profile */
+    .menuNavBtns {
+        grid-column: 3;
+    }
+
+    .menuNavBtns ul li {
+        background-color: transparent;
+    }
 }

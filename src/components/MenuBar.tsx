@@ -13,6 +13,7 @@ export default function MenuBar() {
 
     return (
         <>
+            {/* Mobile Header */}
             <header
                 className={menuStateOpen ? styles.homeHeaderContainerMobile : styles.homeHeader}
             >
@@ -47,6 +48,29 @@ export default function MenuBar() {
                         onClick={() => setMenuStateOpen(!menuStateOpen)}
                     />
                 }
+            </header>
+
+            {/* Default Header */}
+            <header
+                className={styles.homeHeaderContainer}
+            >
+                <h1>Lyncon</h1>
+
+                <nav className={styles.menuNav}>
+                    <ul>
+                        <li><a href="#">Vestimentas</a></li>
+                        <li><a href="#">Relógios</a></li>
+                        <li><a href="#">Inverno</a></li>
+                        <li><a href="#">Pour Moi</a></li>
+                    </ul>
+                </nav>
+
+                <nav className={styles.menuNavBtns}>
+                    <ul>
+                        <li><BiUser size={25} /></li>
+                        <li><BiCart size={25} /></li>
+                    </ul>
+                </nav>
             </header>
         </>
 
