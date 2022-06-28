@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import Popup from 'reactjs-popup';
 
 // Icones //
 import { BiMenu } from 'react-icons/bi';
 import { VscChromeClose } from 'react-icons/vsc';
 import { BiUser, BiCart } from 'react-icons/bi';
+import { FaRedhat, FaTshirt, FaShoePrints } from 'react-icons/fa';
 
 import styles from '../styles/components/MenuBar.module.css';
 
@@ -58,7 +60,46 @@ export default function MenuBar() {
 
                 <nav className={styles.menuNav}>
                     <ul>
-                        <li><a href="#">Vestimentas</a></li>
+                        <li><a href="#">Home</a></li>
+                        <Popup
+                            trigger={<li><a href="#">Vestimentas</a></li>}
+                            position="bottom center"
+                            on="hover"
+                            closeOnDocumentClick
+                            contentStyle={{
+                                width: '23rem',
+                                padding: '1rem',
+                                borderRadius: '.5rem',
+                                boxShadow: '0px 2px 5px 0px var(--Box-Shadow-Default)',
+                                // backgroundColor: 'magenta',
+                                transition: '.2s ease-in'
+                            }}
+                        >
+                            <div className={styles.subMenuContainer}>
+
+                                <div className={styles.subMenuLink}>
+                                    <div className={styles.ballImg} style={{ backgroundColor: 'var(--Menu-Head-Link)' }}>
+                                        <FaRedhat size={18} style={{ fill: 'white' }} />
+                                    </div>
+                                    <p>Cabeça</p>
+                                </div>
+
+                                <div className={styles.subMenuLink}>
+                                    <div className={styles.ballImg} style={{ backgroundColor: 'var(--Menu-Torso-Link)' }}>
+                                        <FaTshirt size={18} style={{ fill: 'white' }} />
+                                    </div>
+                                    <p>Torso</p>
+                                </div>
+
+                                <div className={styles.subMenuLink}>
+                                    <div className={styles.ballImg} style={{ backgroundColor: 'var(--Menu-Shoes-Link)' }}>
+                                        <FaShoePrints size={18} style={{ fill: 'white' }} />
+                                    </div>
+                                    <p>Inferiores</p>
+                                </div>
+
+                            </div>
+                        </Popup>
                         <li><a href="#">Relógios</a></li>
                         <li><a href="#">Inverno</a></li>
                         <li><a href="#">Pour Moi</a></li>

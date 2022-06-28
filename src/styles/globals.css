@@ -4,6 +4,12 @@
   --Main-White: #DBDBDB;
   --Menu-Mobile-Bg: #4E4E4E;
 
+  /* Secondary Colors */
+  --Box-Shadow-Default: #A5A5A5;
+  --Menu-Head-Link: #2FA3A3;
+  --Menu-Torso-Link: #8A349A;
+  --Menu-Shoes-Link: #282929;
+
   /* 1rem = 10px */
   font-size: 62.5%;
 }

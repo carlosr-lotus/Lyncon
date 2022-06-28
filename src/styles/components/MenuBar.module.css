@@ -63,6 +63,8 @@
 
     background-color: var(--Main-White);
     border-radius: 100%;
+
+    cursor: pointer;
 }
 
 /* Responsive CSS */
@@ -86,12 +88,14 @@
 
     .menuNav ul {
         display: flex;
+        gap: 5rem;
         align-items: center;
     }
 
     .menuNav ul li a {
         color: var(--Main-Black);
         font-size: 1.5rem;
+        text-transform: uppercase;
     }
 
     /* Cart + Account Profile */
@@ -107,5 +111,35 @@
         width: 100%;
         height: 100%;
         background-color: transparent;
+    }
+
+    .subMenuContainer {
+        display: grid;
+        gap: .8rem;
+    }
+
+    .ballImg {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 100%;
+        background-color: var(--Menu-Head-Link);
+    }
+
+    .ballImg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .subMenuLink {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        cursor: pointer;
+    }
+
+    .subMenuLink p {
+        font-size: 1.4rem;
     }
 }
