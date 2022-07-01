@@ -5,6 +5,7 @@ import Popup from 'reactjs-popup';
 import { BiMenu } from 'react-icons/bi';
 import { VscChromeClose } from 'react-icons/vsc';
 import { BiUser, BiCart } from 'react-icons/bi';
+import { IoIosArrowDown } from 'react-icons/io';
 import { FaRedhat, FaTshirt, FaShoePrints } from 'react-icons/fa';
 
 import styles from '../styles/components/MenuBar.module.css';
@@ -60,18 +61,22 @@ export default function MenuBar() {
 
                 <nav className={styles.menuNav}>
                     <ul>
-                        <li><a href="#">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <Popup
-                            trigger={<li><a href="#">Vestimentas</a></li>}
+                            trigger={<li>
+                                <a href="#">
+                                    Vestimentas
+                                    <IoIosArrowDown size={14} />
+                                </a>
+                            </li>}
                             position="bottom center"
                             on="hover"
                             closeOnDocumentClick
                             contentStyle={{
                                 width: '23rem',
-                                padding: '1rem',
+                                padding: '1rem 1.2rem',
                                 borderRadius: '.5rem',
                                 boxShadow: '0px 2px 5px 0px var(--Box-Shadow-Default)',
-                                // backgroundColor: 'magenta',
                                 transition: '.2s ease-in'
                             }}
                         >
