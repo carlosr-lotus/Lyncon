@@ -6,6 +6,7 @@ import Head from 'next/head';
 
 // Components //
 import MenuBar from '../components/MenuBar';
+import Footer from '../components/Footer';
 
 // Icons //
 import { BsSnow } from 'react-icons/bs';
@@ -101,6 +102,8 @@ export default function Home() {
 
 
       </main>
+
+      <Footer />
     </>
   )
 }
