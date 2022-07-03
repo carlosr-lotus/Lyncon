@@ -9,6 +9,7 @@ import MenuBar from '../components/MenuBar';
 
 // Icons //
 import { BsSnow } from 'react-icons/bs';
+import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
 
 import styles from '../styles/Home.module.css';
 
@@ -62,10 +63,42 @@ export default function Home() {
 
         </div>
 
-        <section className={styles.aboutUsSection}>
+        <div className={styles.aboutUsContainer}>
           <h2>Empresa com origem no Rio de Janeiro</h2>
-          <i>"Padrão de qualidade em tudo que fazemos" - José Lyncon <br /> (Fundador da Lyncon)</i>
-        </section>
+          <i>"Padrão de qualidade em tudo que fazemos" - José Lyncon <br /> &#40;Fundador da Lyncon&#41;</i>
+
+          <div className={styles.aboutUsPhotos}>
+            <img src='/images/index/worker-1.jpg' />
+            <img src='/images/index/worker-2.jpg' />
+            <img src='/images/index/worker-3.jpg' />
+          </div>
+        </div>
+
+        <div className={styles.websiteAuthorContainer}>
+          <div>
+            <p>Criado por</p>
+            <h1>Carlos Lotus</h1>
+          </div>
+
+          <div className={styles.authorSocialMediaContainer}>
+            <a
+              href="https://github.com/carlosr-lotus"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <AiFillGithub size={28} />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/carlos-roberto-santos-filho-3995821b9/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <AiFillLinkedin size={28} />
+            </a>
+          </div>
+        </div>
+
 
       </main>
     </>
