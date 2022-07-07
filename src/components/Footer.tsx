@@ -6,7 +6,7 @@ import styles from '../styles/components/Footer.module.css';
 export default function Footer() {
     return (
         <footer className={styles.footer}>
-            <h1>Lyncon</h1>
+            <h1>Lyncon <span>&copy; Copyright</span></h1>
 
             <p>Fale conosco</p>
             <p>
