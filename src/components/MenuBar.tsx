@@ -64,7 +64,7 @@ export default function MenuBar() {
                         <li><a href="/">Home</a></li>
                         <Popup
                             trigger={<li>
-                                <a href="#">
+                                <a href="/vestimentas">
                                     Vestimentas
                                     <IoIosArrowDown size={14} />
                                 </a>
@@ -77,24 +77,25 @@ export default function MenuBar() {
                                 padding: '1rem 1.2rem',
                                 borderRadius: '.5rem',
                                 boxShadow: '0px 2px 5px 0px var(--Box-Shadow-Default)',
-                                transition: '.2s ease-in'
+                                transition: '.2s ease-in',
+                                backgroundColor: '#fff'
                             }}
                         >
                             <div className={styles.subMenuContainer}>
 
-                                <div className={styles.subMenuLink}>
+                                <a href="https://google.com" className={styles.subMenuLink}>
                                     <div className={styles.ballImg} style={{ backgroundColor: 'var(--Menu-Head-Link)' }}>
                                         <FaRedhat size={18} style={{ fill: 'white' }} />
                                     </div>
                                     <p>Cabeça</p>
-                                </div>
+                                </a>
 
-                                <div className={styles.subMenuLink}>
+                                <a href="/vestimentas" className={styles.subMenuLink}>
                                     <div className={styles.ballImg} style={{ backgroundColor: 'var(--Menu-Torso-Link)' }}>
                                         <FaTshirt size={18} style={{ fill: 'white' }} />
                                     </div>
                                     <p>Torso</p>
-                                </div>
+                                </a>
 
                                 <div className={styles.subMenuLink}>
                                     <div className={styles.ballImg} style={{ backgroundColor: 'var(--Menu-Shoes-Link)' }}>

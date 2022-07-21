@@ -7,6 +7,7 @@
     grid-template-columns: 1fr 1fr;
     grid-template-rows: max-content 1fr .5fr;
     align-items: center;
+
 }
 
 .homeHeaderContainer {
@@ -117,28 +118,32 @@
 
     .subMenuContainer {
         display: grid;
-        gap: .8rem;
+        gap: 0rem;
     }
 
     .ballImg {
         width: 3rem;
         height: 3rem;
         border-radius: 100%;
-        background-color: var(--Menu-Head-Link);
-    }
 
-    .ballImg {
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
     .subMenuLink {
+        padding: .5rem .5rem;
         display: flex;
         align-items: center;
         gap: 1rem;
 
         cursor: pointer;
+        transition: .1s;
+    }
+
+    .subMenuLink:hover {
+        border-radius: .5rem;
+        background-color: var(--Submenu-Link-Hover);
     }
 
     .subMenuLink p {

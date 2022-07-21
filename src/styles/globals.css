@@ -6,9 +6,11 @@
 
   /* Secondary Colors */
   --Box-Shadow-Default: #A5A5A5;
+  --Submenu-Link-Hover: #c6c6c6;
   --Menu-Head-Link: #2FA3A3;
   --Menu-Torso-Link: #8A349A;
   --Menu-Shoes-Link: #282929;
+  --Outline-Color: #707070;
 
   /* 1rem = 10px */
   font-size: 62.5%;
@@ -27,6 +29,8 @@ button {
 
 a {
   color: inherit;
+  border: inherit;
+  outline: none;
   text-decoration: none;
 }
 
@@ -34,7 +38,7 @@ ul {
   list-style: none;
 }
 
-h1,h2 {
+h1,h2,h3 {
   font-weight: 400;
 }
 
@@ -42,5 +46,4 @@ h1,h2 {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* outline: 1px solid magenta; */
 }

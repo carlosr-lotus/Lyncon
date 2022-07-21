@@ -1,0 +1,50 @@
+.globalContainerListProducts {
+    width: 90%;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.amountProductsFound {
+    padding-bottom:2rem;
+    font-size: 1.3rem;
+
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.containerListProducts {
+    display: grid;
+    gap: 5.5rem;
+}
+
+.containerListProducts .productContainer img {
+    width: 100%;
+    max-height: 30rem;
+    object-fit: cover;
+    outline: 1px solid var(--Outline-Color);
+}
+
+.productContainer {
+    position: relative;
+    display: grid;
+    gap: .7rem;
+}
+
+.productContainer h2 {
+    font-size: 2rem;
+}
+
+.productContainer h3 {
+    font-size: 1.7rem;
+}
+
+.productContainer div {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+}
+
+.productContainer svg:hover {
+    fill: #F75C5C;
+}
