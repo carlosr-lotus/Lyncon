@@ -1,0 +1,50 @@
+{
+  "products": [
+    {  
+      "id": "camisetas",
+      "options": [
+        {
+          "id": 1,
+          "name": "Camiseta Lyncon Gola V",
+          "pricing": 79.99,
+          "image": "/images/vestimentas/camiseta-lyncon-gola-v.jpg"
+        }, 
+        {
+          "id": 2,
+          "name": "Camiseta Lyncon Sport",
+          "pricing": 89.99,
+          "image": "/images/vestimentas/camiseta-lyncon-sport.jpg"
+        }
+      ]
+    },
+    {
+      "id": "camisas",
+      "options": [
+        {
+          "id": 1,
+          "name": "Camisa Comfort Manga Curta",
+          "pricing": 129.99,
+          "image": "/images/vestimentas/camisa-lyncon-comfort.jpg"
+        },
+        {
+          "id": 2,
+          "name": "Camisa Florida",
+          "pricing": 119.99,
+          "image": "/images/vestimentas/camisa-lyncon-florida.jpg"
+        },
+        {
+          "id": 3,
+          "name": "Camisa Xadrez",
+          "pricing": 99.99,
+          "image": "/images/vestimentas/camisa-lyncon-xadrez.jpg"
+        },
+        {
+          "id": 4,
+          "name": "Camisa Cetim",
+          "pricing": 189.99,
+          "image": "/images/vestimentas/camisa-lyncon-cetim.jpg"
+        }
+      ]
+    }
+  ]
+}

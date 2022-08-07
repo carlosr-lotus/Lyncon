@@ -8,6 +8,7 @@
     grid-template-rows: max-content 1fr .5fr;
     align-items: center;
 
+    z-index: 5;
 }
 
 .homeHeaderContainer {
@@ -78,7 +79,9 @@
     }
 
     .homeHeaderContainer {
-        padding: 4rem 6.5rem;
+        width: 90%;
+        margin: 0 auto;
+        padding: 4rem 0;
 
         display: grid;
         grid-template-columns: max-content 1fr max-content;

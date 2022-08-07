@@ -1,12 +1,7 @@
-.heartIconContainer {
-    width: 15px;
-    height: 15px;
-}
-
 .heartIcon {
     position: relative;
-    width: 100%;
-    height: 100%;
+    width: 15px;
+    height: 15px;
     object-fit: cover;
 
     cursor: pointer;
