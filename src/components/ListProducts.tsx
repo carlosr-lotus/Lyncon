@@ -76,7 +76,7 @@ export default function ListProducts() {
                             </div>
                         ))
                     }
-                    <IoIosArrowForward size={13} />
+                    {/* <IoIosArrowForward size={13} /> */}
                 </div>
                 <div>
                     <FiSearch size={23} />

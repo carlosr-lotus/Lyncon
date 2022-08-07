@@ -2,7 +2,7 @@
 .filterBarContainer {
     width: 90%;
     margin: 0 auto;
-    /* padding: 1rem 1.5rem; */
+    /* overflow: hidden; */
 
     display: grid;
     grid-template-columns: max-content 1fr max-content;
@@ -22,16 +22,22 @@
 }
 
 .filterOptions {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2.5rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none; /* Firefox */
 }
 
-.filterOptions p {
+.filterOptions::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}
+
+.filterOptions div {
+    display: inline-block;
+    padding: 1rem;
+
     font-size: 1.3rem;
-    opacity: .3;
     transition: .2s;
+
     cursor: pointer;
 }
 
@@ -39,7 +45,19 @@
     opacity: 1;
 }
 
+@media (min-width: 667px) and (orientation: landscape) {
+    .filterOptions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
 @media (min-width: 1024px) {
+
+    .filterOptions {
+        padding: 0;
+    }
     .filterOptions p {
         font-size: 1.5rem;
     }
