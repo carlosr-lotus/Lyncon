@@ -1,5 +1,22 @@
 {
   "products": [
+    {
+      "id": "gorros",
+      "options": [
+        {
+          "id": 1,
+          "name": "Gorro Lyncon Malha",
+          "pricing": 99.99,
+          "image":"/images/vestimentas/gorro-malha.jpg"
+        }, 
+        {
+          "id": 2,
+          "name": "Gorro Coleção Inverno",
+          "pricing": 139.99,
+          "image":"/images/vestimentas/lyncon-colecao-gorro-1.jpg"
+        }
+      ]
+    },
     {  
       "id": "camisetas",
       "options": [
@@ -43,6 +60,29 @@
           "name": "Camisa Cetim",
           "pricing": 189.99,
           "image": "/images/vestimentas/camisa-lyncon-cetim.jpg"
+        }
+      ]
+    }, 
+    {
+      "id": "casacos",
+      "options": [
+        {
+          "id": 1,
+          "name": "Casaco Longo",
+          "pricing": 399.99,
+          "image": "/images/vestimentas/casaco-longo.jpg"
+        }, 
+        {
+          "id": 2,
+          "name": "Casaco Puffer",
+          "pricing": 299.99,
+          "image": "/images/vestimentas/casaco-puffer.jpg"
+        }, 
+        {
+          "id": 3,
+          "name": "Casaco Coleção Inverno",
+          "pricing": 499.99,
+          "image": "/images/vestimentas/casaco-colecao-inverno-1.jpg"
         }
       ]
     }

@@ -1,12 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { useRouter } from 'next/router';
+
+// Context //
+import { AppContext } from '../contexts/Provider';
 
 // Packages //
-import update from 'immutability-helper';
 import axios from 'axios';
 
 // Icons //
 import { FiDatabase, FiFilter, FiSearch } from 'react-icons/fi';
-import { IoIosArrowForward } from 'react-icons/io';
+// import { IoIosArrowForward } from 'react-icons/io';
 import { BsArrowUpRight } from 'react-icons/bs';
 import HeartIcon from './customIcons/HeartIcon';
 
@@ -14,19 +17,43 @@ import styles from '../styles/components/ListProducts.module.css';
 
 export default function ListProducts() {
 
+    const context = useContext(AppContext);
+    const router = useRouter();
+
+    let {
+        testeProvider
+    } = context;
+
+    const { tipo } = router.query;
+
     const [productsList, setProductsList] = useState<any[]>();
     const [categories, setCategories] = useState<any[]>([
-        { codigo: 1, category: 'Gorros', selecionado: false },
-        { codigo: 2, category: 'Camisas', selecionado: false },
-        { codigo: 3, category: 'Camisetas', selecionado: true },
-        { codigo: 4, category: 'Casacos', selecionado: false },
-        { codigo: 5, category: 'Polo', selecionado: false },
-        { codigo: 6, category: 'Calças', selecionado: false },
-        { codigo: 7, category: 'Sapatos', selecionado: false }
+        { id: 1, category: 'Gorros', selected: false },
+        { id: 2, category: 'Camisas', selected: false },
+        { id: 3, category: 'Camisetas', selected: true },
+        { id: 4, category: 'Casacos', selected: false },
+        { id: 5, category: 'Polo', selected: false },
+        { id: 6, category: 'Calças', selected: false },
+        { id: 7, category: 'Sapatos', selected: false }
     ])
 
     useEffect(() => {
-        getProducts('camisetas');
+        console.log(`Query: ${tipo}`)
+        switch (tipo) {
+            case 'cabeça':
+                getProducts('gorros');
+                break;
+            case 'torso':
+                getProducts('camisetas');
+                break;
+            case 'inferiores':
+                getProducts('sapatos');
+                break;
+            default:
+                getProducts('camisetas');
+                break;
+        }
+        testeProvider();
     }, []);
 
     function getProducts(category: string) {
@@ -41,15 +68,15 @@ export default function ListProducts() {
 
     function onClickCategory(categoryParam: string) {
 
-        let categoriesTemp = [...categories];
+        let categoriesTemp: any[] = [...categories];
 
-        const posicao = categoriesTemp.findIndex(item => item.category === categoryParam);
+        const posicao: number = categoriesTemp.findIndex(item => item.category === categoryParam);
 
         categoriesTemp.forEach((data) => {
-            if (data.codigo === posicao + 1) {
-                data.selecionado = !data.selecionado
+            if (data.id === posicao + 1) {
+                data.selected = !data.selected
             } else {
-                data.selecionado = false;
+                data.selected = false;
             }
         })
 
@@ -66,10 +93,10 @@ export default function ListProducts() {
                 <div className={styles.filterOptions}>
                     {categories &&
                         categories.map((data) => (
-                            <div key={data.codigo}>
+                            <div key={data.id}>
                                 <p
                                     style={{
-                                        opacity: data.selecionado ? 1 : 0.3
+                                        opacity: data.selected ? 1 : 0.3
                                     }}
                                     onClick={() => onClickCategory(data.category)}
                                 >{data.category}</p>

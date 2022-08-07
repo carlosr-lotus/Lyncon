@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import Popup from 'reactjs-popup';
 
 // Icones //
@@ -12,6 +13,7 @@ import styles from '../styles/components/MenuBar.module.css';
 
 export default function MenuBar() {
 
+    const router = useRouter();
     const [menuStateOpen, setMenuStateOpen] = useState<boolean>(false);
 
     return (
@@ -57,7 +59,7 @@ export default function MenuBar() {
             <header
                 className={styles.homeHeaderContainer}
             >
-                <h1>Lyncon</h1>
+                <a href="/"><h1>Lyncon</h1></a>
 
                 <nav className={styles.menuNav}>
                     <ul>
@@ -90,8 +92,16 @@ export default function MenuBar() {
                                     <p>Cabeça</p>
                                 </a>
 
-                                <a href="/vestimentas" className={styles.subMenuLink}>
-                                    <div className={styles.ballImg} style={{ backgroundColor: 'var(--Menu-Torso-Link)' }}>
+                                <a
+                                    onClick={() =>
+                                        router.push({
+                                            pathname: '/vestimentas',
+                                            query: { tipo: 'torso' }
+                                        })}
+                                    className={styles.subMenuLink}>
+                                    <div
+                                        className={styles.ballImg}
+                                        style={{ backgroundColor: 'var(--Menu-Torso-Link)' }}>
                                         <FaTshirt size={18} style={{ fill: 'white' }} />
                                     </div>
                                     <p>Torso</p>
