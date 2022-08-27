@@ -1,20 +1,30 @@
-import { useContext, createContext } from "react";
+import { useContext, createContext, useState } from "react";
+import { useRouter } from 'next/router';
+
+// import { ProductProps } from '../pages/produto';
 
 interface ContextData {
-    testeProvider: () => void
+    onClickProduct: (product: any) => void,
 }
 
 export const AppContext = createContext({} as ContextData);
 
 const AppProvider = ({ children }: any) => {
 
-    function testeProvider() {
-        console.log('Retorno do provider!')
-    }
+    const router = useRouter();
+
+    const [productDetails, setProductDetails] = useState<any>();
+
+    function onClickProduct(product: object) {
+        setProductDetails(product);
+        localStorage.setItem('product', JSON.stringify(product))
+
+        router.push('/produto')
+    };
 
     return (
         <AppContext.Provider value={{
-            testeProvider
+            onClickProduct
         }}>
             {children}
         </AppContext.Provider>
