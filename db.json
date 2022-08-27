@@ -24,13 +24,15 @@
           "id": 1,
           "name": "Camiseta Lyncon Gola V",
           "pricing": 79.99,
-          "image": "/images/vestimentas/camiseta-lyncon-gola-v.jpg"
+          "image": "/images/vestimentas/camiseta-lyncon-gola-v.jpg",
+          "desc": "Chique e confortável para jamais perder a elegância na rotina."
         }, 
         {
           "id": 2,
           "name": "Camiseta Lyncon Sport",
           "pricing": 89.99,
-          "image": "/images/vestimentas/camiseta-lyncon-sport.jpg"
+          "image": "/images/vestimentas/camiseta-lyncon-sport.jpg",
+          "desc": "Camiseta feita para aqueles com o espírito do esporte."
         }
       ]
     },
