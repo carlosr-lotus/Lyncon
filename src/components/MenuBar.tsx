@@ -22,7 +22,7 @@ export default function MenuBar() {
             <header
                 className={menuStateOpen ? styles.homeHeaderContainerMobile : styles.homeHeader}
             >
-                <h1>Lyncon</h1>
+                <a href="/"><h1>Lyncon</h1></a>
                 {menuStateOpen ?
                     <>
                         <VscChromeClose
