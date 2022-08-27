@@ -3,6 +3,8 @@
   --Main-Black: #1C1212;
   --Main-White: #DBDBDB;
   --Menu-Mobile-Bg: #4E4E4E;
+  --Button-Light: #F4F4F4;
+  --Darker-Text: #777777;
 
   /* Secondary Colors */
   --Box-Shadow-Default: #A5A5A5;
@@ -38,7 +40,9 @@ ul {
   list-style: none;
 }
 
-h1,h2,h3 {
+h1,
+h2,
+h3 {
   font-weight: 400;
 }
 
