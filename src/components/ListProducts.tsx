@@ -21,7 +21,7 @@ export default function ListProducts() {
     const router = useRouter();
 
     let {
-        testeProvider
+        onClickProduct
     } = context;
 
     const { tipo } = router.query;
@@ -53,7 +53,6 @@ export default function ListProducts() {
                 getProducts('camisetas');
                 break;
         }
-        testeProvider();
     }, []);
 
     function getProducts(category: string) {
@@ -125,7 +124,7 @@ export default function ListProducts() {
                                 {productsList.map((product) => (
 
                                     <div key={product.id} className={styles.productContainer}>
-                                        <img src={product.image} />
+                                        <img src={product.image} onClick={() => onClickProduct(product)} />
                                         <h2>{product.name}</h2>
                                         <h3>R$ {product.pricing.toString().replace('.', ',')}</h3>
                                         <HeartIcon />
