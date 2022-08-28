@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 // Components //
 import MenuBar from "../../components/MenuBar";
 import ImageUser from "../../components/ImageUser";
+import HeartIcon from "../../components/customIcons/HeartIcon";
 
 import styles from '../../styles/pages/ProductPage.module.css';
 
@@ -43,7 +44,7 @@ export default function ProductPage() {
                             </div>
 
                             <div className={styles.colorOptions}>
-                                <p>Cor: </p>
+                                <p>Cor: Branco</p>
                                 <div className={styles.colorBall}></div>
                             </div>
 
@@ -56,8 +57,10 @@ export default function ProductPage() {
 
                             <p className={styles.productDesc}>{productData.desc}</p>
 
-                            <button className={styles.btn}>Adicionar ao carrinho</button>
-                            <button className={styles.btn}>Favoritar</button>
+                            <div className={styles.btnContainer}>
+                                <button className={styles.btn}>Adicionar ao carrinho</button>
+                                <button className={styles.btn}>Favoritar</button>
+                            </div>
                         </div>
                     </div>
 
@@ -76,7 +79,10 @@ export default function ProductPage() {
                                 </div>
                             </div>
                             <p>“Como diz a descrição, camisa de qualidade e traz consigo muita praticidade no dia a dia! Nota 10”</p>
-                            <p>coracao 5</p>
+                            <div>
+                                <HeartIcon />
+                                <span>5</span>
+                            </div>
                         </div>
                     </div>
 

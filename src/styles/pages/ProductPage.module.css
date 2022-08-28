@@ -5,6 +5,8 @@
 .productPageGlobalContainer {
     width: 90%;
     margin: 0 auto;
+
+    animation: fadeInUp 1s;
 }
 
 .productDetailsContainer {
@@ -18,8 +20,21 @@
     width: 100%;
 }
 
+.productDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
 .pricingProduct {
     font-size: 1.2rem;
+
+    display: grid;
+    gap: .5rem;
+}
+
+.pricingProduct>span {
+    font-size: 1.4rem;
 }
 
 .sizingOptionsContainer {
@@ -30,7 +45,8 @@
 
 .colorOptions {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    /* align-items: center; */
     gap: 1rem;
 }
 
@@ -39,6 +55,8 @@
 }
 
 .colorOptions .colorBall {
+    width: 3rem;
+    height: 3rem;
     padding: 1.5rem;
     border: 1px solid var(--Outline-Color);
     border-radius: 100%;
@@ -50,7 +68,7 @@
     border: 1px solid var(--Outline-Color);
     border-radius: .3rem;
 
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     text-transform: uppercase;
 
     cursor: pointer;
@@ -60,7 +78,15 @@
     font-size: 1.4rem;
 }
 
-.btn {
+.btnContainer {
+    width: 100%;
+
+    display: grid;
+    gap: 1.2rem;
+}
+
+.btnContainer .btn {
+    width: 100%;
     padding: 1.2rem;
 
     border: transparent;
@@ -74,7 +100,7 @@
     cursor: pointer;
 }
 
-.btn:nth-child(6) {
+.btnContainer .btn:nth-child(2) {
     background-color: var(--Button-Light);
     color: var(--Main-Black);
 }
@@ -84,7 +110,7 @@
 }
 
 .userReview {
-    padding: 1.2rem;
+    padding: 2.5rem 2rem;
 
     border: 1px solid var(--Box-Shadow-Default);
     border-radius: .5rem;
@@ -118,5 +144,20 @@
 }
 
 .userReview>p:nth-child(3) {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
     font-size: 1.3rem;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
