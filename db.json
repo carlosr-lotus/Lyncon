@@ -7,17 +7,17 @@
           "id": 1,
           "name": "Gorro Lyncon Malha",
           "pricing": 99.99,
-          "image":"/images/vestimentas/gorro-malha.jpg"
-        }, 
+          "image": "/images/vestimentas/gorro-malha.jpg"
+        },
         {
           "id": 2,
           "name": "Gorro Coleção Inverno",
           "pricing": 139.99,
-          "image":"/images/vestimentas/lyncon-colecao-gorro-1.jpg"
+          "image": "/images/vestimentas/lyncon-colecao-gorro-1.jpg"
         }
       ]
     },
-    {  
+    {
       "id": "camisetas",
       "options": [
         {
@@ -26,7 +26,7 @@
           "pricing": 79.99,
           "image": "/images/vestimentas/camiseta-lyncon-gola-v.jpg",
           "desc": "Chique e confortável para jamais perder a elegância na rotina."
-        }, 
+        },
         {
           "id": 2,
           "name": "Camiseta Lyncon Sport",
@@ -64,7 +64,7 @@
           "image": "/images/vestimentas/camisa-lyncon-cetim.jpg"
         }
       ]
-    }, 
+    },
     {
       "id": "casacos",
       "options": [
@@ -73,13 +73,13 @@
           "name": "Casaco Longo",
           "pricing": 399.99,
           "image": "/images/vestimentas/casaco-longo.jpg"
-        }, 
+        },
         {
           "id": 2,
           "name": "Casaco Puffer",
           "pricing": 299.99,
           "image": "/images/vestimentas/casaco-puffer.jpg"
-        }, 
+        },
         {
           "id": 3,
           "name": "Casaco Coleção Inverno",
@@ -87,6 +87,13 @@
           "image": "/images/vestimentas/casaco-colecao-inverno-1.jpg"
         }
       ]
+    }
+  ],
+  "cart": [
+    {
+      "id": 1,
+      "nameProduct": "Camiseta Lyncon Gola V",
+      "priceProduct": 79.99
     }
   ]
 }
