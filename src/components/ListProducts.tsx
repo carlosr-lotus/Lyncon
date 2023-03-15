@@ -1,11 +1,8 @@
 import { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 
-// Context //
-import { AppContext } from '../contexts/Provider';
-
 // Packages //
-import axios from 'axios';
+import { getApi } from '../utils/api';
 
 // Icons //
 import { FiDatabase, FiFilter, FiSearch } from 'react-icons/fi';
@@ -17,12 +14,8 @@ import styles from '../styles/components/ListProducts.module.css';
 
 export default function ListProducts() {
 
-    const context = useContext(AppContext);
     const router = useRouter();
-
-    let {
-        onClickProduct
-    } = context;
+    const api = getApi();
 
     const { tipo } = router.query;
 
@@ -35,7 +28,7 @@ export default function ListProducts() {
         { id: 5, category: 'Polo', selected: false },
         { id: 6, category: 'Calças', selected: false },
         { id: 7, category: 'Sapatos', selected: false }
-    ])
+    ]);
 
     useEffect(() => {
         console.log(`Query: ${tipo}`)
@@ -55,17 +48,16 @@ export default function ListProducts() {
         }
     }, []);
 
-    function getProducts(category: string) {
-        axios.get(`http://localhost:4500/products/${category.toLowerCase()}`)
+    function getProducts(category: string): void {
+        api.get(`/products/${category.toLowerCase()}`)
             .then((res) => {
                 setProductsList(res.data.options);
             }).catch((res) => {
                 setProductsList([]);
-                console.log(`Error: ${res}`);
             })
     }
 
-    function onClickCategory(categoryParam: string) {
+    function onClickCategory(categoryParam: string): void {
 
         let categoriesTemp: any[] = [...categories];
 
@@ -82,6 +74,13 @@ export default function ListProducts() {
         setCategories(categoriesTemp);
         getProducts(categoryParam)
     }
+
+    function onClickProduct(product: object): void {
+        // setProductDetails(product);
+        localStorage.setItem('product', JSON.stringify(product));
+
+        router.push('/produto');
+    };
 
     return (
         <>
@@ -102,7 +101,6 @@ export default function ListProducts() {
                             </div>
                         ))
                     }
-                    {/* <IoIosArrowForward size={13} /> */}
                 </div>
                 <div>
                     <FiSearch size={23} />
@@ -124,7 +122,10 @@ export default function ListProducts() {
                                 {productsList.map((product) => (
 
                                     <div key={product.id} className={styles.productContainer}>
-                                        <img src={product.image} onClick={() => onClickProduct(product)} />
+                                        <img
+                                            src={product.image}
+                                            onClick={() => onClickProduct(product)}
+                                        />
                                         <h2>{product.name}</h2>
                                         <h3>R$ {product.pricing.toString().replace('.', ',')}</h3>
                                         <HeartIcon />
