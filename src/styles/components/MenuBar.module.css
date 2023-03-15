@@ -60,6 +60,8 @@
 }
 
 .menuNavBtns ul li {
+    position: relative;
+
     width: 5rem;
     height: 5rem;
     display: flex;
@@ -71,8 +73,25 @@
     cursor: pointer;
 }
 
+.menuNavBtns ul li:nth-child(2)>span {
+    position: absolute;
+    right: -6px;
+
+    width: 17px;
+    height: 17px;
+
+    border-radius: 100%;
+    background-color: var(--Menu-Torso-Link);
+    color: var(--Main-White);
+    font-size: 1.4rem;
+
+    display: grid;
+    place-items: center;
+}
+
 /* Responsive CSS */
 @media (min-width: 1024px) {
+
     .homeHeader,
     .homeHeaderContainerMobile {
         display: none;
