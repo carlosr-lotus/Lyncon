@@ -3,9 +3,11 @@
 
 // Native
 import Head from 'next/head';
+import Link from 'next/link';
 
 // Components //
 import MenuBar from '../components/MenuBar';
+import Button from '../components/material/Button';
 import Footer from '../components/Footer';
 
 // Icons //
@@ -36,7 +38,10 @@ export default function Home() {
                 <h1>Temporada Inverno</h1>
                 <BsSnow size={25} />
               </div>
-              <button>Saiba mais</button>
+              <Button
+                name='Saiba mais'
+                type='button'
+              />
             </div>
 
             <img className={styles.imgSection} src='/images/index/promocao-inverno.jpg' />
@@ -48,18 +53,18 @@ export default function Home() {
             <div className={styles.sectionTitleBtn}>
               <h1>Chique e confortável</h1>
               <p>Clique abaixo para conhecer as vestimentas Lyncon.</p>
-              <button>Explorar</button>
+              {/* <button>Explorar</button> */}
+              <Link
+                href='/vestimentas'
+              >
+                <a>
+                  <Button
+                    name='Explorar'
+                    type='button'
+                  />
+                </a>
+              </Link>
             </div>
-          </section>
-
-          <section className={styles.sectionContainer}>
-            <div className={styles.sectionTitleBtn}>
-              <h1>Relógios Lyncon</h1>
-              <p>Para os corajosos exploradores e amantes do chique.</p>
-              <button>Explorar</button>
-            </div>
-
-            <img className={styles.imgSection} src='/images/index/relogios-photo.jpg' loading='lazy' />
           </section>
 
         </div>
