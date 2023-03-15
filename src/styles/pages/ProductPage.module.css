@@ -1,7 +1,3 @@
-.class {
-    color: magenta;
-}
-
 .productPageGlobalContainer {
     width: 90%;
     margin: 0 auto;
@@ -18,6 +14,7 @@
 
 .productImgContainer>img {
     width: 100%;
+    outline: 1px solid var(--Outline-Color);
 }
 
 .productDetails {
@@ -54,12 +51,25 @@
     font-size: 1.4rem;
 }
 
-.colorOptions .colorBall {
+.colorBallContainer {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.colorBallContainer .colorBall {
     width: 3rem;
     height: 3rem;
     padding: 1.5rem;
     border: 1px solid var(--Outline-Color);
     border-radius: 100%;
+
+    cursor: pointer;
+    box-shadow: 0 0 2rem var(--Box-Shadow-Default);
+}
+
+.colorBallContainer .colorBall:nth-child(2) {
+    background-color: black;
 }
 
 .sizingOptionsContainer p {
@@ -72,10 +82,43 @@
     text-transform: uppercase;
 
     cursor: pointer;
+    transition: .2s;
+}
+
+.sizingOptionsContainer p:hover {
+    background-color: var(--Main-Black);
+    color: var(--Main-White);
 }
 
 .productDesc {
+    font-size: 1.5rem;
+}
+
+.freteContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    gap: .5rem;
+}
+
+.freteContainer>label {
     font-size: 1.4rem;
+}
+
+.freteContainer>input {
+    padding: .7rem;
+}
+
+.freteContainer>a>i {
+    font-size: 1.2rem;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.fretePreco {
+    padding-top: 1rem;
+    font-size: 1.2rem;
 }
 
 .btnContainer {
@@ -85,28 +128,12 @@
     gap: 1.2rem;
 }
 
-.btnContainer .btn {
-    width: 100%;
-    padding: 1.2rem;
-
-    border: transparent;
-    border-radius: .5rem;
-
-    font-size: 1.5rem;
-
-    background-color: var(--Main-Black);
-    color: var(--Main-White);
-
-    cursor: pointer;
-}
-
-.btnContainer .btn:nth-child(2) {
-    background-color: var(--Button-Light);
-    color: var(--Main-Black);
-}
-
 .reviewsContainer {
     padding: 5rem 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
 }
 
 .userReview {
@@ -131,12 +158,12 @@
 }
 
 .userInfo>h1 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
 }
 
 .userInfo>h2 {
     color: var(--Darker-Text);
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 .userReview>p {
@@ -150,6 +177,10 @@
     font-size: 1.3rem;
 }
 
+.numberOfLikes {
+    font-size: 1.6rem;
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -159,5 +190,33 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (min-width: 1024px) {
+    .productPageGlobalContainer {
+        padding: 5rem 0;
+    }
+
+    .productImgContainer>img {
+        height: 500px;
+        object-fit: contain;
+    }
+
+    .productDetailsContainer {
+        grid-template-columns: max-content 1fr;
+    }
+}
+
+@media (min-width: 1080px) {
+    .productDetailsContainer {
+        gap: 2.5rem;
+        grid-template-columns: max-content 300px;
+        justify-content: center;
+    }
+
+    .userReview {
+        width: 75rem;
+        margin: 0 auto;
     }
 }
