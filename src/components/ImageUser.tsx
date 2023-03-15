@@ -5,10 +5,10 @@ interface ImageProps {
     urlImagem?: string,
 }
 
-export default function ImageUser(props: ImageProps) {
+export default function ImageUser(props: ImageProps): JSX.Element {
 
-    function getInitials(name: string) {
-        let initials: any = name.match(/\b\w/g) || [];
+    function getInitials(name: string): string {
+        let initials: RegExpMatchArray | never[] | string = name.match(/\b\w/g) || [];
         initials = ((initials.shift() || '') + (initials.pop() || '')).toUpperCase()
         return initials;
     }
