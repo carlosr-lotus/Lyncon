@@ -36,7 +36,6 @@ export default function MenuBar() {
                                 <li><a href="#">Vestimentas</a></li>
                                 <li><a href="#">Relógios</a></li>
                                 <li><a href="#">Inverno</a></li>
-                                <li><a href="#">Pour Moi</a></li>
                             </ul>
                         </nav>
 
@@ -111,21 +110,28 @@ export default function MenuBar() {
                                     <div className={styles.ballImg} style={{ backgroundColor: 'var(--Menu-Shoes-Link)' }}>
                                         <FaShoePrints size={18} style={{ fill: 'white' }} />
                                     </div>
-                                    <p>Inferiores</p>
+                                    <p>Sapatos</p>
                                 </div>
 
                             </div>
                         </Popup>
                         <li><a href="#">Relógios</a></li>
                         <li><a href="#">Inverno</a></li>
-                        <li><a href="#">Pour Moi</a></li>
                     </ul>
                 </nav>
 
                 <nav className={styles.menuNavBtns}>
                     <ul>
                         <li><BiUser size={25} /></li>
-                        <li><BiCart size={25} /></li>
+                        <li
+                            onClick={() =>
+                                router.push({
+                                    pathname: '/carrinho'
+                                })}
+                        >
+                            <span>1</span>
+                            <BiCart size={25} />
+                        </li>
                     </ul>
                 </nav>
             </header>
