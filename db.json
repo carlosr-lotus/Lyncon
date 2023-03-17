@@ -25,7 +25,12 @@
           "name": "Camiseta Lyncon Gola V",
           "pricing": 79.99,
           "image": "/images/vestimentas/camiseta-lyncon-gola-v.jpg",
-          "desc": "Chique e confortável para jamais perder a elegância na rotina."
+          "desc": "Chique e confortável para jamais perder a elegância na rotina.",
+          "colors": [
+            {
+              "branco": "#fff"
+            }
+          ]
         },
         {
           "id": 2,
