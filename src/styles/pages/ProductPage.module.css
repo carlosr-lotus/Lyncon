@@ -65,7 +65,7 @@
     border-radius: 100%;
 
     cursor: pointer;
-    box-shadow: 0 0 2rem var(--Box-Shadow-Default);
+    /* box-shadow: 0 0 2rem var(--Box-Shadow-Default); */
 }
 
 .colorBallContainer .colorBall:nth-child(2) {
@@ -107,8 +107,27 @@
 }
 
 .freteContainer>input {
-    padding: .7rem;
+    padding: 1.3rem;
+    font-size: 1.5rem;
+    border-radius: 4px;
+    border: 1px solid black;
 }
+
+/* .freteContainer>input:invalid {
+    border: 1px solid #ff3333;
+    color: #ff3333;
+}
+
+.freteContainer>input:invalid + .freteContainer button {
+    pointer-events: none;
+    background-color: magenta;
+    border: 1px solid magenta;
+}
+
+.freteContainer>input:placeholder-shown {
+    border: 1px solid black;
+    color: inherit;
+} */
 
 .freteContainer>a>i {
     font-size: 1.2rem;
@@ -199,8 +218,9 @@
     }
 
     .productImgContainer>img {
+        width: 420px;
         height: 500px;
-        object-fit: contain;
+        object-fit: cover;
     }
 
     .productDetailsContainer {
