@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from 'next/head';
 
 // Context //
-import axios from "axios";
+import { getApi } from "../../utils/api";
 
 // Components //
 import MenuBar from "../../components/MenuBar";
@@ -22,18 +22,19 @@ interface ProductProps {
 }
 
 export default function ProductPage(): JSX.Element {
-
     const router = useRouter();
+    const api = getApi();
 
     const [productData, setProductData] = useState<ProductProps>();
     const [freteValue, setFreteValue] = useState<boolean>(false);
     const [addedProduct, setAddedProduct] = useState<boolean>(false);
+    const [validBrazilZip, setValidBrazilZip] = useState<'valid' | 'invalid' | 'waiting'>('waiting');
 
     useEffect(() => {
         setProductData(JSON.parse(localStorage.getItem('product') || '{}'));
 
         let product: ProductProps = JSON.parse(localStorage.getItem('product') || '{}');
-        axios.get(`http://localhost:4500/cart/${product.id}`)
+        api.get(`/cart/${product.id}`)
             .then((res) => {
                 if (res.data) {
                     setAddedProduct(true);
@@ -43,24 +44,32 @@ export default function ProductPage(): JSX.Element {
     }, []);
 
     function onClickAddToCart(productData: ProductProps): void {
-        if (addedProduct) {
+        if (addedProduct)
             router.push('/carrinho');
-        } else {
-            setAddedProduct(true);
+        else
             addToCart(productData);
-        }
     }
 
     function addToCart(productData: ProductProps): void {
+        setAddedProduct(true);
         let listProductsArray = [];
         listProductsArray.push(productData);
-        axios.post('http://localhost:4500/cart/', {
+        api.post('/cart/', {
             id: productData.id,
             nameProduct: productData.name,
             priceProduct: productData.pricing
         }).then((res) => {
             console.log(res);
         });
+    }
+
+    function isValidBrazilZip(zip: string): void {
+        const pattern = /^[0-9]{5}-[0-9]{3}$/;
+
+        if (pattern.test(zip))
+            setValidBrazilZip('valid')
+        else
+            setValidBrazilZip('invalid')
     }
 
     return (
@@ -111,6 +120,12 @@ export default function ProductPage(): JSX.Element {
                                 <input
                                     type="text"
                                     placeholder="00000-000"
+                                    onChange={(e: ChangeEvent<HTMLInputElement>) => e.target.value.length === 9 && isValidBrazilZip(e.target.value)}
+                                    style={{
+                                        border: validBrazilZip === 'valid' || validBrazilZip === 'waiting' ? '1px solid #707070' : '1px solid #ff3333',
+                                        color: validBrazilZip === 'valid' || validBrazilZip === 'waiting' ? 'inherit' : '#ff3333'
+                                    }}
+                                    required
                                 />
 
                                 <Button
@@ -118,8 +133,8 @@ export default function ProductPage(): JSX.Element {
                                     type='button'
                                     onClick={() => setFreteValue(true)}
                                     style={{
-                                        width: '25%',
-                                        padding: '.7rem',
+                                        width: '30%',
+                                        height: '4.7rem',
                                         position: 'absolute',
                                         top: '24px',
                                         right: '0'
