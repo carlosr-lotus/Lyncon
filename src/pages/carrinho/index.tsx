@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import Head from 'next/head';
 
 // Packages //
 import { getApi } from "../../utils/api";
 
 // Components //
 import MenuBar from "../../components/MenuBar";
+import Button from "../../components/material/Button";
 
 // Icons //
 import { BsFillCreditCardFill } from "react-icons/bs";
@@ -14,17 +16,19 @@ import styles from '../../styles/pages/CarrinhoPage.module.css';
 interface ProdutoCarrinho {
     id: number,
     nameProduct: string,
-    priceProduct: number
+    priceProduct: number,
+    imageProduct: string
 }
 
 export default function CarrinhoPage() {
 
     const api = getApi();
 
-    const [produtosCarrinho, setProdutosCarrinho] = useState<ProdutoCarrinho>();
+    const [produtosCarrinho, setProdutosCarrinho] = useState<ProdutoCarrinho[]>();
+    const [totalAmountProduct, setTotalAmountProduct] = useState<number>(1);
 
     useEffect(() => {
-        api.get(`http://localhost:4500/cart`)
+        api.get(`/cart`)
             .then((res) => {
                 console.log(res.data);
                 setProdutosCarrinho(res.data);
@@ -33,16 +37,45 @@ export default function CarrinhoPage() {
 
     return (
         <>
+
+            <Head>
+                <title>Lyncon | Carrinho</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+                <meta property="og:title" content="Lyncon | Nome do Produto" key="title" />
+            </Head>
+
             <MenuBar />
 
             <main className={styles.globalCartPageContainer}>
 
                 <div className={styles.cartDetailsContainer}>
-                    <h2>Camisa Lyncon Gola V</h2>
-                    <h3>Tamanho M</h3>
-                    <img src="/images/vestimentas/camiseta-lyncon-gola-v.jpg" alt="foto produto" />
-                    <hr />
-                    <p>Total: <strong>R$ 10,00</strong></p>
+                    {
+                        produtosCarrinho ?
+                            <>
+                                {
+                                    produtosCarrinho.map((data) => (
+                                        <div className={styles.cartProduct}>
+                                            <h2>{data.nameProduct}</h2>
+                                            <h3>Tamanho M | Branco</h3>
+                                            <div className={styles.cardProductImageContainer}>
+                                                <img src={data.imageProduct} alt="foto produto" />
+                                                <p>1</p>
+                                            </div>
+                                            <h4>R$ {(data.priceProduct).toFixed(2).replace('.', ',')}</h4>
+                                            <div
+                                                className={styles.addSameProductContainer}
+                                            >
+                                                <p>-</p>
+                                                <p>1</p>
+                                                <p>+</p>
+                                            </div>
+                                        </div>
+                                    ))
+                                }
+                            </>
+                            :
+                            <div>Loading...</div>
+                    }
                 </div>
 
                 <div className={styles.paymentOptionsGlobalContainer}>
