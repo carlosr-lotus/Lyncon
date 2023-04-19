@@ -11,7 +11,7 @@ import { FaRedhat, FaTshirt, FaShoePrints } from 'react-icons/fa';
 
 import styles from '../styles/components/MenuBar.module.css';
 
-export default function MenuBar() {
+export default function MenuBar(): JSX.Element {
 
     const router = useRouter();
     const [menuStateOpen, setMenuStateOpen] = useState<boolean>(false);
