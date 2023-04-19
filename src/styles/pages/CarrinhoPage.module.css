@@ -1,9 +1,15 @@
 .globalCartPageContainer {
-    padding-top: 7rem;
+    padding-top: 5rem;
 
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    /* grid-template-rows: 1fr 1fr; */
     place-items: center;
+    gap: 35px;
+}
+
+.cartProduct {
+    display: grid;
+    gap: 7px;
 }
 
 .cartDetailsContainer,
@@ -15,20 +21,86 @@
     box-shadow: 0px 1px 8px 1px #c6c6c67c;
 }
 
-.cartDetailsContainer > img {
-    width: 80px;
+.cartProduct>h3 {
+    font-size: 1.4rem;
+    color: var(--Darker-Text);
+}
+
+.cartProduct>h4 {
+    font-size: 1.7rem;
+    font-weight: normal;
+}
+
+.cardProductImageContainer {
+    width: 10rem;
+    margin: 0 auto;
+    position: relative;
+}
+
+.cardProductImageContainer>img {
+    width: 100%;
     border-radius: 10px;
     box-shadow: 0px 1px 8px 1px #c6c6c67c;
 }
 
-.cartDetailsContainer > hr {
+.cardProductImageContainer>p {
+    position: absolute;
+    top: -5px;
+    right: -12px;
+
+    padding: .5rem;
+    width: 3rem;
+    font-size: 1.5rem;
+    border-radius: 100%;
+    background-color: #ecebeb;
+    box-shadow: 0px 1px 8px 1px #c6c6c67c;
+}
+
+.cartDetailsContainer>hr {
     width: 80%;
     margin: 0 auto;
     border-radius: 10px;
     color: #c6c6c67c;
 }
 
-.paymentOptionsGlobalContainer > p {
+.addSameProductContainer {
+    width: 10rem;
+    margin: 1rem auto;
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+
+    font-size: 1.5rem;
+    border-radius: 4px;
+    outline: 1px solid var(--Outline-Color);
+}
+
+.addSameProductContainer>p:nth-child(1) {
+    border-right: 1px solid var(--Outline-Color);
+}
+
+.addSameProductContainer>p:nth-child(3) {
+    border-left: 1px solid var(--Outline-Color);
+}
+
+.paymentDetailsContainer,
+.paymentTotalContainer {
+    padding: 1.5rem 0;
+    display: grid;
+}
+
+.paymentDetailsContainer>p,
+.paymentTotalContainer>p {
+    font-size: 1.4rem;
+}
+
+.paymentDetailsContainer>p>strong,
+.paymentTotalContainer>p>strong {
+    font-weight: normal;
+    font-size: 1.7rem;
+}
+
+/* =-=-=-= */
+.paymentOptionsGlobalContainer>p {
     font-size: 1.8rem;
 }
 
