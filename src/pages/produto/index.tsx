@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import Head from 'next/head';
 
@@ -9,6 +9,7 @@ import { getApi } from "../../utils/api";
 import MenuBar from "../../components/MenuBar";
 import ImageUser from "../../components/ImageUser";
 import Button from "../../components/material/Button";
+import InputField from "../../components/material/InputField";
 import HeartIcon from "../../components/customIcons/HeartIcon";
 
 import styles from '../../styles/pages/ProductPage.module.css';
@@ -24,9 +25,10 @@ interface ProductProps {
 export default function ProductPage(): JSX.Element {
     const router = useRouter();
     const api = getApi();
+    const zipCodeRef = useRef<string>('');
 
     const [productData, setProductData] = useState<ProductProps>();
-    const [freteValue, setFreteValue] = useState<boolean>(false);
+    const [freteValue, setFreteValue] = useState<number>(2);
     const [addedProduct, setAddedProduct] = useState<boolean>(false);
     const [validBrazilZip, setValidBrazilZip] = useState<'valid' | 'invalid' | 'waiting'>('waiting');
 
@@ -40,6 +42,7 @@ export default function ProductPage(): JSX.Element {
                     setAddedProduct(true);
                 }
             }).catch((res) => {
+                console.log(res)
             })
     }, []);
 
@@ -57,19 +60,24 @@ export default function ProductPage(): JSX.Element {
         api.post('/cart/', {
             id: productData.id,
             nameProduct: productData.name,
-            priceProduct: productData.pricing
+            priceProduct: productData.pricing,
+            imageProduct: productData.image
         }).then((res) => {
             console.log(res);
         });
     }
 
     function isValidBrazilZip(zip: string): void {
-        const pattern = /^[0-9]{5}-[0-9]{3}$/;
+        const pattern: RegExp = /^[0-9]{5}-[0-9]{3}$/;
 
         if (pattern.test(zip))
             setValidBrazilZip('valid')
         else
             setValidBrazilZip('invalid')
+    }
+
+    function returnBrazilZipAddress(): void {
+        console.log(zipCodeRef)
     }
 
     return (
@@ -117,21 +125,25 @@ export default function ProductPage(): JSX.Element {
 
                             <div className={styles.freteContainer}>
                                 <label>Calcule o frete:</label>
-                                <input
-                                    type="text"
-                                    placeholder="00000-000"
-                                    onChange={(e: ChangeEvent<HTMLInputElement>) => e.target.value.length === 9 && isValidBrazilZip(e.target.value)}
+                                <InputField
+                                    name='frete'
+                                    type='text'
+                                    placeholder='00000-000'
+                                    onChange={(e) => e.target.value.length >= 9 && isValidBrazilZip(e.target.value)}
+                                    onInput={(e) => zipCodeRef.current = (e.target as HTMLInputElement).value}
                                     style={{
+                                        padding: '1.3rem',
+                                        fontSize: '1.5rem',
+                                        borderRadius: '4px',
                                         border: validBrazilZip === 'valid' || validBrazilZip === 'waiting' ? '1px solid #707070' : '1px solid #ff3333',
                                         color: validBrazilZip === 'valid' || validBrazilZip === 'waiting' ? 'inherit' : '#ff3333'
                                     }}
-                                    required
                                 />
 
                                 <Button
                                     name='Calcular'
                                     type='button'
-                                    onClick={() => setFreteValue(true)}
+                                    onClick={() => isValidBrazilZip(zipCodeRef.current)}
                                     style={{
                                         width: '30%',
                                         height: '4.7rem',
