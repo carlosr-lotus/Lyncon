@@ -149,7 +149,10 @@ export default function VestimentasPage(): JSX.Element {
 
                             </>
                             :
-                            <h1>Não foram encontrados produtos na categoria escolhida.</h1>
+                            <h1 style={{
+                                display: 'flex',
+                                justifyContent: 'center'
+                            }}>Não foram encontrados produtos na categoria escolhida.</h1>
                     }
 
                 </div>
