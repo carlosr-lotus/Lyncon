@@ -76,10 +76,6 @@ export default function ProductPage(): JSX.Element {
             setValidBrazilZip('invalid')
     }
 
-    function returnBrazilZipAddress(): void {
-        console.log(zipCodeRef)
-    }
-
     return (
         <>
             <Head>
