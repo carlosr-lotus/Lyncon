@@ -51,7 +51,7 @@ export default function ProductPage(): JSX.Element {
             router.push('/carrinho');
         else
             addToCart(productData);
-    }
+    };
 
     function addToCart(productData: ProductProps): void {
         setAddedProduct(true);
@@ -74,7 +74,7 @@ export default function ProductPage(): JSX.Element {
             setValidBrazilZip('valid')
         else
             setValidBrazilZip('invalid')
-    }
+    };
 
     return (
         <>
