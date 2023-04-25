@@ -98,7 +98,14 @@
     {
       "id": 1,
       "nameProduct": "Camiseta Lyncon Gola V",
-      "priceProduct": 79.99
+      "priceProduct": 79.99,
+      "imageProduct": "/images/vestimentas/camiseta-lyncon-gola-v.jpg"
+    },
+    {
+      "id": 2,
+      "nameProduct": "Camiseta Lyncon Sport",
+      "priceProduct": 89.99,
+      "imageProduct": "/images/vestimentas/camiseta-lyncon-sport.jpg"
     }
   ]
 }
