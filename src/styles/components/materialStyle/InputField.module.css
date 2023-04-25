@@ -1,0 +1,17 @@
+.inputFieldBorderAround {
+    width: 100%;
+    padding: .7rem;
+    border: none;
+    border-bottom: 1px solid var(--background-delphi);
+    transition: .2s;
+}
+
+.inputFieldBorderAround {
+    border-radius: 4px;
+    border: 1px solid #acacac;
+}
+
+.inputFieldBorderAround:focus {
+    outline: none;
+    border: 1px solid var(--Main-Black);
+}
