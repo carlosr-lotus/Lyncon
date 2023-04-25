@@ -75,10 +75,12 @@
 }
 
 .addSameProductContainer>p:nth-child(1) {
+    cursor: pointer;
     border-right: 1px solid var(--Outline-Color);
 }
 
 .addSameProductContainer>p:nth-child(3) {
+    cursor: pointer;
     border-left: 1px solid var(--Outline-Color);
 }
 
