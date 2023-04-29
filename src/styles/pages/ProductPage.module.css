@@ -105,22 +105,6 @@
     font-size: 1.4rem;
 }
 
-/* .freteContainer>input:invalid {
-    border: 1px solid #ff3333;
-    color: #ff3333;
-}
-
-.freteContainer>input:invalid + .freteContainer button {
-    pointer-events: none;
-    background-color: magenta;
-    border: 1px solid magenta;
-}
-
-.freteContainer>input:placeholder-shown {
-    border: 1px solid black;
-    color: inherit;
-} */
-
 .shippingContainer>a>i {
     font-size: 1.2rem;
     text-decoration: underline;
