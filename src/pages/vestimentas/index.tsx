@@ -65,10 +65,10 @@ export default function VestimentasPage(): JSX.Element {
 
         let categoriesTemp: any[] = [...categories];
 
-        const posicao: number = categoriesTemp.findIndex(item => item.category === categoryParam);
+        const position: number = categoriesTemp.findIndex(item => item.category === categoryParam);
 
         categoriesTemp.forEach((data) => {
-            if (data.id === posicao + 1) {
+            if (data.id === position + 1) {
                 data.selected = !data.selected
             } else {
                 data.selected = false;
