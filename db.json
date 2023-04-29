@@ -55,7 +55,12 @@
             "gg": false
           },
           "image": "/images/vestimentas/camiseta-lyncon-sport.jpg",
-          "desc": "Camiseta feita para aqueles com o espírito do esporte."
+          "desc": "Camiseta feita para aqueles com o espírito do esporte.",
+          "colors": [
+            {
+              "azul": "#fff"
+            }
+          ]
         }
       ]
     },
@@ -72,7 +77,12 @@
             "g": true,
             "gg": true
           },
-          "image": "/images/vestimentas/camisa-lyncon-comfort.jpg"
+          "image": "/images/vestimentas/camisa-lyncon-comfort.jpg",
+          "colors": [
+            {
+              "preto": "#fff"
+            }
+          ]
         },
         {
           "id": 2,
@@ -84,7 +94,12 @@
             "g": true,
             "gg": false
           },
-          "image": "/images/vestimentas/camisa-lyncon-florida.jpg"
+          "image": "/images/vestimentas/camisa-lyncon-florida.jpg",
+          "colors": [
+            {
+              "única": "#fff"
+            }
+          ]
         },
         {
           "id": 3,
@@ -96,7 +111,12 @@
             "g": true,
             "gg": true
           },
-          "image": "/images/vestimentas/camisa-lyncon-xadrez.jpg"
+          "image": "/images/vestimentas/camisa-lyncon-xadrez.jpg",
+          "colors": [
+            {
+              "única": "#fff"
+            }
+          ]
         },
         {
           "id": 4,
@@ -108,7 +128,12 @@
             "g": false,
             "gg": true
           },
-          "image": "/images/vestimentas/camisa-lyncon-cetim.jpg"
+          "image": "/images/vestimentas/camisa-lyncon-cetim.jpg",
+          "colors": [
+            {
+              "preto": "#fff"
+            }
+          ]
         }
       ]
     },
