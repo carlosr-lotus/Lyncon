@@ -93,7 +93,7 @@
     font-size: 1.5rem;
 }
 
-.freteContainer {
+.shippingContainer {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -101,7 +101,7 @@
     gap: .5rem;
 }
 
-.freteContainer>label {
+.shippingContainer>label {
     font-size: 1.4rem;
 }
 
@@ -121,13 +121,13 @@
     color: inherit;
 } */
 
-.freteContainer>a>i {
+.shippingContainer>a>i {
     font-size: 1.2rem;
     text-decoration: underline;
     cursor: pointer;
 }
 
-.fretePreco {
+.shippingRate {
     padding-top: 1rem;
     font-size: 1.3rem;
 }

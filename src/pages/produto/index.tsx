@@ -28,7 +28,7 @@ export default function ProductPage(): JSX.Element {
     const zipCodeRef = useRef<string>('');
 
     const [productData, setProductData] = useState<ProductProps>();
-    const [freteValue, setFreteValue] = useState<number>(2);
+    const [shippingValue, setShippingValue] = useState<number>(2);
     const [addedProduct, setAddedProduct] = useState<boolean>(false);
     const [validBrazilZip, setValidBrazilZip] = useState<'valid' | 'invalid' | 'waiting'>('waiting');
 
@@ -119,7 +119,7 @@ export default function ProductPage(): JSX.Element {
 
                             <p className={styles.productDesc}>{productData?.desc}</p>
 
-                            <div className={styles.freteContainer}>
+                            <div className={styles.shippingContainer}>
                                 <label>Calcule o frete:</label>
                                 <InputField
                                     name='frete'
@@ -150,9 +150,9 @@ export default function ProductPage(): JSX.Element {
                                 />
 
                                 {
-                                    freteValue ?
+                                    shippingValue ?
                                         <div>
-                                            <p className={styles.fretePreco}>Entrega Padrão: <i>R$ 0,00</i></p>
+                                            <p className={styles.shippingRate}>Entrega Padrão: <i>R$ 0,00</i></p>
                                         </div>
                                         :
                                         <a
