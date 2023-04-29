@@ -13,7 +13,7 @@ import { BsFillCreditCardFill } from "react-icons/bs";
 
 import styles from '../../styles/pages/CarrinhoPage.module.css';
 
-interface ProdutoCarrinho {
+interface ProductCart {
     id: number,
     nameProduct: string,
     priceProduct: number,
@@ -24,14 +24,14 @@ export default function CarrinhoPage() {
 
     const api = getApi();
 
-    const [produtosCarrinho, setProdutosCarrinho] = useState<ProdutoCarrinho[]>();
+    const [productsCart, setProductsCart] = useState<ProductCart[]>();
     const [totalAmountProduct, setTotalAmountProduct] = useState<number>(1);
 
     useEffect(() => {
         api.get(`/cart`)
             .then((res) => {
                 console.log(res.data);
-                setProdutosCarrinho(res.data);
+                setProductsCart(res.data);
             })
     }, [])
 
@@ -50,10 +50,10 @@ export default function CarrinhoPage() {
 
                 <div className={styles.cartDetailsContainer}>
                     {
-                        produtosCarrinho ?
+                        productsCart ?
                             <>
                                 {
-                                    produtosCarrinho.map((data) => (
+                                    productsCart.map((data) => (
                                         <div className={styles.cartProduct}>
                                             <h2>{data.nameProduct}</h2>
                                             <h3>Tamanho M | Branco</h3>
@@ -74,7 +74,7 @@ export default function CarrinhoPage() {
                                 }
                             </>
                             :
-                            <div>Loading...</div>
+                            <div>Carregando...</div>
                     }
                 </div>
 
