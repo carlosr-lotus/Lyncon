@@ -24,6 +24,12 @@
           "id": 1,
           "name": "Camiseta Lyncon Gola V",
           "pricing": 79.99,
+          "sizes": {
+            "p": false,
+            "m": true,
+            "g": true,
+            "gg": false
+          },
           "image": "/images/vestimentas/camiseta-lyncon-gola-v.jpg",
           "desc": "Chique e confortável para jamais perder a elegância na rotina.",
           "colors": [
@@ -36,6 +42,12 @@
           "id": 2,
           "name": "Camiseta Lyncon Sport",
           "pricing": 89.99,
+          "sizes": {
+            "p": true,
+            "m": true,
+            "g": true,
+            "gg": false
+          },
           "image": "/images/vestimentas/camiseta-lyncon-sport.jpg",
           "desc": "Camiseta feita para aqueles com o espírito do esporte."
         }
@@ -48,24 +60,48 @@
           "id": 1,
           "name": "Camisa Comfort Manga Curta",
           "pricing": 129.99,
+          "sizes": {
+            "p": true,
+            "m": true,
+            "g": true,
+            "gg": true
+          },
           "image": "/images/vestimentas/camisa-lyncon-comfort.jpg"
         },
         {
           "id": 2,
           "name": "Camisa Florida",
           "pricing": 119.99,
+          "sizes": {
+            "p": true,
+            "m": true,
+            "g": true,
+            "gg": false
+          },
           "image": "/images/vestimentas/camisa-lyncon-florida.jpg"
         },
         {
           "id": 3,
           "name": "Camisa Xadrez",
           "pricing": 99.99,
+          "sizes": {
+            "p": false,
+            "m": false,
+            "g": true,
+            "gg": true
+          },
           "image": "/images/vestimentas/camisa-lyncon-xadrez.jpg"
         },
         {
           "id": 4,
           "name": "Camisa Cetim",
           "pricing": 189.99,
+          "sizes": {
+            "p": true,
+            "m": false,
+            "g": false,
+            "gg": true
+          },
           "image": "/images/vestimentas/camisa-lyncon-cetim.jpg"
         }
       ]
@@ -77,18 +113,36 @@
           "id": 1,
           "name": "Casaco Longo",
           "pricing": 399.99,
+          "sizes": {
+            "p": false,
+            "m": false,
+            "g": true,
+            "gg": true
+          },
           "image": "/images/vestimentas/casaco-longo.jpg"
         },
         {
           "id": 2,
           "name": "Casaco Puffer",
           "pricing": 299.99,
+          "sizes": {
+            "p": false,
+            "m": true,
+            "g": true,
+            "gg": false
+          },
           "image": "/images/vestimentas/casaco-puffer.jpg"
         },
         {
           "id": 3,
           "name": "Casaco Coleção Inverno",
           "pricing": 499.99,
+          "sizes": {
+            "p": false,
+            "m": true,
+            "g": true,
+            "gg": false
+          },
           "image": "/images/vestimentas/casaco-colecao-inverno-1.jpg"
         }
       ]
