@@ -1,17 +1,23 @@
 {
   "products": [
     {
-      "id": "gorros",
+      "id": "acessórios",
       "options": [
         {
           "id": 1,
           "name": "Gorro Lyncon Malha",
+          "sizes": {
+            "único": true
+          },
           "pricing": 99.99,
           "image": "/images/vestimentas/gorro-malha.jpg"
         },
         {
           "id": 2,
           "name": "Gorro Coleção Inverno",
+          "sizes": {
+            "único": true
+          },
           "pricing": 139.99,
           "image": "/images/vestimentas/lyncon-colecao-gorro-1.jpg"
         }
