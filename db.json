@@ -38,11 +38,9 @@
           },
           "image": "/images/vestimentas/camiseta-lyncon-gola-v.jpg",
           "desc": "Chique e confortável para jamais perder a elegância na rotina.",
-          "colors": [
-            {
-              "branco": "#fff"
-            }
-          ]
+          "colors": {
+            "branco": "#fff"
+          }
         },
         {
           "id": 2,
@@ -56,11 +54,9 @@
           },
           "image": "/images/vestimentas/camiseta-lyncon-sport.jpg",
           "desc": "Camiseta feita para aqueles com o espírito do esporte.",
-          "colors": [
-            {
-              "azul": "#fff"
-            }
-          ]
+          "colors": {
+            "azul": "#fff"
+          }
         }
       ]
     },
@@ -78,11 +74,9 @@
             "gg": true
           },
           "image": "/images/vestimentas/camisa-lyncon-comfort.jpg",
-          "colors": [
-            {
-              "preto": "#fff"
-            }
-          ]
+          "colors": {
+            "preto": "#fff"
+          }
         },
         {
           "id": 2,
@@ -95,11 +89,9 @@
             "gg": false
           },
           "image": "/images/vestimentas/camisa-lyncon-florida.jpg",
-          "colors": [
-            {
-              "única": "#fff"
-            }
-          ]
+          "colors": {
+            "única": "#fff"
+          }
         },
         {
           "id": 3,
@@ -112,11 +104,9 @@
             "gg": true
           },
           "image": "/images/vestimentas/camisa-lyncon-xadrez.jpg",
-          "colors": [
-            {
-              "única": "#fff"
-            }
-          ]
+          "colors": {
+            "única": "#fff"
+          }
         },
         {
           "id": 4,
@@ -129,11 +119,9 @@
             "gg": true
           },
           "image": "/images/vestimentas/camisa-lyncon-cetim.jpg",
-          "colors": [
-            {
-              "preto": "#fff"
-            }
-          ]
+          "colors": {
+            "preto": "#fff"
+          }
         }
       ]
     },
