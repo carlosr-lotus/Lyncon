@@ -19,11 +19,7 @@ interface ProductProps {
     name: string,
     pricing: number,
     image: string,
-    colors: {
-        id: number,
-        colorHex: string,
-        colorName: string
-    }[],
+    colors: ColorType[],
     sizes: {
         id: number,
         size: string,
@@ -32,16 +28,22 @@ interface ProductProps {
     desc?: string
 }
 
+interface ColorType {
+    id: number,
+    colorHex: string,
+    colorName: string
+}
+
 export default function ProductPage(): JSX.Element {
     const router = useRouter();
     const api = getApi();
     const zipCodeRef = useRef<string>('');
 
     const [productData, setProductData] = useState<ProductProps>();
-    const [shippingValue, setShippingValue] = useState<number>(2);
+    const [shippingValue, setShippingValue] = useState<number>();
     const [addedProduct, setAddedProduct] = useState<boolean>(false);
-    const [sizeSelected, setSizeSelected] = useState<number>();
-    const [colorSelected, setColorSelected] = useState<string>('');
+    const [sizeSelected, setSizeSelected] = useState<number | undefined>();
+    const [colorSelected, setColorSelected] = useState<ColorType>();
     const [validBrazilZip, setValidBrazilZip] = useState<'valid' | 'invalid' | 'waiting'>('waiting');
 
     useEffect(() => {
@@ -116,7 +118,7 @@ export default function ProductPage(): JSX.Element {
                             </div>
 
                             <div className={styles.colorOptions}>
-                                <p>{colorSelected ? `Cor: ${colorSelected.charAt(0).toUpperCase() + colorSelected.slice(1)}` : 'Selecione uma cor...'}</p>
+                                <p>{colorSelected ? `Cor: ${colorSelected.colorName.charAt(0).toUpperCase() + colorSelected.colorName.slice(1)}` : 'Selecione uma cor...'}</p>
                                 <div className={styles.colorBallContainer}>
                                     {
                                         productData.colors.map((data) => (
@@ -124,9 +126,10 @@ export default function ProductPage(): JSX.Element {
                                                 className={styles.colorBall}
                                                 key={data.id}
                                                 style={{
-                                                    backgroundColor: data.colorHex
+                                                    backgroundColor: data.colorHex,
+                                                    border: colorSelected?.id === data.id ? '2px solid var(--Outline-Color)' : '1px solid var(--Outline-Color)'
                                                 }}
-                                                onClick={() => setColorSelected(data.colorName)}
+                                                onClick={() => setColorSelected(data)}
                                             ></div>
                                         ))
                                     }
