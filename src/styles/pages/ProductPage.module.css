@@ -71,7 +71,8 @@
     background-color: black;
 }
 
-.sizingOptionsContainer p {
+.sizingOptionsContainer .sizeOption,
+.sizingOptionsContainer .sizeOptionNotAvailable {
     padding: .5rem 1rem;
 
     border: 1px solid var(--Outline-Color);
@@ -84,7 +85,12 @@
     transition: .2s;
 }
 
-.sizingOptionsContainer p:hover {
+.sizingOptionsContainer .sizeOptionNotAvailable {
+    border: 1px solid #a5a5a5d3;
+    color: #a5a5a5d3;
+}
+
+.sizingOptionsContainer .sizeOption:hover {
     background-color: var(--Main-Black);
     color: var(--Main-White);
 }
