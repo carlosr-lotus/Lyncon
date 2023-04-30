@@ -6,20 +6,28 @@
         {
           "id": 1,
           "name": "Gorro Lyncon Malha",
-          "sizes": {
-            "único": true
-          },
           "pricing": 99.99,
-          "image": "/images/vestimentas/gorro-malha.jpg"
+          "sizes": [
+            {
+              "size": "único",
+              "isAvailable": true
+            }
+          ],
+          "image": "/images/vestimentas/gorro-malha.jpg",
+          "desc": "Chique e confortável para jamais perder a elegância na rotina."
         },
         {
           "id": 2,
           "name": "Gorro Coleção Inverno",
-          "sizes": {
-            "único": true
-          },
           "pricing": 139.99,
-          "image": "/images/vestimentas/lyncon-colecao-gorro-1.jpg"
+          "sizes": [
+            {
+              "size": "único",
+              "isAvailable": false
+            }
+          ],
+          "image": "/images/vestimentas/lyncon-colecao-gorro-1.jpg",
+          "desc": "Chique e confortável para jamais perder a elegância na rotina."
         }
       ]
     },
@@ -30,12 +38,24 @@
           "id": 1,
           "name": "Camiseta Lyncon Gola V",
           "pricing": 79.99,
-          "sizes": {
-            "p": false,
-            "m": true,
-            "g": true,
-            "gg": false
-          },
+          "sizes": [
+            {
+              "size": "p",
+              "isAvailable": false
+            },
+            {
+              "size": "m",
+              "isAvailable": true
+            },
+            {
+              "size": "g",
+              "isAvailable": true
+            },
+            {
+              "size": "gg",
+              "isAvailable": false
+            }
+          ],
           "image": "/images/vestimentas/camiseta-lyncon-gola-v.jpg",
           "desc": "Chique e confortável para jamais perder a elegância na rotina.",
           "colors": {
@@ -46,12 +66,24 @@
           "id": 2,
           "name": "Camiseta Lyncon Sport",
           "pricing": 89.99,
-          "sizes": {
-            "p": true,
-            "m": true,
-            "g": true,
-            "gg": false
-          },
+          "sizes": [
+            {
+              "size": "p",
+              "isAvailable": true
+            },
+            {
+              "size": "m",
+              "isAvailable": false
+            },
+            {
+              "size": "g",
+              "isAvailable": true
+            },
+            {
+              "size": "gg",
+              "isAvailable": false
+            }
+          ],
           "image": "/images/vestimentas/camiseta-lyncon-sport.jpg",
           "desc": "Camiseta feita para aqueles com o espírito do esporte.",
           "colors": {
@@ -67,12 +99,24 @@
           "id": 1,
           "name": "Camisa Comfort Manga Curta",
           "pricing": 129.99,
-          "sizes": {
-            "p": true,
-            "m": true,
-            "g": true,
-            "gg": true
-          },
+          "sizes": [
+            {
+              "size": "p",
+              "isAvailable": true
+            },
+            {
+              "size": "m",
+              "isAvailable": true
+            },
+            {
+              "size": "g",
+              "isAvailable": true
+            },
+            {
+              "size": "gg",
+              "isAvailable": true
+            }
+          ],
           "image": "/images/vestimentas/camisa-lyncon-comfort.jpg",
           "colors": {
             "preto": "#fff"
@@ -82,12 +126,24 @@
           "id": 2,
           "name": "Camisa Florida",
           "pricing": 119.99,
-          "sizes": {
-            "p": true,
-            "m": true,
-            "g": true,
-            "gg": false
-          },
+          "sizes": [
+            {
+              "size": "p",
+              "isAvailable": false
+            },
+            {
+              "size": "m",
+              "isAvailable": true
+            },
+            {
+              "size": "g",
+              "isAvailable": true
+            },
+            {
+              "size": "gg",
+              "isAvailable": false
+            }
+          ],
           "image": "/images/vestimentas/camisa-lyncon-florida.jpg",
           "colors": {
             "única": "#fff"
@@ -97,12 +153,24 @@
           "id": 3,
           "name": "Camisa Xadrez",
           "pricing": 99.99,
-          "sizes": {
-            "p": false,
-            "m": false,
-            "g": true,
-            "gg": true
-          },
+          "sizes": [
+            {
+              "size": "p",
+              "isAvailable": false
+            },
+            {
+              "size": "m",
+              "isAvailable": false
+            },
+            {
+              "size": "g",
+              "isAvailable": true
+            },
+            {
+              "size": "gg",
+              "isAvailable": true
+            }
+          ],
           "image": "/images/vestimentas/camisa-lyncon-xadrez.jpg",
           "colors": {
             "única": "#fff"
@@ -112,12 +180,24 @@
           "id": 4,
           "name": "Camisa Cetim",
           "pricing": 189.99,
-          "sizes": {
-            "p": true,
-            "m": false,
-            "g": false,
-            "gg": true
-          },
+          "sizes": [
+            {
+              "size": "p",
+              "isAvailable": true
+            },
+            {
+              "size": "m",
+              "isAvailable": true
+            },
+            {
+              "size": "g",
+              "isAvailable": true
+            },
+            {
+              "size": "gg",
+              "isAvailable": true
+            }
+          ],
           "image": "/images/vestimentas/camisa-lyncon-cetim.jpg",
           "colors": {
             "preto": "#fff"
@@ -132,36 +212,72 @@
           "id": 1,
           "name": "Casaco Longo",
           "pricing": 399.99,
-          "sizes": {
-            "p": false,
-            "m": false,
-            "g": true,
-            "gg": true
-          },
+          "sizes": [
+            {
+              "size": "p",
+              "isAvailable": true
+            },
+            {
+              "size": "m",
+              "isAvailable": true
+            },
+            {
+              "size": "g",
+              "isAvailable": true
+            },
+            {
+              "size": "gg",
+              "isAvailable": false
+            }
+          ],
           "image": "/images/vestimentas/casaco-longo.jpg"
         },
         {
           "id": 2,
           "name": "Casaco Puffer",
           "pricing": 299.99,
-          "sizes": {
-            "p": false,
-            "m": true,
-            "g": true,
-            "gg": false
-          },
+          "sizes": [
+            {
+              "size": "p",
+              "isAvailable": false
+            },
+            {
+              "size": "m",
+              "isAvailable": true
+            },
+            {
+              "size": "g",
+              "isAvailable": true
+            },
+            {
+              "size": "gg",
+              "isAvailable": true
+            }
+          ],
           "image": "/images/vestimentas/casaco-puffer.jpg"
         },
         {
           "id": 3,
           "name": "Casaco Coleção Inverno",
           "pricing": 499.99,
-          "sizes": {
-            "p": false,
-            "m": true,
-            "g": true,
-            "gg": false
-          },
+          "sizes": [
+            {
+              "size": "p",
+              "isAvailable": false
+            },
+            {
+              "size": "m",
+              "isAvailable": true
+            },
+            {
+              "size": "g",
+              "isAvailable": true
+            },
+            {
+              "size": "gg",
+              "isAvailable": false
+            }
+          ],
           "image": "/images/vestimentas/casaco-colecao-inverno-1.jpg"
         }
       ]
