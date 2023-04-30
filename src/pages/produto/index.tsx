@@ -21,6 +21,7 @@ interface ProductProps {
     image: string,
     colors: Object,
     sizes: {
+        id: number,
         size: string,
         isAvailable: boolean
     }[],
@@ -120,6 +121,7 @@ export default function ProductPage(): JSX.Element {
                                 {
                                     productData.sizes.map((data) => (
                                         <p
+                                            key={data.id}
                                             className={data.isAvailable ? styles.sizeOption : styles.sizeOptionNotAvailable}
                                         >
                                             {data.size}
@@ -211,7 +213,7 @@ export default function ProductPage(): JSX.Element {
                                     <h2>São Paulo - SP</h2>
                                 </div>
                             </div>
-                            <p>“Como diz a descrição, camisa de qualidade e traz consigo muita praticidade no dia a dia! Nota 10”</p>
+                            <p>“Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum qui modi sed aut neque harum ducimus ab vel cumque aliquam, dolorem recusandae.”</p>
                             <div className={styles.numberOfLikesContainer}>
                                 <HeartIcon />
                                 <span className={styles.numberOfLikes}>5</span>
@@ -230,7 +232,7 @@ export default function ProductPage(): JSX.Element {
                                     <h2>São Paulo - SP</h2>
                                 </div>
                             </div>
-                            <p>“Como diz a descrição, camisa de qualidade e traz consigo muita praticidade no dia a dia! Nota 10”</p>
+                            <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum qui modi sed aut neque harum ducimus ab vel cumque aliquam, dolorem recusandae. Corrupti doloribus ratione culpa explicabo maxime aliquid obcaecati!"</p>
                             <div className={styles.numberOfLikesContainer}>
                                 <HeartIcon />
                                 <span className={styles.numberOfLikes}>5</span>
@@ -249,7 +251,8 @@ export default function ProductPage(): JSX.Element {
                                     <h2>São Paulo - SP</h2>
                                 </div>
                             </div>
-                            <p>“Como diz a descrição, camisa de qualidade e traz consigo muita praticidade no dia a dia! Nota 10”</p>
+                            <p>"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta veniam illum ad magni, inventore sapiente deleniti iste soluta amet perferendis odit architecto temporibus officia commodi quasi nulla minima pariatur mollitia.
+                                Obcaecati nulla, voluptas nam recusandae accusantium provident nihil quisquam. Inventore quis dolores non aperiam error iure ab omnis dolorem? Explicabo corrupti modi, error amet voluptatem commodi atque eum accusantium laborum!"</p>
                             <div className={styles.numberOfLikesContainer}>
                                 <HeartIcon />
                                 <span className={styles.numberOfLikes}>5</span>
