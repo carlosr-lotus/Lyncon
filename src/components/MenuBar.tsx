@@ -88,7 +88,7 @@ export default function MenuBar(): JSX.Element {
                                     <div className={styles.ballImg} style={{ backgroundColor: 'var(--Menu-Head-Link)' }}>
                                         <FaRedhat size={18} style={{ fill: 'white' }} />
                                     </div>
-                                    <p>Cabeça</p>
+                                    <p>Acessórios</p>
                                 </a>
 
                                 <a
@@ -103,7 +103,7 @@ export default function MenuBar(): JSX.Element {
                                         style={{ backgroundColor: 'var(--Menu-Torso-Link)' }}>
                                         <FaTshirt size={18} style={{ fill: 'white' }} />
                                     </div>
-                                    <p>Torso</p>
+                                    <p>Roupas</p>
                                 </a>
 
                                 <div className={styles.subMenuLink}>
