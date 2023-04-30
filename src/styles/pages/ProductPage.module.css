@@ -169,6 +169,7 @@
 
 .userReview>p {
     font-size: 1.5rem;
+    line-height: 2.5rem;
 }
 
 .userReview>p:nth-child(3) {
