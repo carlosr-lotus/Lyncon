@@ -36,6 +36,7 @@ export default function ProductPage(): JSX.Element {
     const [productData, setProductData] = useState<ProductProps>();
     const [shippingValue, setShippingValue] = useState<number>(2);
     const [addedProduct, setAddedProduct] = useState<boolean>(false);
+    const [sizeSelected, setSizeSelected] = useState<number>();
     const [validBrazilZip, setValidBrazilZip] = useState<'valid' | 'invalid' | 'waiting'>('waiting');
 
     useEffect(() => {
@@ -123,6 +124,11 @@ export default function ProductPage(): JSX.Element {
                                         <p
                                             key={data.id}
                                             className={data.isAvailable ? styles.sizeOption : styles.sizeOptionNotAvailable}
+                                            style={{
+                                                backgroundColor: data.id === sizeSelected ? 'var(--Main-Black)' : 'inherit',
+                                                color: data.id === sizeSelected ? 'var(--Main-White)' : 'inherit'
+                                            }}
+                                            onClick={() => data.isAvailable && setSizeSelected(data.id)}
                                         >
                                             {data.size}
                                         </p>
