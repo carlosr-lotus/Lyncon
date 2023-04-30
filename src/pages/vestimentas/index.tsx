@@ -25,7 +25,7 @@ export default function VestimentasPage(): JSX.Element {
 
     const [productsList, setProductsList] = useState<any[]>();
     const [categories, setCategories] = useState<any[]>([
-        { id: 1, category: 'Gorros', selected: false },
+        { id: 1, category: 'Acessórios', selected: false },
         { id: 2, category: 'Camisas', selected: false },
         { id: 3, category: 'Camisetas', selected: true },
         { id: 4, category: 'Casacos', selected: false },
