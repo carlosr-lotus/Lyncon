@@ -40,18 +40,22 @@
           "pricing": 79.99,
           "sizes": [
             {
+              "id": 1,
               "size": "p",
               "isAvailable": false
             },
             {
+              "id": 2,
               "size": "m",
               "isAvailable": true
             },
             {
+              "id": 3,
               "size": "g",
               "isAvailable": true
             },
             {
+              "id": 4,
               "size": "gg",
               "isAvailable": false
             }
@@ -68,18 +72,22 @@
           "pricing": 89.99,
           "sizes": [
             {
+              "id": 1,
               "size": "p",
               "isAvailable": true
             },
             {
+              "id": 2,
               "size": "m",
               "isAvailable": false
             },
             {
+              "id": 3,
               "size": "g",
               "isAvailable": true
             },
             {
+              "id": 4,
               "size": "gg",
               "isAvailable": false
             }
@@ -101,18 +109,22 @@
           "pricing": 129.99,
           "sizes": [
             {
+              "id": 1,
               "size": "p",
               "isAvailable": true
             },
             {
+              "id": 2,
               "size": "m",
               "isAvailable": true
             },
             {
+              "id": 3,
               "size": "g",
               "isAvailable": true
             },
             {
+              "id": 4,
               "size": "gg",
               "isAvailable": true
             }
@@ -128,18 +140,22 @@
           "pricing": 119.99,
           "sizes": [
             {
+              "id": 1,
               "size": "p",
               "isAvailable": false
             },
             {
+              "id": 2,
               "size": "m",
               "isAvailable": true
             },
             {
+              "id": 3,
               "size": "g",
               "isAvailable": true
             },
             {
+              "id": 4,
               "size": "gg",
               "isAvailable": false
             }
@@ -155,18 +171,22 @@
           "pricing": 99.99,
           "sizes": [
             {
+              "id": 1,
               "size": "p",
               "isAvailable": false
             },
             {
+              "id": 2,
               "size": "m",
               "isAvailable": false
             },
             {
+              "id": 3,
               "size": "g",
               "isAvailable": true
             },
             {
+              "id": 4,
               "size": "gg",
               "isAvailable": true
             }
@@ -182,18 +202,22 @@
           "pricing": 189.99,
           "sizes": [
             {
+              "id": 1,
               "size": "p",
               "isAvailable": true
             },
             {
+              "id": 2,
               "size": "m",
               "isAvailable": true
             },
             {
+              "id": 3,
               "size": "g",
               "isAvailable": true
             },
             {
+              "id": 4,
               "size": "gg",
               "isAvailable": true
             }
@@ -214,18 +238,22 @@
           "pricing": 399.99,
           "sizes": [
             {
+              "id": 1,
               "size": "p",
               "isAvailable": true
             },
             {
+              "id": 2,
               "size": "m",
               "isAvailable": true
             },
             {
+              "id": 3,
               "size": "g",
               "isAvailable": true
             },
             {
+              "id": 4,
               "size": "gg",
               "isAvailable": false
             }
@@ -238,18 +266,22 @@
           "pricing": 299.99,
           "sizes": [
             {
+              "id": 1,
               "size": "p",
               "isAvailable": false
             },
             {
+              "id": 2,
               "size": "m",
               "isAvailable": true
             },
             {
+              "id": 3,
               "size": "g",
               "isAvailable": true
             },
             {
+              "id": 4,
               "size": "gg",
               "isAvailable": true
             }
@@ -262,18 +294,22 @@
           "pricing": 499.99,
           "sizes": [
             {
+              "id": 1,
               "size": "p",
               "isAvailable": false
             },
             {
+              "id": 2,
               "size": "m",
               "isAvailable": true
             },
             {
+              "id": 3,
               "size": "g",
               "isAvailable": true
             },
             {
+              "id": 4,
               "size": "gg",
               "isAvailable": false
             }
