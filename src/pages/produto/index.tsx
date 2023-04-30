@@ -20,7 +20,10 @@ interface ProductProps {
     pricing: number,
     image: string,
     colors: Object,
-    sizes: Object,
+    sizes: {
+        size: string,
+        isAvailable: boolean
+    }[],
     desc?: string
 }
 
@@ -114,10 +117,15 @@ export default function ProductPage(): JSX.Element {
                             </div>
 
                             <div className={styles.sizingOptionsContainer}>
-                                <p>p</p>
-                                <p>m</p>
-                                <p>g</p>
-                                <p>gg</p>
+                                {
+                                    productData.sizes.map((data) => (
+                                        <p
+                                            className={data.isAvailable ? styles.sizeOption : styles.sizeOptionNotAvailable}
+                                        >
+                                            {data.size}
+                                        </p>
+                                    ))
+                                }
                             </div>
 
                             <p className={styles.productDesc}>{productData?.desc}</p>
