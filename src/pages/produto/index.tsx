@@ -19,6 +19,8 @@ interface ProductProps {
     name: string,
     pricing: number,
     image: string,
+    colors: Object,
+    sizes: Object,
     desc?: string
 }
 
@@ -34,6 +36,7 @@ export default function ProductPage(): JSX.Element {
 
     useEffect(() => {
         setProductData(JSON.parse(localStorage.getItem('product') || '{}'));
+        console.log(JSON.parse(localStorage.getItem('product') || '{}'));
 
         let product: ProductProps = JSON.parse(localStorage.getItem('product') || '{}');
         api.get(`/cart/${product.id}`)
