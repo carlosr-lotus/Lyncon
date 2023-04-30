@@ -19,7 +19,11 @@ interface ProductProps {
     name: string,
     pricing: number,
     image: string,
-    colors: Object,
+    colors: {
+        id: number,
+        colorHex: string,
+        colorName: string
+    }[],
     sizes: {
         id: number,
         size: string,
@@ -37,6 +41,7 @@ export default function ProductPage(): JSX.Element {
     const [shippingValue, setShippingValue] = useState<number>(2);
     const [addedProduct, setAddedProduct] = useState<boolean>(false);
     const [sizeSelected, setSizeSelected] = useState<number>();
+    const [colorSelected, setColorSelected] = useState<string>('');
     const [validBrazilZip, setValidBrazilZip] = useState<'valid' | 'invalid' | 'waiting'>('waiting');
 
     useEffect(() => {
@@ -111,11 +116,26 @@ export default function ProductPage(): JSX.Element {
                             </div>
 
                             <div className={styles.colorOptions}>
-                                <p>Cor: Branco</p>
+                                <p>{colorSelected ? `Cor: ${colorSelected.charAt(0).toUpperCase() + colorSelected.slice(1)}` : 'Selecione uma cor...'}</p>
+                                <div className={styles.colorBallContainer}>
+                                    {
+                                        productData.colors.map((data) => (
+                                            <div
+                                                className={styles.colorBall}
+                                                key={data.id}
+                                                style={{
+                                                    backgroundColor: data.colorHex
+                                                }}
+                                                onClick={() => setColorSelected(data.colorName)}
+                                            ></div>
+                                        ))
+                                    }
+                                </div>
+                                {/* <p>Cor: Branco</p>
                                 <div className={styles.colorBallContainer}>
                                     <div className={styles.colorBall}></div>
                                     <div className={styles.colorBall}></div>
-                                </div>
+                                </div> */}
                             </div>
 
                             <div className={styles.sizingOptionsContainer}>

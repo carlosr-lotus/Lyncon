@@ -62,9 +62,18 @@
           ],
           "image": "/images/vestimentas/camiseta-lyncon-gola-v.jpg",
           "desc": "Chique e confortável para jamais perder a elegância na rotina.",
-          "colors": {
-            "branco": "#fff"
-          }
+          "colors": [
+            {
+              "id": 1,
+              "colorHex": "#fff",
+              "colorName": "branco"
+            },
+            {
+              "id": 2,
+              "colorHex": "#000",
+              "colorName": "preto"
+            }
+          ]
         },
         {
           "id": 2,
