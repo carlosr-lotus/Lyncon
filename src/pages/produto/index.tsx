@@ -76,6 +76,7 @@ export default function ProductPage(): JSX.Element {
             id: productData.id,
             nameProduct: productData.name,
             priceProduct: productData.pricing,
+            shippingRate: shippingValue,
             imageProduct: productData.image
         }).then((res) => {
             console.log(res);
