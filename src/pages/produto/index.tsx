@@ -40,7 +40,7 @@ export default function ProductPage(): JSX.Element {
     const zipCodeRef = useRef<string>('');
 
     const [productData, setProductData] = useState<ProductProps>();
-    const [shippingValue, setShippingValue] = useState<number>();
+    const [shippingValue, setShippingValue] = useState<number | undefined>();
     const [addedProduct, setAddedProduct] = useState<boolean>(false);
     const [sizeSelected, setSizeSelected] = useState<number | undefined>();
     const [colorSelected, setColorSelected] = useState<ColorType>();
@@ -85,10 +85,13 @@ export default function ProductPage(): JSX.Element {
     function isValidBrazilZip(zip: string): void {
         const pattern: RegExp = /^[0-9]{5}-[0-9]{3}$/;
 
-        if (pattern.test(zip))
+        if (pattern.test(zip)) {
             setValidBrazilZip('valid')
-        else
+            setShippingValue(5.0)
+        } else {
             setValidBrazilZip('invalid')
+            setShippingValue(undefined)
+        }
     };
 
     return (
@@ -194,7 +197,7 @@ export default function ProductPage(): JSX.Element {
                                 {
                                     shippingValue ?
                                         <div>
-                                            <p className={styles.shippingRate}>Entrega Padrão: <i>R$ 0,00</i></p>
+                                            <p className={styles.shippingRate}>Entrega Padrão: <i>R$ {shippingValue.toFixed(2).replace('.', ',')}</i></p>
                                         </div>
                                         :
                                         <a
