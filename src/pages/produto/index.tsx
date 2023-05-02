@@ -163,11 +163,6 @@ export default function ProductPage(): JSX.Element {
                                         ))
                                     }
                                 </div>
-                                {/* <p>Cor: Branco</p>
-                                <div className={styles.colorBallContainer}>
-                                    <div className={styles.colorBall}></div>
-                                    <div className={styles.colorBall}></div>
-                                </div> */}
                             </div>
 
                             <div className={styles.sizingOptionsContainer}>
@@ -261,7 +256,6 @@ export default function ProductPage(): JSX.Element {
                                 <Button
                                     name={addedProduct ? 'Adicionado' : 'Adicionar ao carrinho'}
                                     type='button'
-                                    // onClick={() => onClickAddToCart(productData)}
                                     onClick={() => checkProductOptions(productData)}
                                 />
 
