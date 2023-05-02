@@ -51,7 +51,6 @@ export default function ProductPage(): JSX.Element {
 
     useEffect(() => {
         setProductData(JSON.parse(localStorage.getItem('product') || '{}'));
-        console.log(JSON.parse(localStorage.getItem('product') || '{}'));
 
         let product: ProductProps = JSON.parse(localStorage.getItem('product') || '{}');
         api.get(`/cart/${product.id}`)
@@ -60,8 +59,8 @@ export default function ProductPage(): JSX.Element {
                     setAddedProduct(true);
                 }
             }).catch((res) => {
-                console.log(res)
-            })
+                console.log(res);
+            });
     }, []);
 
     function onClickAddToCart(productData: ProductProps): void {
