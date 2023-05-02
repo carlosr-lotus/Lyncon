@@ -57,9 +57,9 @@ export default function CarrinhoPage() {
                             <>
                                 {
                                     productsCart.map((data) => (
-                                        <div className={styles.cartProduct}>
+                                        <div className={styles.cartProduct} key={data.id}>
                                             <h2>{data.nameProduct}</h2>
-                                            <h3>Tamanho M | Branco</h3>
+                                            <h3>Tamanho {data.sizeProduct.toUpperCase()} | {data.colorName.charAt(0).toUpperCase() + data.colorName.slice(1)}</h3>
                                             <div className={styles.cardProductImageContainer}>
                                                 <img src={data.imageProduct} alt="foto produto" />
                                                 <p>1</p>
