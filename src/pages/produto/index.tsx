@@ -20,11 +20,7 @@ interface ProductProps {
     pricing: number,
     image: string,
     colors: ColorType[],
-    sizes: {
-        id: number,
-        size: string,
-        isAvailable: boolean
-    }[],
+    sizes: SizeType[],
     desc?: string
 }
 
@@ -32,6 +28,12 @@ interface ColorType {
     id: number,
     colorHex: string,
     colorName: string
+}
+
+interface SizeType {
+    id: number,
+    size: string,
+    isAvailable: boolean
 }
 
 export default function ProductPage(): JSX.Element {
@@ -42,9 +44,10 @@ export default function ProductPage(): JSX.Element {
     const [productData, setProductData] = useState<ProductProps>();
     const [shippingValue, setShippingValue] = useState<number | undefined>();
     const [addedProduct, setAddedProduct] = useState<boolean>(false);
-    const [sizeSelected, setSizeSelected] = useState<number | undefined>();
+    const [sizeSelected, setSizeSelected] = useState<SizeType>();
     const [colorSelected, setColorSelected] = useState<ColorType>();
     const [validBrazilZip, setValidBrazilZip] = useState<'valid' | 'invalid' | 'waiting'>('waiting');
+    const [checkupProduct, setCheckupProduct] = useState<'colorMissing' | 'sizeMissing' | 'shippingMissing' | undefined>(undefined)
 
     useEffect(() => {
         setProductData(JSON.parse(localStorage.getItem('product') || '{}'));
@@ -62,10 +65,24 @@ export default function ProductPage(): JSX.Element {
     }, []);
 
     function onClickAddToCart(productData: ProductProps): void {
+
+        setCheckupProduct(undefined)
+
         if (addedProduct)
             router.push('/carrinho');
         else
             addToCart(productData);
+    };
+
+    function checkProductOptions(productData: ProductProps): void {
+        if (!colorSelected)
+            setCheckupProduct('colorMissing');
+        else if (!sizeSelected)
+            setCheckupProduct('sizeMissing');
+        else if (!shippingValue)
+            setCheckupProduct('shippingMissing');
+        else
+            onClickAddToCart(productData)
     };
 
     function addToCart(productData: ProductProps): void {
@@ -76,6 +93,8 @@ export default function ProductPage(): JSX.Element {
             id: productData.id,
             nameProduct: productData.name,
             priceProduct: productData.pricing,
+            colorName: colorSelected?.colorName,
+            sizeProduct: sizeSelected?.size,
             shippingRate: shippingValue,
             imageProduct: productData.image
         }).then((res) => {
@@ -122,7 +141,14 @@ export default function ProductPage(): JSX.Element {
                             </div>
 
                             <div className={styles.colorOptions}>
-                                <p>{colorSelected ? `Cor: ${colorSelected.colorName.charAt(0).toUpperCase() + colorSelected.colorName.slice(1)}` : 'Selecione uma cor...'}</p>
+                                <p>
+                                    {
+                                        colorSelected ?
+                                            `Cor: ${colorSelected.colorName.charAt(0).toUpperCase() + colorSelected.colorName.slice(1)}`
+                                            :
+                                            'Selecione uma cor...'
+                                    }
+                                </p>
                                 <div className={styles.colorBallContainer}>
                                     {
                                         productData.colors.map((data) => (
@@ -152,10 +178,10 @@ export default function ProductPage(): JSX.Element {
                                             key={data.id}
                                             className={data.isAvailable ? styles.sizeOption : styles.sizeOptionNotAvailable}
                                             style={{
-                                                backgroundColor: data.id === sizeSelected ? 'var(--Main-Black)' : 'inherit',
-                                                color: data.id === sizeSelected ? 'var(--Main-White)' : 'inherit'
+                                                backgroundColor: data.id === sizeSelected?.id ? 'var(--Main-Black)' : 'inherit',
+                                                color: data.id === sizeSelected?.id ? 'var(--Main-White)' : 'inherit'
                                             }}
-                                            onClick={() => data.isAvailable && setSizeSelected(data.id)}
+                                            onClick={() => data.isAvailable && setSizeSelected(data)}
                                         >
                                             {data.size}
                                         </p>
@@ -211,13 +237,33 @@ export default function ProductPage(): JSX.Element {
                                 }
 
                             </div>
+                            {
+                                checkupProduct === 'colorMissing' ?
+                                    <p style={{
+                                        color: 'red',
+                                        fontSize: '1.5rem'
+                                    }}>Por favor, selecione uma cor primeiro.</p>
+                                    :
+                                    checkupProduct === 'sizeMissing' ?
+                                        <p style={{
+                                            color: 'red',
+                                            fontSize: '1.5rem'
+                                        }}>Por favor, selecione um tamanho primeiro.</p>
+                                        :
+                                        checkupProduct === 'shippingMissing' &&
+                                        <p style={{
+                                            color: 'red',
+                                            fontSize: '1.5rem'
+                                        }}>Por favor, insira um CEP válido para podermos calcular o valor do frete.</p>
+                            }
 
                             <div className={styles.btnContainer}>
 
                                 <Button
                                     name={addedProduct ? 'Adicionado' : 'Adicionar ao carrinho'}
                                     type='button'
-                                    onClick={() => onClickAddToCart(productData)}
+                                    // onClick={() => onClickAddToCart(productData)}
+                                    onClick={() => checkProductOptions(productData)}
                                 />
 
                                 <Button
