@@ -84,10 +84,22 @@
     border-left: 1px solid var(--Outline-Color);
 }
 
+/* =-=-=-=-=-= */
 .paymentDetailsContainer,
 .paymentTotalContainer {
-    padding: 1.5rem 0;
+    padding: 1.7rem 0;
     display: grid;
+}
+
+.paymentTotalContainer>p,
+.paymentDetailsContainer>p {
+    width: fit-content;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 20px;
 }
 
 .paymentDetailsContainer>p,
@@ -95,10 +107,22 @@
     font-size: 1.4rem;
 }
 
+.paymentDetailsContainer>p {
+    color: var(--Darker-Text);
+}
+
+.paymentDetailsContainer>p>strong {
+    color: var(--Main-Black);
+}
+
 .paymentDetailsContainer>p>strong,
 .paymentTotalContainer>p>strong {
     font-weight: normal;
     font-size: 1.7rem;
+}
+
+.paymentTotalContainer>p>strong {
+    font-size: 2rem;
 }
 
 /* =-=-=-= */
