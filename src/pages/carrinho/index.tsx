@@ -75,6 +75,17 @@ export default function CarrinhoPage() {
                                         </div>
                                     ))
                                 }
+
+                                <hr />
+                                <div className={styles.paymentDetailsContainer}>
+                                    <p>Subtotal <strong>R$ 79,99</strong></p>
+                                    <p>Frete <strong>R$ 2,99</strong></p>
+                                </div>
+                                <hr />
+
+                                <div className={styles.paymentTotalContainer}>
+                                    <p>Total <strong>R$ 81,98</strong></p>
+                                </div>
                             </>
                             :
                             <div>Carregando...</div>
