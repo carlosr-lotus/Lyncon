@@ -9,8 +9,16 @@
           "pricing": 99.99,
           "sizes": [
             {
+              "id": 1,
               "size": "único",
               "isAvailable": true
+            }
+          ],
+          "colors": [
+            {
+              "id": 1,
+              "colorHex": "grey",
+              "colorName": "cinza"
             }
           ],
           "image": "/images/vestimentas/gorro-malha.jpg",
@@ -22,8 +30,16 @@
           "pricing": 139.99,
           "sizes": [
             {
+              "id": 1,
               "size": "único",
               "isAvailable": false
+            }
+          ],
+          "colors": [
+            {
+              "id": 1,
+              "colorHex": "grey",
+              "colorName": "cinza"
             }
           ],
           "image": "/images/vestimentas/lyncon-colecao-gorro-1.jpg",
@@ -103,9 +119,13 @@
           ],
           "image": "/images/vestimentas/camiseta-lyncon-sport.jpg",
           "desc": "Camiseta feita para aqueles com o espírito do esporte.",
-          "colors": {
-            "azul": "#fff"
-          }
+          "colors": [
+            {
+              "id": 1,
+              "colorHex": "#0060D1",
+              "colorName": "azul"
+            }
+          ]
         }
       ]
     },
@@ -139,9 +159,13 @@
             }
           ],
           "image": "/images/vestimentas/camisa-lyncon-comfort.jpg",
-          "colors": {
-            "preto": "#fff"
-          }
+          "colors": [
+            {
+              "id": 1,
+              "preto": "#fff",
+              "colorName": "preto"
+            }
+          ]
         },
         {
           "id": 2,
@@ -170,9 +194,13 @@
             }
           ],
           "image": "/images/vestimentas/camisa-lyncon-florida.jpg",
-          "colors": {
-            "única": "#fff"
-          }
+          "colors": [
+            {
+              "id": 1,
+              "colorHex": "#97C0D9",
+              "colorName": "azul"
+            }
+          ]
         },
         {
           "id": 3,
@@ -201,9 +229,13 @@
             }
           ],
           "image": "/images/vestimentas/camisa-lyncon-xadrez.jpg",
-          "colors": {
-            "única": "#fff"
-          }
+          "colors": [
+            {
+              "id": 1,
+              "colorHex": "#C48A99",
+              "colorName": "salmão"
+            }
+          ]
         },
         {
           "id": 4,
@@ -232,9 +264,13 @@
             }
           ],
           "image": "/images/vestimentas/camisa-lyncon-cetim.jpg",
-          "colors": {
-            "preto": "#fff"
-          }
+          "colors": [
+            {
+              "id": 1,
+              "colorHex": "#000",
+              "colorName": "preto"
+            }
+          ]
         }
       ]
     },
@@ -267,7 +303,14 @@
               "isAvailable": false
             }
           ],
-          "image": "/images/vestimentas/casaco-longo.jpg"
+          "image": "/images/vestimentas/casaco-longo.jpg",
+          "colors": [
+            {
+              "id": 1,
+              "colorHex": "#3C3C46",
+              "colorName": "cinza"
+            }
+          ]
         },
         {
           "id": 2,
@@ -295,7 +338,14 @@
               "isAvailable": true
             }
           ],
-          "image": "/images/vestimentas/casaco-puffer.jpg"
+          "image": "/images/vestimentas/casaco-puffer.jpg",
+          "colors": [
+            {
+              "id": 1,
+              "colorHex": "#949AA7",
+              "colorName": "cinza"
+            }
+          ]
         },
         {
           "id": 3,
@@ -323,7 +373,14 @@
               "isAvailable": false
             }
           ],
-          "image": "/images/vestimentas/casaco-colecao-inverno-1.jpg"
+          "image": "/images/vestimentas/casaco-colecao-inverno-1.jpg",
+          "colors": [
+            {
+              "id": 1,
+              "colorHex": "#4A4448",
+              "colorName": "cinza"
+            }
+          ]
         }
       ]
     }
@@ -333,13 +390,10 @@
       "id": 1,
       "nameProduct": "Camiseta Lyncon Gola V",
       "priceProduct": 79.99,
+      "colorName": "branco",
+      "sizeProduct": "g",
+      "shippingRate": 5,
       "imageProduct": "/images/vestimentas/camiseta-lyncon-gola-v.jpg"
-    },
-    {
-      "id": 2,
-      "nameProduct": "Camiseta Lyncon Sport",
-      "priceProduct": 89.99,
-      "imageProduct": "/images/vestimentas/camiseta-lyncon-sport.jpg"
     }
   ]
 }
