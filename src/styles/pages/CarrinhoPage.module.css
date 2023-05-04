@@ -112,6 +112,11 @@
     color: var(--Darker-Text);
 }
 
+.paymentDetailsContainer>p>span {
+    place-self: end;
+    align-self: center;
+}
+
 .paymentDetailsContainer>p>strong {
     color: var(--Main-Black);
 }
@@ -120,6 +125,11 @@
 .paymentTotalContainer>p>strong {
     font-weight: normal;
     font-size: 1.7rem;
+}
+
+.paymentTotalContainer>p>span {
+    place-self: end;
+    align-self: center;
 }
 
 .paymentTotalContainer>p>strong {
