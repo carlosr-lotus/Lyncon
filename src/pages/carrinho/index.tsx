@@ -62,15 +62,28 @@ export default function CarrinhoPage() {
                                             <h3>Tamanho {data.sizeProduct.toUpperCase()} | {data.colorName.charAt(0).toUpperCase() + data.colorName.slice(1)}</h3>
                                             <div className={styles.cardProductImageContainer}>
                                                 <img src={data.imageProduct} alt="foto produto" />
-                                                <p>1</p>
+                                                <p>{totalAmountProduct}</p>
                                             </div>
                                             <h4>R$ {(data.priceProduct).toFixed(2).replace('.', ',')}</h4>
                                             <div
                                                 className={styles.addSameProductContainer}
                                             >
-                                                <p>-</p>
-                                                <p>1</p>
-                                                <p>+</p>
+                                                <button
+                                                    onClick={
+                                                        () => totalAmountProduct >= 2 &&
+                                                            setTotalAmountProduct(totalAmountProduct - 1)}
+                                                >
+                                                    -
+                                                </button>
+                                                <p>{totalAmountProduct}</p>
+                                                <button
+                                                    onClick={
+                                                        () => totalAmountProduct <= 98 &&
+                                                            setTotalAmountProduct(totalAmountProduct + 1)
+                                                    }
+                                                >
+                                                    +
+                                                </button>
                                             </div>
                                         </div>
                                     ))
