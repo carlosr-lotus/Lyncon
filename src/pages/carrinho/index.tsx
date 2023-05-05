@@ -29,12 +29,16 @@ export default function CarrinhoPage() {
 
     const [productsCart, setProductsCart] = useState<ProductCart[]>();
     const [totalAmountProduct, setTotalAmountProduct] = useState<number>(1);
+    const [subtotalPrice, setSubtotalPrice] = useState<number>(0.0);
 
     useEffect(() => {
         api.get(`/cart`)
             .then((res) => {
                 console.log(res.data);
                 setProductsCart(res.data);
+                setSubtotalPrice(res.data.reduce((prevValue: number, currentValue: ProductCart) => {
+                    return prevValue + currentValue.priceProduct
+                }, 0));
             })
     }, [])
 
@@ -93,7 +97,9 @@ export default function CarrinhoPage() {
                                 <div className={styles.paymentDetailsContainer}>
                                     <p>
                                         <span>Subtotal</span>
-                                        <strong>R$ 79,99</strong>
+                                        <strong>
+                                            R$ {(subtotalPrice * totalAmountProduct).toFixed(2).toString().replace('.', ',')}
+                                        </strong>
                                     </p>
                                     <p>
                                         <span>Frete</span>
@@ -105,7 +111,7 @@ export default function CarrinhoPage() {
                                 <div className={styles.paymentTotalContainer}>
                                     <p>
                                         <span>Total</span>
-                                        <strong>R$ 81,98</strong>
+                                        <strong>R$ 79,99</strong>
                                     </p>
                                 </div>
                             </>
