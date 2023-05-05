@@ -75,13 +75,17 @@
     outline: 1px solid var(--Outline-Color);
 }
 
-.addSameProductContainer>p:nth-child(1) {
+.addSameProductContainer>button:nth-child(1) {
+    background-color: transparent;
     cursor: pointer;
+    border: none;
     border-right: 1px solid var(--Outline-Color);
 }
 
-.addSameProductContainer>p:nth-child(3) {
+.addSameProductContainer>button:nth-child(3) {
+    background-color: transparent;
     cursor: pointer;
+    border: none;
     border-left: 1px solid var(--Outline-Color);
 }
 
