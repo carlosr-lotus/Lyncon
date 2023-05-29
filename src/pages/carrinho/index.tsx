@@ -8,20 +8,13 @@ import { getApi } from "../../utils/api";
 import MenuBar from "../../components/MenuBar";
 import Button from "../../components/material/Button";
 
+// Types //
+import { ProductCart } from "../../types/types";
+
 // Icons //
 import { BsFillCreditCardFill } from "react-icons/bs";
 
 import styles from '../../styles/pages/CarrinhoPage.module.css';
-
-interface ProductCart {
-    id: number,
-    nameProduct: string,
-    priceProduct: number,
-    colorName: string,
-    sizeProduct: string,
-    shippingRate: number,
-    imageProduct: string
-}
 
 export default function CarrinhoPage() {
 
