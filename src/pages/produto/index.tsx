@@ -28,7 +28,7 @@ export default function ProductPage(): JSX.Element {
     const [sizeSelected, setSizeSelected] = useState<SizeType>();
     const [colorSelected, setColorSelected] = useState<ColorType>();
     const [validBrazilZip, setValidBrazilZip] = useState<'valid' | 'invalid' | 'waiting'>('waiting');
-    const [checkupProduct, setCheckupProduct] = useState<'colorMissing' | 'sizeMissing' | 'shippingMissing' | undefined>(undefined)
+    const [checkupProduct, setCheckupProduct] = useState<'colorMissing' | 'sizeMissing' | 'shippingMissing' | undefined>(undefined);
 
     useEffect(() => {
         setProductData(JSON.parse(localStorage.getItem('product') || '{}'));
@@ -38,7 +38,7 @@ export default function ProductPage(): JSX.Element {
             .then((res) => {
                 if (res.data) {
                     setAddedProduct(true);
-                }
+                };
             }).catch((res) => {
                 console.log(res);
             });
@@ -46,7 +46,7 @@ export default function ProductPage(): JSX.Element {
 
     function onClickAddToCart(productData: ProductProps): void {
 
-        setCheckupProduct(undefined)
+        setCheckupProduct(undefined);
 
         if (addedProduct)
             router.push('/carrinho');
@@ -62,7 +62,7 @@ export default function ProductPage(): JSX.Element {
         else if (!shippingValue)
             setCheckupProduct('shippingMissing');
         else
-            onClickAddToCart(productData)
+            onClickAddToCart(productData);
     };
 
     function addToCart(productData: ProductProps): void {
@@ -80,18 +80,18 @@ export default function ProductPage(): JSX.Element {
         }).then((res) => {
             console.log(res);
         });
-    }
+    };
 
     function isValidBrazilZip(zip: string): void {
         const pattern: RegExp = /^[0-9]{5}-[0-9]{3}$/;
 
         if (pattern.test(zip)) {
-            setValidBrazilZip('valid')
-            setShippingValue(5.0)
+            setValidBrazilZip('valid');
+            setShippingValue(5.0);
         } else {
-            setValidBrazilZip('invalid')
-            setShippingValue(undefined)
-        }
+            setValidBrazilZip('invalid');
+            setShippingValue(undefined);
+        };
     };
 
     return (
