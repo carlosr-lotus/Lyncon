@@ -1,3 +1,10 @@
+// vestimentas - index.tsx //
+export interface CategoriesType {
+    id: number,
+    category: string,
+    selected: boolean
+}
+
 // produto - index.tsx //
 export interface ProductProps {
     id: number,

@@ -9,6 +9,9 @@ import { getApi } from '../../utils/api';
 // Components //
 import MenuBar from "../../components/MenuBar"
 
+// Types //
+import { CategoriesType } from '../../types/types';
+
 // Icons //
 import { FiFilter, FiSearch } from 'react-icons/fi';
 import { BsArrowUpRight } from 'react-icons/bs';
@@ -24,7 +27,7 @@ export default function VestimentasPage(): JSX.Element {
     const { tipo } = router.query;
 
     const [productsList, setProductsList] = useState<any[]>();
-    const [categories, setCategories] = useState<any[]>([
+    const [categories, setCategories] = useState<CategoriesType[]>([
         { id: 1, category: 'Acessórios', selected: false },
         { id: 2, category: 'Camisas', selected: false },
         { id: 3, category: 'Camisetas', selected: true },
