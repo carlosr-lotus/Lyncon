@@ -12,29 +12,10 @@ import Button from "../../components/material/Button";
 import InputField from "../../components/material/InputField";
 import HeartIcon from "../../components/customIcons/HeartIcon";
 
+// Types //
+import { ProductProps, ColorType, SizeType } from "../../types/types";
+
 import styles from '../../styles/pages/ProductPage.module.css';
-
-interface ProductProps {
-    id: number,
-    name: string,
-    pricing: number,
-    image: string,
-    colors: ColorType[],
-    sizes: SizeType[],
-    desc?: string
-}
-
-interface ColorType {
-    id: number,
-    colorHex: string,
-    colorName: string
-}
-
-interface SizeType {
-    id: number,
-    size: string,
-    isAvailable: boolean
-}
 
 export default function ProductPage(): JSX.Element {
     const router = useRouter();
