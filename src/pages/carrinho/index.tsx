@@ -40,7 +40,12 @@ export default function CarrinhoPage() {
                     return prevValue + currentValue.priceProduct
                 }, 0));
             })
-    }, [])
+    }, []);
+
+    function increaseAmount({ id, priceProduct }: ProductCart): void {
+        console.log(id);
+        console.log(priceProduct);
+    };
 
     return (
         <>
@@ -83,7 +88,7 @@ export default function CarrinhoPage() {
                                                 <button
                                                     onClick={
                                                         () => totalAmountProduct <= 98 &&
-                                                            setTotalAmountProduct(totalAmountProduct + 1)
+                                                            increaseAmount(data)
                                                     }
                                                 >
                                                     +
