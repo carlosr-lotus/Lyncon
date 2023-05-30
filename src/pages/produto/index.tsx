@@ -116,15 +116,34 @@ export default function ProductPage(): JSX.Element {
                             <div className={styles.pricingProduct}>
                                 <h1>{productData.name}</h1>
 
-                                <h2>R$ {productData.pricing.toString().replace('.', ',')}</h2>
-                                <span>ou até 12x de R$ {(productData.pricing / 12).toFixed(2).replace('.', ',')}</span>
+                                <h2>
+                                    R$ {
+                                        productData.pricing
+                                            .toString()
+                                            .replace('.', ',')
+                                    }
+                                </h2>
+                                <span>
+                                    ou até 12x de R$ {
+                                        (productData.pricing / 12)
+                                            .toFixed(2)
+                                            .replace('.', ',')
+                                    }
+                                </span>
                             </div>
 
                             <div className={styles.colorOptions}>
                                 <p>
                                     {
                                         colorSelected ?
-                                            `Cor: ${colorSelected.colorName.charAt(0).toUpperCase() + colorSelected.colorName.slice(1)}`
+                                            `Cor: 
+                                                ${colorSelected.colorName
+                                                .charAt(0)
+                                                .toUpperCase()
+                                            +
+                                            colorSelected.colorName
+                                                .slice(1)
+                                            }`
                                             :
                                             'Selecione uma cor...'
                                     }
@@ -199,7 +218,16 @@ export default function ProductPage(): JSX.Element {
                                 {
                                     shippingValue ?
                                         <div>
-                                            <p className={styles.shippingRate}>Entrega Padrão: <i>R$ {shippingValue.toFixed(2).replace('.', ',')}</i></p>
+                                            <p className={styles.shippingRate}>
+                                                Entrega Padrão:
+                                                <i>
+                                                    R$ {
+                                                        shippingValue
+                                                            .toFixed(2)
+                                                            .replace('.', ',')
+                                                    }
+                                                </i>
+                                            </p>
                                         </div>
                                         :
                                         <a
