@@ -45,7 +45,6 @@ export default function ProductPage(): JSX.Element {
     }, []);
 
     function onClickAddToCart(productData: ProductProps): void {
-
         setCheckupProduct(undefined);
 
         if (addedProduct)
