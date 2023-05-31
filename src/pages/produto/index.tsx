@@ -38,6 +38,7 @@ export default function ProductPage(): JSX.Element {
             .then((res) => {
                 if (res.data) {
                     setAddedProduct(true);
+                    console.log(res.data);
                 };
             }).catch((res) => {
                 console.log(res);
@@ -264,7 +265,12 @@ export default function ProductPage(): JSX.Element {
                                 <Button
                                     name={addedProduct ? 'Adicionado' : 'Adicionar ao carrinho'}
                                     type='button'
-                                    onClick={() => checkProductOptions(productData)}
+                                    onClick={() => {
+                                        addedProduct ?
+                                            router.push('/carrinho')
+                                            :
+                                            checkProductOptions(productData)
+                                    }}
                                 />
 
                                 <Button
