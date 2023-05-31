@@ -59,8 +59,6 @@ export default function ProductPage(): JSX.Element {
             setCheckupProduct('colorMissing');
         else if (!sizeSelected)
             setCheckupProduct('sizeMissing');
-        else if (!shippingValue)
-            setCheckupProduct('shippingMissing');
         else
             onClickAddToCart(productData);
     };
