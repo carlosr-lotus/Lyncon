@@ -65,8 +65,7 @@ export default function ProductPage(): JSX.Element {
 
     function addToCart(productData: ProductProps): void {
         setAddedProduct(true);
-        let listProductsArray = [];
-        listProductsArray.push(productData);
+
         api.post('/cart/', {
             id: productData.id,
             nameProduct: productData.name,
