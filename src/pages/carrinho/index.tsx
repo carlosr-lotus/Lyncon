@@ -61,12 +61,29 @@ export default function CarrinhoPage() {
                                     productsCart.map((data) => (
                                         <div className={styles.cartProduct} key={data.id}>
                                             <h2>{data.nameProduct}</h2>
-                                            <h3>Tamanho {data.sizeProduct.toUpperCase()} | {data.colorName.charAt(0).toUpperCase() + data.colorName.slice(1)}</h3>
+                                            <h3>
+                                                Tamanho {
+                                                    data.sizeProduct
+                                                        .toUpperCase()
+                                                } | {
+                                                    data.colorName
+                                                        .charAt(0)
+                                                        .toUpperCase()
+                                                    +
+                                                    data.colorName
+                                                        .slice(1)}
+                                            </h3>
                                             <div className={styles.cardProductImageContainer}>
                                                 <img src={data.imageProduct} alt="foto produto" />
                                                 <p>{totalAmountProduct}</p>
                                             </div>
-                                            <h4>R$ {(data.priceProduct).toFixed(2).replace('.', ',')}</h4>
+                                            <h4>
+                                                R$ {
+                                                    (data.priceProduct)
+                                                        .toFixed(2)
+                                                        .replace('.', ',')
+                                                }
+                                            </h4>
                                             <div
                                                 className={styles.addSameProductContainer}
                                             >
@@ -96,7 +113,12 @@ export default function CarrinhoPage() {
                                     <p>
                                         <span>Subtotal</span>
                                         <strong>
-                                            R$ {(subtotalPrice * totalAmountProduct).toFixed(2).toString().replace('.', ',')}
+                                            R$ {
+                                                (subtotalPrice * totalAmountProduct)
+                                                    .toFixed(2)
+                                                    .toString()
+                                                    .replace('.', ',')
+                                            }
                                         </strong>
                                     </p>
                                     <p>
