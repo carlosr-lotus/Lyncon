@@ -73,7 +73,8 @@ export default function ProductPage(): JSX.Element {
             colorName: colorSelected?.colorName,
             sizeProduct: sizeSelected?.size,
             shippingRate: shippingValue,
-            imageProduct: productData.image
+            imageProduct: productData.image,
+            totalAmount: 1
         }).then((res) => {
             console.log(res);
         });

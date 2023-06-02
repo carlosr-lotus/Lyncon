@@ -36,5 +36,6 @@ export interface ProductCart {
     colorName: string,
     sizeProduct: string,
     shippingRate: number,
-    imageProduct: string
+    imageProduct: string,
+    totalAmount: number
 }
