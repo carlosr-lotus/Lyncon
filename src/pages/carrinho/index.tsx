@@ -20,7 +20,7 @@ export default function CarrinhoPage() {
 
     const api = getApi();
 
-    const [productsCart, setProductsCart] = useState<ProductCart[]>();
+    const [productsCart, setProductsCart] = useState<ProductCart[]>([]);
     const [totalAmountProduct, setTotalAmountProduct] = useState<number>(1);
     const [subtotalPrice, setSubtotalPrice] = useState<number>(0.0);
 
@@ -35,10 +35,17 @@ export default function CarrinhoPage() {
             })
     }, []);
 
-    function increaseAmount({ id, priceProduct }: ProductCart): void {
-        console.log(id);
-        console.log(priceProduct);
-    };
+    function increaseAmount({ id }: ProductCart): void {
+        let productsCartTemp: ProductCart[] = [...productsCart];
+
+        productsCartTemp.forEach((data) => {
+            if (data.id === id)
+                data.totalAmount += 1;
+        });
+
+        console.log(productsCartTemp);
+        setProductsCart(productsCartTemp);
+    }
 
     return (
         <>
@@ -75,7 +82,7 @@ export default function CarrinhoPage() {
                                             </h3>
                                             <div className={styles.cardProductImageContainer}>
                                                 <img src={data.imageProduct} alt="foto produto" />
-                                                <p>{totalAmountProduct}</p>
+                                                <p>{data.totalAmount}</p>
                                             </div>
                                             <h4>
                                                 R$ {
@@ -94,7 +101,7 @@ export default function CarrinhoPage() {
                                                 >
                                                     -
                                                 </button>
-                                                <p>{totalAmountProduct}</p>
+                                                <p>{data.totalAmount}</p>
                                                 <button
                                                     onClick={
                                                         () => totalAmountProduct <= 98 &&
