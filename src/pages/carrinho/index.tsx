@@ -38,6 +38,23 @@ export default function CarrinhoPage() {
             })
     }, []);
 
+    function decreaseAmount({ id }: ProductCart): void {
+        const productsCartTemp: ProductCart[] = [...productsCart];
+
+        productsCartTemp.forEach((data) => {
+            if (data.id === id) {
+                const stdPricingData: number = listTotalAmount.find((dataPricing) =>
+                    dataPricing.id === id)!.standardPriceProduct;
+
+                data.totalAmount -= 1;
+                data.priceProduct = data.priceProduct - stdPricingData;
+            }
+        });
+
+        console.log(productsCartTemp);
+        setProductsCart(productsCartTemp);
+    }
+
     function increaseAmount({ id }: ProductCart): void {
         const productsCartTemp: ProductCart[] = [...productsCart];
 
@@ -104,15 +121,15 @@ export default function CarrinhoPage() {
                                             >
                                                 <button
                                                     onClick={
-                                                        () => totalAmountProduct >= 2 &&
-                                                            setTotalAmountProduct(totalAmountProduct - 1)}
+                                                        () => data.totalAmount >= 2 &&
+                                                            decreaseAmount(data)}
                                                 >
                                                     -
                                                 </button>
                                                 <p>{data.totalAmount}</p>
                                                 <button
                                                     onClick={
-                                                        () => totalAmountProduct <= 98 &&
+                                                        () => data.totalAmount <= 98 &&
                                                             increaseAmount(data)
                                                     }
                                                 >
