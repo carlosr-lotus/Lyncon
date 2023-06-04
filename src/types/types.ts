@@ -39,3 +39,8 @@ export interface ProductCart {
     imageProduct: string,
     totalAmount: number
 }
+
+export interface PricingData {
+    id: number,
+    standardPriceProduct: number
+}
