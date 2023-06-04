@@ -22,7 +22,6 @@ export default function CarrinhoPage() {
 
     const [productsCart, setProductsCart] = useState<ProductCart[]>([]);
     const [listTotalAmount, setListTotalAmount] = useState<PricingData[]>([]);
-    const [totalAmountProduct, setTotalAmountProduct] = useState<number>(1);
     const [subtotalPrice, setSubtotalPrice] = useState<number>(0.0);
 
     useEffect(() => {
@@ -48,6 +47,10 @@ export default function CarrinhoPage() {
 
                 data.totalAmount -= 1;
                 data.priceProduct = data.priceProduct - stdPricingData;
+                console.log(subtotalPrice + data.priceProduct);
+                setSubtotalPrice(productsCartTemp.reduce((prevValue: number, currentValue: ProductCart) => {
+                    return prevValue + currentValue.priceProduct
+                }, 0));
             }
         });
 
@@ -65,6 +68,9 @@ export default function CarrinhoPage() {
 
                 data.totalAmount += 1;
                 data.priceProduct = data.priceProduct + stdPricingData;
+                setSubtotalPrice(productsCartTemp.reduce((prevValue: number, currentValue: ProductCart) => {
+                    return prevValue + currentValue.priceProduct
+                }, 0));
             }
         });
 
@@ -146,7 +152,7 @@ export default function CarrinhoPage() {
                                         <span>Subtotal</span>
                                         <strong>
                                             R$ {
-                                                (subtotalPrice * totalAmountProduct)
+                                                (subtotalPrice)
                                                     .toFixed(2)
                                                     .toString()
                                                     .replace('.', ',')
