@@ -163,13 +163,19 @@ export default function CarrinhoPage() {
                                         <span>Frete</span>
                                         <strong>R$ 2,99</strong>
                                     </p>
+                                    <p>Alterar endereço</p>
                                 </div>
                                 <hr />
 
                                 <div className={styles.paymentTotalContainer}>
                                     <p>
                                         <span>Total</span>
-                                        <strong>R$ 79,99</strong>
+                                        <strong>R$ {
+                                            (subtotalPrice + 2.99)
+                                                .toFixed(2)
+                                                .toString()
+                                                .replace('.', ',')
+                                        }</strong>
                                     </p>
                                 </div>
                             </>
