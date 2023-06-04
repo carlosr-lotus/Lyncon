@@ -9,7 +9,7 @@ import MenuBar from "../../components/MenuBar";
 import Button from "../../components/material/Button";
 
 // Types //
-import { ProductCart } from "../../types/types";
+import { ProductCart, PricingData } from "../../types/types";
 
 // Icons //
 import { BsFillCreditCardFill } from "react-icons/bs";
@@ -21,14 +21,17 @@ export default function CarrinhoPage() {
     const api = getApi();
 
     const [productsCart, setProductsCart] = useState<ProductCart[]>([]);
+    const [listTotalAmount, setListTotalAmount] = useState<PricingData[]>([]);
     const [totalAmountProduct, setTotalAmountProduct] = useState<number>(1);
     const [subtotalPrice, setSubtotalPrice] = useState<number>(0.0);
 
     useEffect(() => {
         api.get(`/cart`)
             .then((res) => {
-                console.log(res.data);
                 setProductsCart(res.data);
+                setListTotalAmount(res.data.map((data: ProductCart) => {
+                    return { id: data.id, standardPriceProduct: data.priceProduct }
+                }));
                 setSubtotalPrice(res.data.reduce((prevValue: number, currentValue: ProductCart) => {
                     return prevValue + currentValue.priceProduct
                 }, 0));
@@ -36,11 +39,16 @@ export default function CarrinhoPage() {
     }, []);
 
     function increaseAmount({ id }: ProductCart): void {
-        let productsCartTemp: ProductCart[] = [...productsCart];
+        const productsCartTemp: ProductCart[] = [...productsCart];
 
         productsCartTemp.forEach((data) => {
-            if (data.id === id)
+            if (data.id === id) {
+                const stdPricingData: number = listTotalAmount.find((dataPricing) =>
+                    dataPricing.id === id)!.standardPriceProduct;
+
                 data.totalAmount += 1;
+                data.priceProduct = data.priceProduct + stdPricingData;
+            }
         });
 
         console.log(productsCartTemp);
