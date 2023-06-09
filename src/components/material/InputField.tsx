@@ -8,7 +8,7 @@ interface InputFieldProps {
     placeholder: string,
     className?: string,
     ref?: LegacyRef<HTMLInputElement> | undefined,
-    register?: any,
+    register: any,
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void,
     onInput?: (e: FormEvent<HTMLInputElement>) => void,
     style?: CSSProperties
