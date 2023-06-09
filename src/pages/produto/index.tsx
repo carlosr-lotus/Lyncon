@@ -1,6 +1,9 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, LegacyRef, createRef } from "react";
 import { useRouter } from "next/router";
 import Head from 'next/head';
+
+// Packages //
+import { useForm } from "react-hook-form";
 
 // Context //
 import { getApi } from "../../utils/api";
@@ -17,10 +20,14 @@ import { ProductProps, ColorType, SizeType } from "../../types/types";
 
 import styles from '../../styles/pages/ProductPage.module.css';
 
+interface FormCep {
+    cep: string
+}
+
 export default function ProductPage(): JSX.Element {
     const router = useRouter();
     const api = getApi();
-    const zipCodeRef = useRef<string>('');
+    const { register, handleSubmit, formState: { errors } } = useForm<FormCep>();
 
     const [productData, setProductData] = useState<ProductProps>();
     const [shippingValue, setShippingValue] = useState<number | undefined>();
@@ -80,10 +87,11 @@ export default function ProductPage(): JSX.Element {
         });
     };
 
-    function isValidBrazilZip(zip: string): void {
+    function isValidBrazilZip({ cep }: FormCep): void {
         const pattern: RegExp = /^[0-9]{5}-[0-9]{3}$/;
+        console.log(cep);
 
-        if (pattern.test(zip)) {
+        if (pattern.test(cep)) {
             setValidBrazilZip('valid');
             setShippingValue(5.0);
         } else {
@@ -183,14 +191,13 @@ export default function ProductPage(): JSX.Element {
 
                             <p className={styles.productDesc}>{productData?.desc}</p>
 
-                            <div className={styles.shippingContainer}>
+                            <form className={styles.shippingContainer} onSubmit={handleSubmit(isValidBrazilZip)}>
                                 <label>Calcule o frete:</label>
                                 <InputField
-                                    name='frete'
+                                    name='cep'
+                                    register={register}
                                     type='text'
                                     placeholder='00000-000'
-                                    onChange={(e) => e.target.value.length >= 9 && isValidBrazilZip(e.target.value)}
-                                    onInput={(e) => zipCodeRef.current = (e.target as HTMLInputElement).value}
                                     style={{
                                         padding: '1.3rem',
                                         fontSize: '1.5rem',
@@ -202,8 +209,7 @@ export default function ProductPage(): JSX.Element {
 
                                 <Button
                                     name='Calcular'
-                                    type='button'
-                                    onClick={() => isValidBrazilZip(zipCodeRef.current)}
+                                    type='submit'
                                     style={{
                                         width: '30%',
                                         height: '4.7rem',
@@ -237,7 +243,7 @@ export default function ProductPage(): JSX.Element {
                                         </a>
                                 }
 
-                            </div>
+                            </form>
                             {
                                 checkupProduct === 'colorMissing' ?
                                     <p style={{
