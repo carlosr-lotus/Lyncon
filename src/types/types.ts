@@ -5,6 +5,13 @@ export interface CategoriesType {
     selected: boolean
 }
 
+export interface ProductList {
+    id: number,
+    name: string,
+    pricing: number,
+    image: string
+}
+
 // produto - index.tsx //
 export interface ProductProps {
     id: number,
