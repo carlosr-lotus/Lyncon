@@ -123,17 +123,15 @@ export default function ProductPage(): JSX.Element {
                                 <h1>{productData.name}</h1>
 
                                 <h2>
-                                    R$ {
+                                    {
                                         productData.pricing
-                                            .toString()
-                                            .replace('.', ',')
+                                            .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
                                     }
                                 </h2>
                                 <span>
-                                    ou até 12x de R$ {
+                                    ou até 12x de {
                                         (productData.pricing / 12)
-                                            .toFixed(2)
-                                            .replace('.', ',')
+                                            .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
                                     }
                                 </span>
                             </div>
@@ -225,10 +223,9 @@ export default function ProductPage(): JSX.Element {
                                             <p className={styles.shippingRate}>
                                                 Entrega Padrão:
                                                 <i>
-                                                    R$ {
+                                                    {
                                                         shippingValue
-                                                            .toFixed(2)
-                                                            .replace('.', ',')
+                                                            .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
                                                     }
                                                 </i>
                                             </p>
