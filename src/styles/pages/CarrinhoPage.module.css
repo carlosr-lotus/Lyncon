@@ -132,6 +132,51 @@
     font-size: 1.7rem;
 }
 
+.paymentDetailsContainer>.shippingAddressContainer {
+    display: block;
+    padding-top: 1.2rem;
+    color: var(--Highlight-Text);
+}
+
+.shippingAddressContainer>span {
+    color: var(--Highlight-Text);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.shippingAddressDetails {
+    display: grid;
+    gap: 12px;
+}
+
+.shippingAddressDetails>p {
+    color: var(--Main-Black);
+}
+
+.shippingAddressDetails>span {
+    color: var(--Highlight-Text);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.addZipCodeModal {
+    display: grid;
+    gap: 12px;
+}
+
+.addZipCodeModal>h3 {
+    font-size: 1.7rem;
+}
+
+.addZipCodeModal>label {
+    font-size: 1.5rem;
+}
+
+.errorInvalidCEP {
+    font-size: 1.4rem;
+    color: red;
+}
+
 .paymentTotalContainer>p>span {
     place-self: end;
     align-self: center;
