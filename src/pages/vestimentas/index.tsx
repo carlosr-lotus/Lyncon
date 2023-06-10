@@ -10,7 +10,7 @@ import { getApi } from '../../utils/api';
 import MenuBar from "../../components/MenuBar"
 
 // Types //
-import { CategoriesType } from '../../types/types';
+import { CategoriesType, ProductList } from '../../types/types';
 
 // Icons //
 import { FiFilter, FiSearch } from 'react-icons/fi';
@@ -26,7 +26,7 @@ export default function VestimentasPage(): JSX.Element {
 
     const { tipo } = router.query;
 
-    const [productsList, setProductsList] = useState<any[]>();
+    const [productsList, setProductsList] = useState<ProductList[]>();
     const [categories, setCategories] = useState<CategoriesType[]>([
         { id: 1, category: 'Acessórios', selected: false },
         { id: 2, category: 'Camisas', selected: false },
@@ -143,7 +143,10 @@ export default function VestimentasPage(): JSX.Element {
                                                 onClick={() => onClickProduct(product)}
                                             />
                                             <h2>{product.name}</h2>
-                                            <h3>R$ {product.pricing.toString().replace('.', ',')}</h3>
+                                            <h3>{
+                                                (product.pricing)
+                                                    .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+                                            }</h3>
                                             <HeartIcon />
                                         </div>
 
