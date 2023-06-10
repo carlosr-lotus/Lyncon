@@ -153,10 +153,9 @@ export default function CarrinhoPage() {
                                                 <p>{data.totalAmount}</p>
                                             </div>
                                             <h4>
-                                                R$ {
+                                                {
                                                     (data.priceProduct)
-                                                        .toFixed(2)
-                                                        .replace('.', ',')
+                                                        .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
                                                 }
                                             </h4>
                                             <div
@@ -188,18 +187,19 @@ export default function CarrinhoPage() {
                                     <p>
                                         <span>Subtotal</span>
                                         <strong>
-                                            R$ {
+                                            {
                                                 (subtotalPrice)
-                                                    .toFixed(2)
-                                                    .toString()
-                                                    .replace('.', ',')
+                                                    .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
                                             }
                                         </strong>
                                     </p>
                                     <p>
                                         <span>Frete</span>
                                         <strong>
-                                            R$ {shippingPrice}
+                                            {
+                                                (shippingPrice)
+                                                    .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+                                            }
                                         </strong>
                                     </p>
                                     <p className={styles.shippingAddressContainer}>
@@ -329,11 +329,9 @@ export default function CarrinhoPage() {
                                 <div className={styles.paymentTotalContainer}>
                                     <p>
                                         <span>Total</span>
-                                        <strong>R$ {
+                                        <strong>{
                                             (subtotalPrice + shippingPrice)
-                                                .toFixed(2)
-                                                .toString()
-                                                .replace('.', ',')
+                                                .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
                                         }</strong>
                                     </p>
                                 </div>
