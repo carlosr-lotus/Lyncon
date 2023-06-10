@@ -2,6 +2,8 @@ import { useEffect, useState, useRef } from "react";
 import Head from 'next/head';
 
 // Packages //
+import Popup from "reactjs-popup";
+import { useForm } from "react-hook-form";
 import { getApi } from "../../utils/api";
 
 // Components //
@@ -15,6 +17,20 @@ import { ProductCart, PricingData } from "../../types/types";
 import { BsFillCreditCardFill } from "react-icons/bs";
 
 import styles from '../../styles/pages/CarrinhoPage.module.css';
+import InputField from "../../components/material/InputField";
+
+interface ShippingData {
+    address: string,
+    city: string,
+    shippingPrice: number
+}
+
+interface AddressInputs {
+    cep: string,
+    address: string,
+    city: string,
+    complement: string
+}
 
 export default function CarrinhoPage() {
 
@@ -23,6 +39,13 @@ export default function CarrinhoPage() {
     const [productsCart, setProductsCart] = useState<ProductCart[]>([]);
     const [listTotalAmount, setListTotalAmount] = useState<PricingData[]>([]);
     const [subtotalPrice, setSubtotalPrice] = useState<number>(0.0);
+    const [userZipCode, setUserZipCode] = useState<AddressInputs>();
+    const [shippingPrice, setShippingPrice] = useState<number>(0.0);
+    const [isCepValid, setIsCepValid] = useState<boolean>(true);
+    const [openControlledCepModal, setOpenControlledCepModal] = useState<boolean>(false);
+    const closeModal = () => setOpenControlledCepModal(false);
+
+    const { register, handleSubmit, formState: { errors } } = useForm<AddressInputs>();
 
     useEffect(() => {
         api.get(`/cart`)
@@ -77,6 +100,20 @@ export default function CarrinhoPage() {
         console.log(productsCartTemp);
         setProductsCart(productsCartTemp);
     }
+
+    function isCEPValid(data: AddressInputs): void {
+        const pattern: RegExp = /^[0-9]{5}-[0-9]{3}$/;
+        console.log(data)
+
+        if (pattern.test(data.cep)) {
+            console.log(data);
+            setUserZipCode(data);
+            setIsCepValid(true);
+            setShippingPrice(5.9)
+        } else {
+            setIsCepValid(false);
+        };
+    };
 
     return (
         <>
@@ -161,9 +198,131 @@ export default function CarrinhoPage() {
                                     </p>
                                     <p>
                                         <span>Frete</span>
-                                        <strong>R$ 2,99</strong>
+                                        <strong>
+                                            R$ {shippingPrice}
+                                        </strong>
                                     </p>
-                                    <p>Alterar endereço</p>
+                                    <p className={styles.shippingAddressContainer}>
+                                        {
+                                            !userZipCode ?
+                                                <Popup
+                                                    trigger={
+                                                        <span>Escolher endereço de envio</span>
+                                                    }
+                                                    modal={true}
+                                                    open={openControlledCepModal}
+                                                    onClose={closeModal}
+                                                    position="bottom center"
+                                                    closeOnDocumentClick
+                                                    contentStyle={{
+                                                        width: '32rem',
+                                                        maxHeight: '90vh',
+                                                        padding: '2rem',
+                                                        borderRadius: '.5rem',
+                                                        boxShadow: '0px 2px 5px 0px var(--Box-Shadow-Default)',
+                                                        transition: '.2s ease-in',
+                                                        backgroundColor: '#fff',
+                                                        overflowY: 'auto'
+                                                    }}
+                                                    overlayStyle={{
+                                                        backgroundColor: 'rgba(0,0,0,0.4)',
+                                                        padding: '1rem'
+                                                    }}
+                                                >
+                                                    <form
+                                                        className={styles.addZipCodeModal}
+                                                        onSubmit={handleSubmit(isCEPValid)}
+                                                    >
+                                                        <h3>Insira os dados do endereço de entrega:</h3>
+
+                                                        <label htmlFor="cep">CEP*</label>
+                                                        {!isCepValid &&
+                                                            <span className={styles.errorInvalidCEP}>*Insira um CEP válido</span>
+                                                        }
+                                                        <InputField
+                                                            name='cep'
+                                                            type='text'
+                                                            placeholder='xxxxx-xxx'
+                                                            register={register}
+                                                            required
+                                                            style={{
+                                                                padding: '1.2rem',
+                                                                fontSize: '1.5rem'
+                                                            }}
+                                                        />
+
+                                                        <label htmlFor="city">Cidade*</label>
+                                                        <InputField
+                                                            name='city'
+                                                            type='text'
+                                                            placeholder='Rio de Janeiro, RJ'
+                                                            register={register}
+                                                            required
+                                                            style={{
+                                                                padding: '1.2rem',
+                                                                fontSize: '1.5rem'
+                                                            }}
+                                                        />
+
+                                                        <label htmlFor="address">Endereço*</label>
+                                                        <InputField
+                                                            name='address'
+                                                            type='text'
+                                                            placeholder='Rua Cristo Redentor, 41'
+                                                            register={register}
+                                                            required
+                                                            style={{
+                                                                padding: '1.2rem',
+                                                                fontSize: '1.5rem'
+                                                            }}
+                                                        />
+
+                                                        <label htmlFor="complement">Complemento</label>
+                                                        <InputField
+                                                            name='complement'
+                                                            type='text'
+                                                            placeholder='Apto 41'
+                                                            register={register}
+                                                            style={{
+                                                                padding: '1.2rem',
+                                                                fontSize: '1.5rem'
+                                                            }}
+                                                        />
+
+                                                        <Button
+                                                            name='Salvar'
+                                                            type='submit'
+                                                        // onClick={() => isValidBrazilZip(zipCodeRef.current)}
+                                                        />
+                                                    </form>
+                                                </Popup>
+                                                :
+                                                <div className={styles.shippingAddressDetails}>
+                                                    <p>
+                                                        Enviar para:
+                                                        <br />
+                                                        {userZipCode.address}
+                                                        {
+                                                            userZipCode.complement &&
+                                                            <>
+                                                                <br />
+                                                                {userZipCode.complement}
+                                                            </>
+                                                        }
+                                                        <br />
+                                                        {userZipCode.city}
+                                                    </p>
+
+                                                    <span onClick={() => {
+                                                        setUserZipCode(undefined)
+                                                        setOpenControlledCepModal(true)
+                                                    }}>
+                                                        Alterar endereço de envio
+                                                    </span>
+
+                                                </div>
+                                        }
+                                    </p>
                                 </div>
                                 <hr />
 
@@ -171,7 +330,7 @@ export default function CarrinhoPage() {
                                     <p>
                                         <span>Total</span>
                                         <strong>R$ {
-                                            (subtotalPrice + 2.99)
+                                            (subtotalPrice + shippingPrice)
                                                 .toFixed(2)
                                                 .toString()
                                                 .replace('.', ',')
