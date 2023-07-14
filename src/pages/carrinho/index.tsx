@@ -346,12 +346,14 @@ export default function CarrinhoPage() {
 
                     <div className={styles.paymentOptionsContainer}>
                         <div className={styles.paymentOption}>
-                            <BsFillCreditCardFill />
+                            <BsFillCreditCardFill size={25} />
                             <p>Crédito/Débito</p>
                         </div>
 
+                        <hr />
+
                         <div className={styles.paymentOption}>
-                            <BsFillCreditCardFill />
+                            <BsFillCreditCardFill size={25} />
                             <p>Boleto</p>
                         </div>
                     </div>
