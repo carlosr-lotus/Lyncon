@@ -1,5 +1,5 @@
 .globalCartPageContainer {
-    padding-top: 5rem;
+    padding: 5rem 0;
 
     display: grid;
     /* grid-template-rows: 1fr 1fr; */
@@ -187,12 +187,98 @@
 }
 
 /* =-=-=-= */
+.paymentOptionsGlobalContainer {
+    display: grid;
+    gap: 2rem;
+}
+
 .paymentOptionsGlobalContainer>p {
     font-size: 1.8rem;
 }
 
+.paymentOptionsContainer {
+    /* padding: 2rem 0rem; */
+
+    display: grid;
+    grid-template-rows: 1fr max-content 1fr;
+
+    border-radius: .7rem;
+    box-shadow: 0px 1px 8px 1px #c6c6c67c;
+}
+
 .paymentOption {
+    padding: 3rem;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
+
+    border-top-left-radius: .7rem;
+    border-top-right-radius: .7rem;
+
+    transition: .2s;
+    cursor: pointer;
+}
+
+.paymentOptionsContainer div:nth-child(3) {
+    border-radius: 0;
+    border-bottom-left-radius: .7rem;
+    border-bottom-right-radius: .7rem;
+}
+
+.paymentOption:hover {
+    background-color: var(--Hover-Color);
+}
+
+.paymentOptionsContainer>hr {
+    color: #c6c6c67c;
+}
+
+.paymentOption>p {
+    font-size: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+    .globalCartPageContainer {
+        width: 90%;
+        margin: 0 auto;
+        grid-template-columns: .70fr .30fr;
+        gap: 0;
+    }
+
+    .paymentOptionsGlobalContainer {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .cartDetailsContainer {
+        width: 100%;
+        grid-column: 2;
+    }
+
+    .paymentOptionsContainer {
+        width: fit-content;
+        margin: 0 auto;
+
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: 15rem max-content 15rem;
+        justify-content: center;
+
+        border-radius: 7px;
+        box-shadow: 0px 1px 8px 1px #c6c6c67c;
+    }
+
+    .paymentOption {
+        border-radius: 0;
+        border-top-left-radius: .7rem;
+        border-bottom-left-radius: .7rem;
+    }
+
+    .paymentOptionsContainer div:nth-child(3) {
+        border-radius: 0;
+        border-top-right-radius: .7rem;
+        border-bottom-right-radius: .7rem;
+    }
 }
