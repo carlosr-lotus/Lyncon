@@ -9,6 +9,7 @@ import { getApi } from "../../utils/api";
 // Components //
 import MenuBar from "../../components/MenuBar";
 import Button from "../../components/material/Button";
+import CreditCardBox from "../../components/CreditCardBox";
 
 // Types //
 import { ProductCart, PricingData } from "../../types/types";
@@ -44,6 +45,8 @@ export default function CarrinhoPage() {
     const [isCepValid, setIsCepValid] = useState<boolean>(true);
     const [openControlledCepModal, setOpenControlledCepModal] = useState<boolean>(false);
     const closeModal = () => setOpenControlledCepModal(false);
+
+    const [currentPaymentOption, setCurrentPaymentOption] = useState<'creditCard' | 'boleto' | ''>('');
 
     const { register, handleSubmit, formState: { errors } } = useForm<AddressInputs>();
 
@@ -342,21 +345,52 @@ export default function CarrinhoPage() {
                 </div>
 
                 <div className={styles.paymentOptionsGlobalContainer}>
-                    <p>Escolha a forma de pagamento:</p>
+                    {
+                        currentPaymentOption === '' ?
+                            <>
+                                <p>Escolha a forma de pagamento:</p>
 
-                    <div className={styles.paymentOptionsContainer}>
-                        <div className={styles.paymentOption}>
-                            <BsFillCreditCardFill size={25} />
-                            <p>Crédito/Débito</p>
-                        </div>
+                                <div className={styles.paymentOptionsContainer}>
+                                    <div
+                                        className={styles.paymentOption}
+                                        onClick={() => setCurrentPaymentOption('creditCard')}
+                                    >
+                                        <BsFillCreditCardFill size={25} />
+                                        <p>Crédito/Débito</p>
+                                    </div>
 
-                        <hr />
+                                    <hr />
 
-                        <div className={styles.paymentOption}>
-                            <BsFillCreditCardFill size={25} />
-                            <p>Boleto</p>
-                        </div>
-                    </div>
+                                    <div
+                                        className={styles.paymentOption}
+                                        onClick={() => setCurrentPaymentOption('boleto')}
+                                    >
+                                        <BsFillCreditCardFill size={25} />
+                                        <p>Boleto</p>
+                                    </div>
+                                </div>
+                            </>
+                            :
+                            currentPaymentOption === 'creditCard' ?
+                                <>
+                                    <div
+                                        onClick={() => setCurrentPaymentOption('')}
+                                    >
+                                        Voltar
+                                    </div>
+                                    <CreditCardBox />
+                                </>
+                                :
+                                currentPaymentOption === 'boleto' &&
+                                <>
+                                    <div
+                                        onClick={() => setCurrentPaymentOption('')}
+                                    >
+                                        Voltar
+                                    </div>
+                                    BOLETO
+                                </>
+                    }
                 </div>
 
             </main>
