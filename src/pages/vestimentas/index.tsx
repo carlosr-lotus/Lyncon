@@ -7,7 +7,7 @@ import { AxiosInstance } from 'axios';
 import { getApi } from '../../utils/api';
 
 // Components //
-import MenuBar from "../../components/MenuBar"
+import MenuBar from "../../components/MenuBar";
 
 // Types //
 import { CategoriesType, ProductList } from '../../types/types';
