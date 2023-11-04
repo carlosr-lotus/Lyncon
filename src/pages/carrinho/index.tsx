@@ -72,10 +72,8 @@ export default function CarrinhoPage() {
     }
 
     function removeItemFromCart(productID: number): void {
-        console.log(productID);
         api.delete(`/cart/${productID}`)
             .then((res) => {
-                console.log(res);
                 getCartProducts();
             }).catch((err) => {
                 console.log(err);
@@ -92,14 +90,12 @@ export default function CarrinhoPage() {
 
                 data.totalAmount -= 1;
                 data.priceProduct = data.priceProduct - stdPricingData;
-                console.log(subtotalPrice + data.priceProduct);
                 setSubtotalPrice(productsCartTemp.reduce((prevValue: number, currentValue: ProductCart) => {
                     return prevValue + currentValue.priceProduct
                 }, 0));
             }
         });
 
-        console.log(productsCartTemp);
         setProductsCart(productsCartTemp);
     }
 
@@ -119,16 +115,13 @@ export default function CarrinhoPage() {
             }
         });
 
-        console.log(productsCartTemp);
         setProductsCart(productsCartTemp);
     }
 
     function isCEPValid(data: AddressInputs): void {
         const pattern: RegExp = /^[0-9]{5}-[0-9]{3}$/;
-        console.log(data)
 
         if (pattern.test(data.cep)) {
-            console.log(data);
             setUserZipCode(data);
             setIsCepValid(true);
             setShippingPrice(5.9)
