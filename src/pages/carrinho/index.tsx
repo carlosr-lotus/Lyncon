@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, Dispatch, SetStateAction } from "react";
 import Head from 'next/head';
 
 // Packages //
@@ -12,7 +12,7 @@ import Button from "../../components/material/Button";
 import CreditCardBox from "../../components/CreditCardBox";
 
 // Types //
-import { ProductCart, PricingData } from "../../types/types";
+import { ProductCart, PricingData, ProductSelected } from "../../types/types";
 
 // Icons //
 import { BsFillCreditCardFill } from "react-icons/bs";
@@ -39,13 +39,16 @@ export default function CarrinhoPage() {
     const api = getApi();
 
     const [productsCart, setProductsCart] = useState<ProductCart[]>([]);
+    const [removeItemSelected, setRemoveItemSelected] = useState<ProductSelected>();
     const [listTotalAmount, setListTotalAmount] = useState<PricingData[]>([]);
     const [subtotalPrice, setSubtotalPrice] = useState<number>(0.0);
     const [userZipCode, setUserZipCode] = useState<AddressInputs>();
     const [shippingPrice, setShippingPrice] = useState<number>(0.0);
     const [isCepValid, setIsCepValid] = useState<boolean>(true);
+
     const [openControlledCepModal, setOpenControlledCepModal] = useState<boolean>(false);
-    const closeModal = () => setOpenControlledCepModal(false);
+    const [openRemoveItemFromCartModal, setOpenRemoveItemFromCartModal] = useState<boolean>(false);
+    const closeModal = (setModalState: any) => setModalState(false);
 
     const [currentPaymentOption, setCurrentPaymentOption] = useState<'creditCard' | 'boleto' | ''>('');
 
@@ -156,10 +159,70 @@ export default function CarrinhoPage() {
                                             <div className={styles.cartProduct} key={data.id}>
                                                 <div className={styles.productHeader}>
                                                     <h2>{data.nameProduct}</h2>
-                                                    <BsFillTrashFill
-                                                        size={15}
-                                                        onClick={() => removeItemFromCart(data.id)}
-                                                    />
+                                                    <Popup
+                                                        trigger={
+                                                            <BsFillTrashFill
+                                                                size={15}
+                                                            />
+                                                        }
+                                                        modal
+                                                        onOpen={() => {
+                                                            setOpenRemoveItemFromCartModal(true);
+                                                            setRemoveItemSelected(data);
+                                                        }}
+                                                        open={openRemoveItemFromCartModal}
+                                                        position="bottom center"
+                                                        closeOnDocumentClick
+                                                        contentStyle={{
+                                                            width: '32rem',
+                                                            maxHeight: '90vh',
+                                                            padding: '1.5rem',
+                                                            borderRadius: '.5rem',
+                                                            boxShadow: '0px 2px 5px 0px var(--Box-Shadow-Default)',
+                                                            transition: '.2s ease-in',
+                                                            backgroundColor: '#fff',
+                                                            overflowY: 'auto'
+                                                        }}
+                                                        overlayStyle={{
+                                                            backgroundColor: 'rgba(0,0,0,0.4)',
+                                                            padding: '1rem'
+                                                        }}
+                                                    >
+                                                        <div className={styles.removeItemFromCartModal}>
+                                                            <div>
+                                                                <h3>Deseja remover o produto do carrinho?</h3>
+
+                                                                {
+                                                                    removeItemSelected &&
+                                                                    <>
+                                                                        <p>{removeItemSelected.nameProduct}</p>
+                                                                        <img
+                                                                            src={removeItemSelected.imageProduct}
+                                                                            alt=""
+                                                                            style={{
+                                                                                width: '25%'
+                                                                            }}
+                                                                        />
+                                                                    </>
+                                                                }
+                                                            </div>
+
+                                                            <div className={styles.flexButtons}>
+                                                                <Button
+                                                                    name='Cancelar'
+                                                                    type='button'
+                                                                    onClick={() => closeModal(setOpenRemoveItemFromCartModal)}
+                                                                />
+
+                                                                <Button
+                                                                    name='Remover'
+                                                                    type='button'
+                                                                    onClick={() => removeItemFromCart(data.id)}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </Popup>
+
                                                 </div>
                                                 <h3>
                                                     Tamanho {

@@ -30,6 +30,37 @@
     cursor: pointer;
 }
 
+.removeItemFromCartModal {
+    display: grid;
+    gap: 2rem;
+}
+
+.removeItemFromCartModal>div:nth-child(1) {
+    display: grid;
+    place-items: center;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.removeItemFromCartModal>div:nth-child(1)>h3 {
+    font-size: 1.4rem;
+}
+
+.removeItemFromCartModal>div:nth-child(1)>p {
+    font-size: 1.2rem;
+}
+
+.removeItemFromCartModal>div:nth-child(1)>img {
+    border-radius: 4px;
+    box-shadow: 0px 1px 8px 1px #c6c6c67c;
+}
+
+.flexButtons {
+    display: flex;
+    gap: 4px;
+}
+
 .cartDetailsContainer,
 .paymentOptionsGlobalContainer {
     width: 90%;
@@ -299,4 +330,30 @@
         border-top-right-radius: .7rem;
         border-bottom-right-radius: .7rem;
     }
+}
+
+@keyframes anvil {
+    0% {
+        transform: scale(1) translateY(0px);
+        opacity: 0;
+        box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+    }
+
+    1% {
+        transform: scale(0.96) translateY(10px);
+        opacity: 0;
+        box-shadow: 0 0 0 rgba(241, 241, 241, 0);
+    }
+
+    100% {
+        transform: scale(1) translateY(0px);
+        opacity: 1;
+        box-shadow: 0 0 500px rgba(241, 241, 241, 0);
+    }
+}
+
+.cartProduct,
+.paymentDetailsContainer,
+.paymentTotalContainer {
+    -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
 }
