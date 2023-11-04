@@ -21,12 +21,6 @@ import { BsFillTrashFill } from "react-icons/bs";
 import styles from '../../styles/pages/CarrinhoPage.module.css';
 import InputField from "../../components/material/InputField";
 
-interface ShippingData {
-    address: string,
-    city: string,
-    shippingPrice: number
-}
-
 interface AddressInputs {
     cep: string,
     address: string,
