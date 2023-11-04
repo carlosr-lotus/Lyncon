@@ -236,8 +236,10 @@
 
 /* =-=-=-= */
 .paymentOptionsGlobalContainer {
+    margin: 0 auto;
+
     display: grid;
-    place-content: center;
+    place-self: start;
     gap: 2rem;
 }
 
