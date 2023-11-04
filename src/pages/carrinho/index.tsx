@@ -47,7 +47,7 @@ export default function CarrinhoPage() {
     const [isCepValid, setIsCepValid] = useState<boolean>(true);
 
     const [openControlledCepModal, setOpenControlledCepModal] = useState<boolean>(false);
-    const [openRemoveItemFromCartModal, setOpenRemoveItemFromCartModal] = useState<boolean>(false);
+
     const closeModal = (setModalState: any) => setModalState(false);
 
     const [currentPaymentOption, setCurrentPaymentOption] = useState<'creditCard' | 'boleto' | ''>('');
@@ -72,6 +72,7 @@ export default function CarrinhoPage() {
     }
 
     function removeItemFromCart(productID: number): void {
+        console.log(productID);
         api.delete(`/cart/${productID}`)
             .then((res) => {
                 console.log(res);
@@ -159,69 +160,10 @@ export default function CarrinhoPage() {
                                             <div className={styles.cartProduct} key={data.id}>
                                                 <div className={styles.productHeader}>
                                                     <h2>{data.nameProduct}</h2>
-                                                    <Popup
-                                                        trigger={
-                                                            <BsFillTrashFill
-                                                                size={15}
-                                                            />
-                                                        }
-                                                        modal
-                                                        onOpen={() => {
-                                                            setOpenRemoveItemFromCartModal(true);
-                                                            setRemoveItemSelected(data);
-                                                        }}
-                                                        open={openRemoveItemFromCartModal}
-                                                        position="bottom center"
-                                                        closeOnDocumentClick
-                                                        contentStyle={{
-                                                            width: '32rem',
-                                                            maxHeight: '90vh',
-                                                            padding: '1.5rem',
-                                                            borderRadius: '.5rem',
-                                                            boxShadow: '0px 2px 5px 0px var(--Box-Shadow-Default)',
-                                                            transition: '.2s ease-in',
-                                                            backgroundColor: '#fff',
-                                                            overflowY: 'auto'
-                                                        }}
-                                                        overlayStyle={{
-                                                            backgroundColor: 'rgba(0,0,0,0.4)',
-                                                            padding: '1rem'
-                                                        }}
-                                                    >
-                                                        <div className={styles.removeItemFromCartModal}>
-                                                            <div>
-                                                                <h3>Deseja remover o produto do carrinho?</h3>
-
-                                                                {
-                                                                    removeItemSelected &&
-                                                                    <>
-                                                                        <p>{removeItemSelected.nameProduct}</p>
-                                                                        <img
-                                                                            src={removeItemSelected.imageProduct}
-                                                                            alt=""
-                                                                            style={{
-                                                                                width: '25%'
-                                                                            }}
-                                                                        />
-                                                                    </>
-                                                                }
-                                                            </div>
-
-                                                            <div className={styles.flexButtons}>
-                                                                <Button
-                                                                    name='Cancelar'
-                                                                    type='button'
-                                                                    onClick={() => closeModal(setOpenRemoveItemFromCartModal)}
-                                                                />
-
-                                                                <Button
-                                                                    name='Remover'
-                                                                    type='button'
-                                                                    onClick={() => removeItemFromCart(data.id)}
-                                                                />
-                                                            </div>
-                                                        </div>
-                                                    </Popup>
+                                                    <BsFillTrashFill
+                                                        size={15}
+                                                        onClick={() => removeItemFromCart(data.id)}
+                                                    />
 
                                                 </div>
                                                 <h3>
