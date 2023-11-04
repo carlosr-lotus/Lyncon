@@ -12,7 +12,7 @@ import Button from "../../components/material/Button";
 import CreditCardBox from "../../components/CreditCardBox";
 
 // Types //
-import { ProductCart, PricingData } from "../../types/types";
+import { ProductCart, PricingData, AddressInputs } from "../../types/pages/carrinho";
 
 // Icons //
 import { BsFillCreditCardFill } from "react-icons/bs";
@@ -20,13 +20,6 @@ import { BsFillTrashFill } from "react-icons/bs";
 
 import styles from '../../styles/pages/CarrinhoPage.module.css';
 import InputField from "../../components/material/InputField";
-
-interface AddressInputs {
-    cep: string,
-    address: string,
-    city: string,
-    complement: string
-}
 
 export default function CarrinhoPage() {
 

@@ -16,7 +16,7 @@ import InputField from "../../components/material/InputField";
 import HeartIcon from "../../components/customIcons/HeartIcon";
 
 // Types //
-import { ProductProps, ColorType, SizeType } from "../../types/types";
+import { ProductProps, ColorType, SizeType } from "../../types/pages/produto";
 
 import styles from '../../styles/pages/ProductPage.module.css';
 

@@ -10,7 +10,7 @@ import { getApi } from '../../utils/api';
 import MenuBar from "../../components/MenuBar";
 
 // Types //
-import { CategoriesType, ProductList } from '../../types/types';
+import { CategoriesType, ProductList } from '../../types/pages/vestimentas';
 
 // Icons //
 import { FiFilter, FiSearch } from 'react-icons/fi';
