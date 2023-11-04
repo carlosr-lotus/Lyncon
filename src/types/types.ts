@@ -47,8 +47,6 @@ export interface ProductCart {
     totalAmount: number
 }
 
-export type ProductSelected = Pick<ProductCart, 'nameProduct' | 'imageProduct'>;
-
 export interface PricingData {
     id: number,
     standardPriceProduct: number

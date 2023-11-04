@@ -12,7 +12,7 @@ import Button from "../../components/material/Button";
 import CreditCardBox from "../../components/CreditCardBox";
 
 // Types //
-import { ProductCart, PricingData, ProductSelected } from "../../types/types";
+import { ProductCart, PricingData } from "../../types/types";
 
 // Icons //
 import { BsFillCreditCardFill } from "react-icons/bs";
