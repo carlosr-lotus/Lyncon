@@ -39,7 +39,6 @@ export default function CarrinhoPage() {
     const api = getApi();
 
     const [productsCart, setProductsCart] = useState<ProductCart[]>([]);
-    const [removeItemSelected, setRemoveItemSelected] = useState<ProductSelected>();
     const [listTotalAmount, setListTotalAmount] = useState<PricingData[]>([]);
     const [subtotalPrice, setSubtotalPrice] = useState<number>(0.0);
     const [userZipCode, setUserZipCode] = useState<AddressInputs>();
