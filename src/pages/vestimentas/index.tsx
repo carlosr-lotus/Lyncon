@@ -38,7 +38,6 @@ export default function VestimentasPage(): JSX.Element {
     ]);
 
     useEffect(() => {
-        console.log(`Query: ${tipo}`)
         switch (tipo) {
             case 'cabeça':
                 getProducts('gorros');

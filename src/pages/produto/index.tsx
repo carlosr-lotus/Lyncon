@@ -27,7 +27,11 @@ interface FormCep {
 export default function ProductPage(): JSX.Element {
     const router = useRouter();
     const api = getApi();
-    const { register, handleSubmit, formState: { errors } } = useForm<FormCep>();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm<FormCep>();
 
     const [productData, setProductData] = useState<ProductProps>();
     const [shippingValue, setShippingValue] = useState<number | undefined>();
@@ -45,7 +49,6 @@ export default function ProductPage(): JSX.Element {
             .then((res) => {
                 if (res.data) {
                     setAddedProduct(true);
-                    console.log(res.data);
                 };
             }).catch((res) => {
                 console.log(res);
@@ -89,7 +92,6 @@ export default function ProductPage(): JSX.Element {
 
     function isValidBrazilZip({ cep }: FormCep): void {
         const pattern: RegExp = /^[0-9]{5}-[0-9]{3}$/;
-        console.log(cep);
 
         if (pattern.test(cep)) {
             setValidBrazilZip('valid');

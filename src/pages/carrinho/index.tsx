@@ -38,7 +38,11 @@ export default function CarrinhoPage() {
 
     const [currentPaymentOption, setCurrentPaymentOption] = useState<'creditCard' | 'boleto' | ''>('');
 
-    const { register, handleSubmit, formState: { errors } } = useForm<AddressInputs>();
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm<AddressInputs>();
 
     useEffect(() => {
         getCartProducts();
