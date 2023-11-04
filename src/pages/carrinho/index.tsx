@@ -16,6 +16,7 @@ import { ProductCart, PricingData } from "../../types/types";
 
 // Icons //
 import { BsFillCreditCardFill } from "react-icons/bs";
+import { BsFillTrashFill } from "react-icons/bs";
 
 import styles from '../../styles/pages/CarrinhoPage.module.css';
 import InputField from "../../components/material/InputField";
@@ -51,6 +52,10 @@ export default function CarrinhoPage() {
     const { register, handleSubmit, formState: { errors } } = useForm<AddressInputs>();
 
     useEffect(() => {
+        getCartProducts();
+    }, []);
+
+    function getCartProducts(): void {
         api.get(`/cart`)
             .then((res) => {
                 setProductsCart(res.data);
@@ -61,7 +66,17 @@ export default function CarrinhoPage() {
                     return prevValue + currentValue.priceProduct
                 }, 0));
             })
-    }, []);
+    }
+
+    function removeItemFromCart(productID: number): void {
+        api.delete(`/cart/${productID}`)
+            .then((res) => {
+                console.log(res);
+                getCartProducts();
+            }).catch((err) => {
+                console.log(err);
+            });
+    }
 
     function decreaseAmount({ id }: ProductCart): void {
         const productsCartTemp: ProductCart[] = [...productsCart];
@@ -134,211 +149,225 @@ export default function CarrinhoPage() {
                 <div className={styles.cartDetailsContainer}>
                     {
                         productsCart ?
-                            <>
-                                {
-                                    productsCart.map((data) => (
-                                        <div className={styles.cartProduct} key={data.id}>
-                                            <h2>{data.nameProduct}</h2>
-                                            <h3>
-                                                Tamanho {
-                                                    data.sizeProduct
-                                                        .toUpperCase()
-                                                } | {
-                                                    data.colorName
-                                                        .charAt(0)
-                                                        .toUpperCase()
-                                                    +
-                                                    data.colorName
-                                                        .slice(1)}
-                                            </h3>
-                                            <div className={styles.cardProductImageContainer}>
-                                                <img src={data.imageProduct} alt="foto produto" />
-                                                <p>{data.totalAmount}</p>
+                            productsCart.length >= 1 ?
+                                <>
+                                    {
+                                        productsCart.map((data) => (
+                                            <div className={styles.cartProduct} key={data.id}>
+                                                <div className={styles.productHeader}>
+                                                    <h2>{data.nameProduct}</h2>
+                                                    <BsFillTrashFill
+                                                        size={15}
+                                                        onClick={() => removeItemFromCart(data.id)}
+                                                    />
+                                                </div>
+                                                <h3>
+                                                    Tamanho {
+                                                        data.sizeProduct
+                                                            .toUpperCase()
+                                                    } | {
+                                                        data.colorName
+                                                            .charAt(0)
+                                                            .toUpperCase()
+                                                        +
+                                                        data.colorName
+                                                            .slice(1)}
+                                                </h3>
+                                                <div
+                                                    className={styles.cardProductImageContainer}
+                                                >
+                                                    <img
+                                                        src={data.imageProduct}
+                                                        alt="foto produto"
+                                                    />
+                                                    <p>{data.totalAmount}</p>
+                                                </div>
+                                                <h4>
+                                                    {
+                                                        (data.priceProduct)
+                                                            .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+                                                    }
+                                                </h4>
+                                                <div
+                                                    className={styles.addSameProductContainer}
+                                                >
+                                                    <button
+                                                        onClick={
+                                                            () => data.totalAmount >= 2 &&
+                                                                decreaseAmount(data)}
+                                                    >
+                                                        -
+                                                    </button>
+                                                    <p>{data.totalAmount}</p>
+                                                    <button
+                                                        onClick={
+                                                            () => data.totalAmount <= 98 &&
+                                                                increaseAmount(data)
+                                                        }
+                                                    >
+                                                        +
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <h4>
+                                        ))
+                                    }
+
+                                    <hr />
+                                    <div className={styles.paymentDetailsContainer}>
+                                        <p>
+                                            <span>Subtotal</span>
+                                            <strong>
                                                 {
-                                                    (data.priceProduct)
+                                                    (subtotalPrice)
                                                         .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
                                                 }
-                                            </h4>
-                                            <div
-                                                className={styles.addSameProductContainer}
-                                            >
-                                                <button
-                                                    onClick={
-                                                        () => data.totalAmount >= 2 &&
-                                                            decreaseAmount(data)}
-                                                >
-                                                    -
-                                                </button>
-                                                <p>{data.totalAmount}</p>
-                                                <button
-                                                    onClick={
-                                                        () => data.totalAmount <= 98 &&
-                                                            increaseAmount(data)
-                                                    }
-                                                >
-                                                    +
-                                                </button>
-                                            </div>
-                                        </div>
-                                    ))
-                                }
-
-                                <hr />
-                                <div className={styles.paymentDetailsContainer}>
-                                    <p>
-                                        <span>Subtotal</span>
-                                        <strong>
+                                            </strong>
+                                        </p>
+                                        <p>
+                                            <span>Frete</span>
+                                            <strong>
+                                                {
+                                                    (shippingPrice)
+                                                        .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+                                                }
+                                            </strong>
+                                        </p>
+                                        <p className={styles.shippingAddressContainer}>
                                             {
-                                                (subtotalPrice)
-                                                    .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-                                            }
-                                        </strong>
-                                    </p>
-                                    <p>
-                                        <span>Frete</span>
-                                        <strong>
-                                            {
-                                                (shippingPrice)
-                                                    .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-                                            }
-                                        </strong>
-                                    </p>
-                                    <p className={styles.shippingAddressContainer}>
-                                        {
-                                            !userZipCode ?
-                                                <Popup
-                                                    trigger={
-                                                        <span>Escolher endereço de envio</span>
-                                                    }
-                                                    modal={true}
-                                                    open={openControlledCepModal}
-                                                    onClose={closeModal}
-                                                    position="bottom center"
-                                                    closeOnDocumentClick
-                                                    contentStyle={{
-                                                        width: '32rem',
-                                                        maxHeight: '90vh',
-                                                        padding: '2rem',
-                                                        borderRadius: '.5rem',
-                                                        boxShadow: '0px 2px 5px 0px var(--Box-Shadow-Default)',
-                                                        transition: '.2s ease-in',
-                                                        backgroundColor: '#fff',
-                                                        overflowY: 'auto'
-                                                    }}
-                                                    overlayStyle={{
-                                                        backgroundColor: 'rgba(0,0,0,0.4)',
-                                                        padding: '1rem'
-                                                    }}
-                                                >
-                                                    <form
-                                                        className={styles.addZipCodeModal}
-                                                        onSubmit={handleSubmit(isCEPValid)}
+                                                !userZipCode ?
+                                                    <Popup
+                                                        trigger={
+                                                            <span>Escolher endereço de envio</span>
+                                                        }
+                                                        modal={true}
+                                                        open={openControlledCepModal}
+                                                        onClose={closeModal}
+                                                        position="bottom center"
+                                                        closeOnDocumentClick
+                                                        contentStyle={{
+                                                            width: '32rem',
+                                                            maxHeight: '90vh',
+                                                            padding: '2rem',
+                                                            borderRadius: '.5rem',
+                                                            boxShadow: '0px 2px 5px 0px var(--Box-Shadow-Default)',
+                                                            transition: '.2s ease-in',
+                                                            backgroundColor: '#fff',
+                                                            overflowY: 'auto'
+                                                        }}
+                                                        overlayStyle={{
+                                                            backgroundColor: 'rgba(0,0,0,0.4)',
+                                                            padding: '1rem'
+                                                        }}
                                                     >
-                                                        <h3>Insira os dados do endereço de entrega:</h3>
+                                                        <form
+                                                            className={styles.addZipCodeModal}
+                                                            onSubmit={handleSubmit(isCEPValid)}
+                                                        >
+                                                            <h3>Insira os dados do endereço de entrega:</h3>
 
-                                                        <label htmlFor="cep">CEP*</label>
-                                                        {!isCepValid &&
-                                                            <span className={styles.errorInvalidCEP}>*Insira um CEP válido</span>
-                                                        }
-                                                        <InputField
-                                                            name='cep'
-                                                            type='text'
-                                                            placeholder='xxxxx-xxx'
-                                                            register={register}
-                                                            required
-                                                            style={{
-                                                                padding: '1.2rem',
-                                                                fontSize: '1.5rem'
-                                                            }}
-                                                        />
+                                                            <label htmlFor="cep">CEP*</label>
+                                                            {!isCepValid &&
+                                                                <span className={styles.errorInvalidCEP}>*Insira um CEP válido</span>
+                                                            }
+                                                            <InputField
+                                                                name='cep'
+                                                                type='text'
+                                                                placeholder='xxxxx-xxx'
+                                                                register={register}
+                                                                required
+                                                                style={{
+                                                                    padding: '1.2rem',
+                                                                    fontSize: '1.5rem'
+                                                                }}
+                                                            />
 
-                                                        <label htmlFor="city">Cidade*</label>
-                                                        <InputField
-                                                            name='city'
-                                                            type='text'
-                                                            placeholder='Rio de Janeiro, RJ'
-                                                            register={register}
-                                                            required
-                                                            style={{
-                                                                padding: '1.2rem',
-                                                                fontSize: '1.5rem'
-                                                            }}
-                                                        />
+                                                            <label htmlFor="city">Cidade*</label>
+                                                            <InputField
+                                                                name='city'
+                                                                type='text'
+                                                                placeholder='Rio de Janeiro, RJ'
+                                                                register={register}
+                                                                required
+                                                                style={{
+                                                                    padding: '1.2rem',
+                                                                    fontSize: '1.5rem'
+                                                                }}
+                                                            />
 
-                                                        <label htmlFor="address">Endereço*</label>
-                                                        <InputField
-                                                            name='address'
-                                                            type='text'
-                                                            placeholder='Rua Cristo Redentor, 41'
-                                                            register={register}
-                                                            required
-                                                            style={{
-                                                                padding: '1.2rem',
-                                                                fontSize: '1.5rem'
-                                                            }}
-                                                        />
+                                                            <label htmlFor="address">Endereço*</label>
+                                                            <InputField
+                                                                name='address'
+                                                                type='text'
+                                                                placeholder='Rua Cristo Redentor, 41'
+                                                                register={register}
+                                                                required
+                                                                style={{
+                                                                    padding: '1.2rem',
+                                                                    fontSize: '1.5rem'
+                                                                }}
+                                                            />
 
-                                                        <label htmlFor="complement">Complemento</label>
-                                                        <InputField
-                                                            name='complement'
-                                                            type='text'
-                                                            placeholder='Apto 41'
-                                                            register={register}
-                                                            style={{
-                                                                padding: '1.2rem',
-                                                                fontSize: '1.5rem'
-                                                            }}
-                                                        />
+                                                            <label htmlFor="complement">Complemento</label>
+                                                            <InputField
+                                                                name='complement'
+                                                                type='text'
+                                                                placeholder='Apto 41'
+                                                                register={register}
+                                                                style={{
+                                                                    padding: '1.2rem',
+                                                                    fontSize: '1.5rem'
+                                                                }}
+                                                            />
 
-                                                        <Button
-                                                            name='Salvar'
-                                                            type='submit'
-                                                        // onClick={() => isValidBrazilZip(zipCodeRef.current)}
-                                                        />
-                                                    </form>
-                                                </Popup>
-                                                :
-                                                <div className={styles.shippingAddressDetails}>
-                                                    <p>
-                                                        Enviar para:
-                                                        <br />
-                                                        {userZipCode.address}
-                                                        {
-                                                            userZipCode.complement &&
-                                                            <>
-                                                                <br />
-                                                                {userZipCode.complement}
-                                                            </>
-                                                        }
-                                                        <br />
-                                                        {userZipCode.city}
-                                                    </p>
+                                                            <Button
+                                                                name='Salvar'
+                                                                type='submit'
+                                                            // onClick={() => isValidBrazilZip(zipCodeRef.current)}
+                                                            />
+                                                        </form>
+                                                    </Popup>
+                                                    :
+                                                    <div className={styles.shippingAddressDetails}>
+                                                        <p>
+                                                            Enviar para:
+                                                            <br />
+                                                            {userZipCode.address}
+                                                            {
+                                                                userZipCode.complement &&
+                                                                <>
+                                                                    <br />
+                                                                    {userZipCode.complement}
+                                                                </>
+                                                            }
+                                                            <br />
+                                                            {userZipCode.city}
+                                                        </p>
 
-                                                    <span onClick={() => {
-                                                        setUserZipCode(undefined)
-                                                        setOpenControlledCepModal(true)
-                                                    }}>
-                                                        Alterar endereço de envio
-                                                    </span>
+                                                        <span onClick={() => {
+                                                            setUserZipCode(undefined)
+                                                            setOpenControlledCepModal(true)
+                                                        }}>
+                                                            Alterar endereço de envio
+                                                        </span>
 
-                                                </div>
-                                        }
-                                    </p>
-                                </div>
-                                <hr />
+                                                    </div>
+                                            }
+                                        </p>
+                                    </div>
+                                    <hr />
 
-                                <div className={styles.paymentTotalContainer}>
-                                    <p>
-                                        <span>Total</span>
-                                        <strong>{
-                                            (subtotalPrice + shippingPrice)
-                                                .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
-                                        }</strong>
-                                    </p>
-                                </div>
-                            </>
+                                    <div className={styles.paymentTotalContainer}>
+                                        <p>
+                                            <span>Total</span>
+                                            <strong>{
+                                                (subtotalPrice + shippingPrice)
+                                                    .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+                                            }</strong>
+                                        </p>
+                                    </div>
+                                </>
+                                :
+                                <h2>Carrinho vazio</h2>
                             :
                             <div>Carregando...</div>
                     }

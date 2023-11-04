@@ -13,6 +13,23 @@
     gap: 7px;
 }
 
+.productHeader {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+}
+
+.productHeader>svg {
+    fill: darkgrey;
+    transition: .2s;
+}
+
+.productHeader>svg:hover {
+    fill: rgb(235, 16, 16);
+    cursor: pointer;
+}
+
 .cartDetailsContainer,
 .paymentOptionsGlobalContainer {
     width: 90%;
@@ -189,6 +206,7 @@
 /* =-=-=-= */
 .paymentOptionsGlobalContainer {
     display: grid;
+    place-content: center;
     gap: 2rem;
 }
 
