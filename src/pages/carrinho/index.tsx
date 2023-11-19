@@ -10,13 +10,14 @@ import { getApi } from "../../utils/api";
 import MenuBar from "../../components/MenuBar";
 import Button from "../../components/material/Button";
 import CreditCardBox from "../../components/CreditCardBox";
+import BoletoBox from "../../components/BoletoBox";
 
 // Types //
 import { ProductCart, PricingData, AddressInputs } from "../../types/pages/carrinho";
 
 // Icons //
-import { BsFillCreditCardFill } from "react-icons/bs";
-import { BsFillTrashFill } from "react-icons/bs";
+import { BsFillCreditCardFill, BsFillTrashFill } from "react-icons/bs";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 import styles from '../../styles/pages/CarrinhoPage.module.css';
 import InputField from "../../components/material/InputField";
@@ -393,6 +394,7 @@ export default function CarrinhoPage() {
                                     <div
                                         onClick={() => setCurrentPaymentOption('')}
                                     >
+                                        <AiOutlineArrowLeft />
                                         Voltar
                                     </div>
                                     <CreditCardBox />
@@ -403,9 +405,10 @@ export default function CarrinhoPage() {
                                     <div
                                         onClick={() => setCurrentPaymentOption('')}
                                     >
+                                        <AiOutlineArrowLeft />
                                         Voltar
                                     </div>
-                                    BOLETO
+                                    <BoletoBox />
                                 </>
                     }
                 </div>
