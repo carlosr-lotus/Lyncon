@@ -1,4 +1,4 @@
-export interface ProductCart {
+export type ProductCart = {
     id: number,
     nameProduct: string,
     priceProduct: number,
@@ -9,12 +9,12 @@ export interface ProductCart {
     totalAmount: number
 }
 
-export interface PricingData {
+export type PricingData = {
     id: number,
     standardPriceProduct: number
 }
 
-export interface AddressInputs {
+export type AddressInputs = {
     cep: string,
     address: string,
     city: string,

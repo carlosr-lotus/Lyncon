@@ -1,7 +1,7 @@
 import { CSSProperties, ChangeEvent, LegacyRef, FormEvent } from "react";
 import styles from '../../styles/components/materialStyle/InputField.module.css';
 
-interface InputFieldProps {
+type InputFieldProps = {
     name: string,
     type: 'text' | 'password',
     required?: boolean,

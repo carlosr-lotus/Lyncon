@@ -1,10 +1,10 @@
-export interface CategoriesType {
+export type CategoriesType = {
     id: number,
     category: string,
     selected: boolean
 }
 
-export interface ProductList {
+export type ProductList = {
     id: number,
     name: string,
     pricing: number,

@@ -1,4 +1,4 @@
-export interface ProductProps {
+export type ProductProps = {
     id: number,
     name: string,
     pricing: number,
@@ -8,13 +8,13 @@ export interface ProductProps {
     desc?: string
 }
 
-export interface ColorType {
+export type ColorType = {
     id: number,
     colorHex: string,
     colorName: string
 }
 
-export interface SizeType {
+export type SizeType = {
     id: number,
     size: string,
     isAvailable: boolean

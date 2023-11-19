@@ -2,7 +2,7 @@ import { CSSProperties, RefObject } from 'react';
 
 import styles from '../../styles/components/materialStyle/Button.module.css';
 
-interface ButtonProps {
+type ButtonProps = {
     name: string,
     type: 'button' | 'submit' | 'reset',
     ref?: RefObject<HTMLButtonElement>,
