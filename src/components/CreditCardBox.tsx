@@ -2,20 +2,32 @@
 import { useForm } from "react-hook-form";
 
 // Components
+import InputField from "./material/InputField";
 import Button from "./material/Button";
 
 // Icons
 import { FaCreditCard } from "react-icons/fa";
-import InputField from "./material/InputField";
 
 import styles from '../styles/components/CreditCardBox.module.css';
 
-type CardDataT = {
-    cardNumber: string,
-    cardName: string,
+type FormCardDataT = {
     cardExpireDate: string,
-    securityCode: number
+    cardName: string,
+    cardNumber: string,
+    securityCode: string
 }
+
+type FormUserDataT = {
+    firstName: string,
+    lastName: string,
+    birthday: string,
+    country: string,
+    email: string,
+    password: string,
+    confirmPassword: string
+}
+
+type FormDataT = FormCardDataT & FormUserDataT;
 
 export default function CreditCardBox(): JSX.Element {
 
@@ -23,26 +35,28 @@ export default function CreditCardBox(): JSX.Element {
         register,
         handleSubmit,
         formState: { errors }
-    } = useForm<CardDataT>();
+    } = useForm<FormDataT>();
 
-
-    function finishPurchase(data: CardDataT): void {
+    function finishPurchase(data: FormDataT): void {
         console.log(data);
     };
 
     return (
-        <form onSubmit={handleSubmit(finishPurchase)}>
-            <div>
+        <form
+            onSubmit={handleSubmit(finishPurchase)}
+            className={styles.formContainer}
+        >
+            <div className={styles.formSectionContainer}>
                 <div>
                     <FaCreditCard />
                     <h1>Dados do Cartão</h1>
                 </div>
 
-                <div>
+                <div className={styles.formStructure}>
                     <label htmlFor="cardNumber">Número do cartão:</label>
                     <InputField
                         name="cardNumber"
-                        type="text"
+                        type="number"
                         placeholder="xxxx-xxxx-xxxx-xxxx"
                         register={register}
                     />
@@ -73,13 +87,13 @@ export default function CreditCardBox(): JSX.Element {
                 </div>
             </div>
 
-            <div>
+            <div className={styles.formSectionContainer}>
                 <div>
                     <FaCreditCard />
                     <h1>Dados do usuário</h1>
                 </div>
 
-                <div>
+                <div className={styles.formStructure}>
                     <label htmlFor="firstName">Nome:</label>
                     <InputField
                         name="firstName"

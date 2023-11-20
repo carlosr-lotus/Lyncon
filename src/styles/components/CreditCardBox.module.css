@@ -1,0 +1,19 @@
+.formContainer {
+    display: grid;
+    gap: 2.4rem;
+}
+
+.formSectionContainer {
+    display: grid;
+    gap: 1rem;
+}
+
+.formStructure {
+    display: grid;
+    gap: 1rem;
+}
+
+.formStructure label {
+    font-size: 1.3rem;
+    text-align: left;
+}
