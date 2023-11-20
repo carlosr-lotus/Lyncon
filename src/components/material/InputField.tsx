@@ -3,7 +3,7 @@ import styles from '../../styles/components/materialStyle/InputField.module.css'
 
 type InputFieldProps = {
     name: string,
-    type: 'text' | 'password',
+    type: 'text' | 'password' | 'number',
     required?: boolean,
     placeholder: string,
     className?: string,
