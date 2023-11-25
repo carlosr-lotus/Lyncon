@@ -1,11 +1,22 @@
 .formContainer {
     display: grid;
-    gap: 2.4rem;
+    gap: 4rem;
 }
 
 .formSectionContainer {
     display: grid;
     gap: 1rem;
+}
+
+.formSectionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.formSectionHeader>svg {
+    transform: scale(1.5);
 }
 
 .formStructure {
@@ -16,4 +27,10 @@
 .formStructure label {
     font-size: 1.3rem;
     text-align: left;
+}
+
+.separateLine {
+    width: 100%;
+    height: 1px;
+    background-color: #c6c6c67c;
 }
