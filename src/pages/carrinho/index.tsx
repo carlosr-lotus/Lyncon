@@ -230,7 +230,7 @@ export default function CarrinhoPage() {
                                                         }
                                                         modal={true}
                                                         open={openControlledCepModal}
-                                                        onClose={closeModal}
+                                                        onClose={() => setOpenControlledCepModal(false)}
                                                         position="bottom center"
                                                         closeOnDocumentClick
                                                         contentStyle={{
@@ -393,6 +393,7 @@ export default function CarrinhoPage() {
                                 <>
                                     <div
                                         onClick={() => setCurrentPaymentOption('')}
+                                        className={styles.voltarArrow}
                                     >
                                         <AiOutlineArrowLeft />
                                         Voltar
@@ -403,6 +404,7 @@ export default function CarrinhoPage() {
                                 currentPaymentOption === 'boleto' &&
                                 <>
                                     <div
+                                        className={styles.voltarArrow}
                                         onClick={() => setCurrentPaymentOption('')}
                                     >
                                         <AiOutlineArrowLeft />

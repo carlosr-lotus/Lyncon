@@ -290,6 +290,30 @@
     font-size: 1.5rem;
 }
 
+.voltarArrow {
+    width: fit-content;
+    padding: .5rem .8rem;
+
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+
+    font-size: 1.3rem;
+
+    background-color: var(--Button-Light);
+    color: var(--Main-Black);
+
+    border-radius: 5px;
+
+    cursor: pointer;
+    transition: .3s;
+}
+
+.voltarArrow:hover {
+    background-color: var(--Hover-Color);
+}
+
+
 @media (min-width: 1024px) {
     .globalCartPageContainer {
         width: 90%;
@@ -306,6 +330,7 @@
     .cartDetailsContainer {
         width: 100%;
         grid-column: 2;
+        place-self: start;
     }
 
     .paymentOptionsContainer {
