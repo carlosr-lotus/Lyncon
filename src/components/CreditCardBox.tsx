@@ -47,13 +47,13 @@ export default function CreditCardBox(): JSX.Element {
             className={styles.formContainer}
         >
             <div className={styles.formSectionContainer}>
-                <div>
+                <div className={styles.formSectionHeader}>
                     <FaCreditCard />
                     <h1>Dados do Cartão</h1>
                 </div>
 
                 <div className={styles.formStructure}>
-                    <label htmlFor="cardNumber">Número do cartão:</label>
+                    <label htmlFor="cardNumber">Número do cartão*:</label>
                     <InputField
                         name="cardNumber"
                         type="number"
@@ -61,7 +61,7 @@ export default function CreditCardBox(): JSX.Element {
                         register={register}
                     />
 
-                    <label htmlFor="cardName">Nome no cartão:</label>
+                    <label htmlFor="cardName">Nome no cartão*:</label>
                     <InputField
                         name="cardName"
                         type="text"
@@ -69,7 +69,7 @@ export default function CreditCardBox(): JSX.Element {
                         register={register}
                     />
 
-                    <label htmlFor="cardExpireDate">Data de expiração:</label>
+                    <label htmlFor="cardExpireDate">Data de expiração*:</label>
                     <InputField
                         name="cardExpireDate"
                         type="text"
@@ -77,7 +77,7 @@ export default function CreditCardBox(): JSX.Element {
                         register={register}
                     />
 
-                    <label htmlFor="securityCode">Código de segurança&#40;CVV&#41;:</label>
+                    <label htmlFor="securityCode">Código de segurança&#40;CVV&#41;*:</label>
                     <InputField
                         name="securityCode"
                         type="text"
@@ -87,73 +87,107 @@ export default function CreditCardBox(): JSX.Element {
                 </div>
             </div>
 
+            <div className={styles.separateLine}></div>
+
             <div className={styles.formSectionContainer}>
-                <div>
+                <div className={styles.formSectionHeader}>
                     <FaCreditCard />
                     <h1>Dados do usuário</h1>
                 </div>
 
                 <div className={styles.formStructure}>
-                    <label htmlFor="firstName">Nome:</label>
+                    <label htmlFor="firstName">Nome*:</label>
                     <InputField
                         name="firstName"
                         type="text"
-                        placeholder=""
+                        placeholder="Seu nome"
                         register={register}
                     />
 
-                    <label htmlFor="lastName">Sobrenome:</label>
+                    <label htmlFor="lastName">Sobrenome*:</label>
                     <InputField
                         name="lastName"
                         type="text"
-                        placeholder=""
+                        placeholder="Seu sobrenome"
                         register={register}
                     />
 
-                    <label htmlFor="email">Email:</label>
+                    <label htmlFor="email">Email*:</label>
                     <InputField
                         name="email"
                         type="text"
-                        placeholder=""
+                        placeholder="exemplo@email.com"
                         register={register}
                     />
 
-                    <label htmlFor="birthday">Data de nascimento:</label>
+                    <label htmlFor="birthday">Data de nascimento*:</label>
                     <InputField
                         name="birthday"
                         type="text"
-                        placeholder=""
+                        placeholder="dd/mm/aaaa"
                         register={register}
                     />
 
-                    <label htmlFor="country">País de nascimento:</label>
+                    <label htmlFor="birthday">CEP*:</label>
                     <InputField
-                        name="country"
+                        name="cep"
                         type="text"
-                        placeholder=""
+                        placeholder="xxxxx-xxx"
                         register={register}
                     />
 
-                    <label htmlFor="password">Senha:</label>
+                    <label htmlFor="birthday">Estado*:</label>
+                    <InputField
+                        name="state"
+                        type="text"
+                        placeholder="Escolha seu estado"
+                        register={register}
+                    />
+
+                    <label htmlFor="birthday">Endereço*:</label>
+                    <InputField
+                        name="address"
+                        type="text"
+                        placeholder="Rua Exemplo, 51"
+                        register={register}
+                    />
+
+                    <label htmlFor="birthday">Complemento &#40;opcional&#41;:</label>
+                    <InputField
+                        name="complemento"
+                        type="text"
+                        placeholder="Apartamento 402"
+                        register={register}
+                    />
+
+                    <label htmlFor="birthday">Data de nascimento*:</label>
+                    <InputField
+                        name="birthday"
+                        type="text"
+                        placeholder="dd/mm/aaaa"
+                        register={register}
+                    />
+
+                    <label htmlFor="password">Senha*:</label>
                     <InputField
                         name="password"
                         type="password"
-                        placeholder=""
+                        placeholder="********"
                         register={register}
                     />
 
-                    <label htmlFor="confirmPassword">Confirmar senha:</label>
+                    <label htmlFor="confirmPassword">Confirmar senha*:</label>
                     <InputField
                         name="confirmPassword"
                         type="password"
-                        placeholder=""
+                        placeholder="********"
                         register={register}
                     />
                 </div>
             </div>
 
             <Button
-                name="Submit"
+                name="Confirmar dados"
                 type="submit"
             />
         </form>
