@@ -1,0 +1,100 @@
+.selectContainer {
+    position: relative;
+
+    padding: 1.2rem;
+    width: 100%;
+    min-height: 1.5rem;
+
+    border: .1rem solid #acacac;
+    border-radius: 4px;
+    outline: none;
+
+    display: flex;
+    align-items: center;
+    gap: .2rem;
+}
+
+.selectContainer:focus {
+    border-color: magenta;
+}
+
+.value {
+    font-size: 1.3rem;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.clearBtn {
+    padding: 0;
+
+    background-color: transparent;
+    color: #acacac;
+
+    border: none;
+    outline: none;
+
+    font-size: 1.5rem;
+
+    cursor: pointer;
+}
+
+.clearBtn:focus,
+.clearBtn:hover {
+    color: lightblue;
+}
+
+.divider {
+    background-color: #acacac;
+    align-self: stretch;
+    width: 1px;
+}
+
+.caret {
+    translate: 0 25%;
+    border: .4rem solid transparent;
+    border-top-color: #acacac;
+}
+
+.options {
+    position: absolute;
+
+    margin: 0;
+    padding: 0;
+    /* padding: 1.2rem; */
+    width: 100%;
+
+    left: 0;
+    top: calc(100% + .4rem);
+
+    display: none;
+
+    max-height: 13rem;
+    overflow-y: auto;
+
+    border: .1rem solid #acacac;
+    border-radius: 4px;
+
+    background-color: white;
+
+    z-index: 100;
+}
+
+.options.show {
+    display: block;
+}
+
+.option {
+    padding: 1.2rem;
+    text-align: left;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.selected {
+    background-color: #DBDBDB;
+}
+
+.highlighted {
+    background-color: magenta;
+    color: white;
+}
