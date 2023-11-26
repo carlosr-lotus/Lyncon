@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
+
 import styles from '../../styles/components/materialStyle/Select.module.css';
 
-type OptionT = {
+type SelectOption = {
     label: string,
     value: number
 }
 
 type SelectProps = {
-    options: OptionT[],
-    value?: OptionT | undefined,
-    onChange: (value: OptionT | undefined) => void
+    options: SelectOption[],
+    value?: SelectOption | undefined,
+    onChange: (value: SelectOption | undefined) => void
 }
 
 export default function Select({ options, value, onChange }: SelectProps): JSX.Element {
@@ -21,11 +22,11 @@ export default function Select({ options, value, onChange }: SelectProps): JSX.E
         onChange(undefined);
     }
 
-    function selectOption(option: OptionT): void {
+    function selectOption(option: SelectOption): void {
         if (option.value !== value?.value) onChange(option);
     }
 
-    function isOptionSelected(option: OptionT): boolean {
+    function isOptionSelected(option: SelectOption): boolean {
         return option.value === value?.value;
     }
 
@@ -35,9 +36,9 @@ export default function Select({ options, value, onChange }: SelectProps): JSX.E
 
     return (
         <div
+            tabIndex={0}
             onBlur={() => setIsOpen(false)}
             onClick={() => setIsOpen(prev => !prev)}
-            tabIndex={0}
             className={styles.selectContainer}
         >
             <span className={styles.value}>{value?.label}</span>
