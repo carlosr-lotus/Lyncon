@@ -1,9 +1,12 @@
+import { useEffect, useState } from "react";
+
 // Packages
 import { useForm } from "react-hook-form";
 
 // Components
 import InputField from "./material/InputField";
 import Button from "./material/Button";
+import Select from "./material/Select";
 
 // Icons
 import { FaCreditCard } from "react-icons/fa";
@@ -37,9 +40,22 @@ export default function CreditCardBox(): JSX.Element {
         formState: { errors }
     } = useForm<FormDataT>();
 
+    const options = [
+        { value: 1, label: 'Rio de Janeiro' },
+        { value: 2, label: 'São Paulo' },
+        { value: 3, label: 'Belo Horizonte' },
+        { value: 4, label: 'Vitória' }
+    ];
+
+    const [state, setState] = useState<typeof options[0] | undefined>(options[0]);
+
     function finishPurchase(data: FormDataT): void {
         console.log(data);
     };
+
+    // useEffect(() => {
+    //     console.log(state);
+    // }, [state]);
 
     return (
         <form
@@ -77,7 +93,7 @@ export default function CreditCardBox(): JSX.Element {
                         register={register}
                     />
 
-                    <label htmlFor="securityCode">Código de segurança&#40;CVV&#41;*:</label>
+                    <label htmlFor="securityCode">Código de segurança &#40;CVV&#41;*:</label>
                     <InputField
                         name="securityCode"
                         type="text"
@@ -128,7 +144,7 @@ export default function CreditCardBox(): JSX.Element {
                         register={register}
                     />
 
-                    <label htmlFor="birthday">CEP*:</label>
+                    <label htmlFor="cep">CEP*:</label>
                     <InputField
                         name="cep"
                         type="text"
@@ -136,15 +152,14 @@ export default function CreditCardBox(): JSX.Element {
                         register={register}
                     />
 
-                    <label htmlFor="birthday">Estado*:</label>
-                    <InputField
-                        name="state"
-                        type="text"
-                        placeholder="Escolha seu estado"
-                        register={register}
+                    <label htmlFor="state">Estado*:</label>
+                    <Select
+                        options={options}
+                        value={state}
+                        onChange={o => setState(o)}
                     />
 
-                    <label htmlFor="birthday">Endereço*:</label>
+                    <label htmlFor="address">Endereço*:</label>
                     <InputField
                         name="address"
                         type="text"
@@ -152,19 +167,11 @@ export default function CreditCardBox(): JSX.Element {
                         register={register}
                     />
 
-                    <label htmlFor="birthday">Complemento &#40;opcional&#41;:</label>
+                    <label htmlFor="complement">Complemento &#40;opcional&#41;:</label>
                     <InputField
                         name="complemento"
                         type="text"
                         placeholder="Apartamento 402"
-                        register={register}
-                    />
-
-                    <label htmlFor="birthday">Data de nascimento*:</label>
-                    <InputField
-                        name="birthday"
-                        type="text"
-                        placeholder="dd/mm/aaaa"
                         register={register}
                     />
 
