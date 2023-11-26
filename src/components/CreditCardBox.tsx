@@ -23,9 +23,11 @@ type FormCardDataT = {
 type FormUserDataT = {
     firstName: string,
     lastName: string,
-    birthday: string,
-    country: string,
     email: string,
+    birthday: string,
+    cep: string,
+    address: string,
+    complement?: string,
     password: string,
     confirmPassword: string
 }
