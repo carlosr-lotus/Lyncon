@@ -15,7 +15,7 @@
 }
 
 .selectContainer:focus {
-    border-color: magenta;
+    border-color: var(--Main-Black);
 }
 
 .value {
@@ -40,13 +40,14 @@
 
 .clearBtn:focus,
 .clearBtn:hover {
-    color: lightblue;
+    color: #1C1212;
 }
 
 .divider {
-    background-color: #acacac;
     align-self: stretch;
     width: 1px;
+    margin: 0 .5rem;
+    background-color: #acacac;
 }
 
 .caret {
@@ -68,7 +69,7 @@
 
     display: none;
 
-    max-height: 13rem;
+    max-height: 15rem;
     overflow-y: auto;
 
     border: .1rem solid #acacac;
@@ -84,17 +85,16 @@
 }
 
 .option {
-    padding: 1.2rem;
+    padding: 1rem 1.2rem;
     text-align: left;
     font-size: 1.3rem;
     cursor: pointer;
 }
 
 .selected {
-    background-color: #DBDBDB;
+    background-color: #9b9b9b;
 }
 
 .highlighted {
-    background-color: magenta;
-    color: white;
+    background-color: #DBDBDB;
 }
