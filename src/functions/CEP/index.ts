@@ -10,7 +10,7 @@ function isCepValid(cep: string): boolean {
 
     if (pattern.test(cep)) 
         return true 
-    else return false
+    else return false;
 };
 
 export const CEP: CepFunctions = {
