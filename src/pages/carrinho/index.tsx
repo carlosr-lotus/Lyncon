@@ -12,6 +12,9 @@ import Button from "../../components/material/Button";
 import CreditCardBox from "../../components/CreditCardBox";
 import BoletoBox from "../../components/BoletoBox";
 
+// Functions //
+import CEP from "../../functions/CEP";
+
 // Types //
 import { ProductCart, PricingData, AddressInputs } from "../../types/pages/carrinho";
 
@@ -110,15 +113,13 @@ export default function CarrinhoPage() {
     }
 
     function isCEPValid(data: AddressInputs): void {
-        const pattern: RegExp = /^[0-9]{5}-[0-9]{3}$/;
-
-        if (pattern.test(data.cep)) {
+        if (CEP.isValid(data.cep)) {
             setUserZipCode(data);
             setIsCepValid(true);
             setShippingPrice(5.9)
         } else {
-            setIsCepValid(false);
-        };
+            setIsCepValid(false)
+        }
     };
 
     return (
