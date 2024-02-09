@@ -391,9 +391,25 @@
       "nameProduct": "Camiseta Lyncon Gola V",
       "priceProduct": 79.99,
       "colorName": "branco",
-      "sizeProduct": "g",
+      "sizeProduct": "m",
+      "imageProduct": "/images/vestimentas/camiseta-lyncon-gola-v.jpg",
+      "totalAmount": 1
+    },
+    {
+      "id": 3,
+      "nameProduct": "Camisa Xadrez",
+      "priceProduct": 99.99,
+      "colorName": "salmão",
+      "sizeProduct": "gg",
+      "imageProduct": "/images/vestimentas/camisa-lyncon-xadrez.jpg",
+      "totalAmount": 1
+    }
+  ],
+  "order": [
+    {
+      "totalProducts": 3,
       "shippingRate": 5,
-      "imageProduct": "/images/vestimentas/camiseta-lyncon-gola-v.jpg"
+      "total": 230
     }
   ]
 }
