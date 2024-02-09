@@ -411,5 +411,16 @@
       "shippingRate": 5,
       "total": 230
     }
+  ],
+  "paymentData": [
+    {
+      "id": "cartao",
+      "info": {
+        "cardNumber": 345998533451234,
+        "clientName": "Jon Doe",
+        "expirationDate": "01/28",
+        "code": 290
+      }
+    }
   ]
 }
