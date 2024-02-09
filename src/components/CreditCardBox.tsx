@@ -85,7 +85,7 @@ export default function CreditCardBox(): JSX.Element {
             controller.abort();
         };
     }, []);
-    
+
     function finishPurchase(data: FormDataT): void {
         console.log(data);
     }
@@ -111,7 +111,7 @@ export default function CreditCardBox(): JSX.Element {
                         <InputField
                             name="cardNumber"
                             type="number"
-                            defaultValue={cardData?.cardNumber.toString()}
+                            // defaultValue={cardData?.cardNumber.toString()}
                             placeholder="xxxx-xxxx-xxxx-xxxx"
                             onInput={(e) => returnCardIdentifierIcon(Card.getIdentifier(Number(e.currentTarget.value)))}
                             register={register}
@@ -123,7 +123,7 @@ export default function CreditCardBox(): JSX.Element {
                         <InputField
                             name="cardName"
                             type="text"
-                            defaultValue={cardData?.clientName}
+                            // defaultValue={cardData?.clientName}
                             placeholder="Nome do titular"
                             register={register}
                         />
@@ -134,7 +134,7 @@ export default function CreditCardBox(): JSX.Element {
                         <InputField
                             name="cardExpireDate"
                             type="text"
-                            defaultValue={cardData?.expirationDate}
+                            // defaultValue={cardData?.expirationDate}
                             placeholder="mm/aaaa"
                             register={register}
                         />
@@ -145,7 +145,7 @@ export default function CreditCardBox(): JSX.Element {
                         <InputField
                             name="securityCode"
                             type="text"
-                            defaultValue={cardData?.code.toString()}
+                            // defaultValue={cardData?.code.toString()}
                             placeholder="xxx"
                             register={register}
                         />
