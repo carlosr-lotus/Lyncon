@@ -1,5 +1,8 @@
 type DayFunctions = {
-    getDayOfWeek: (date: Date) => string
+    getDayOfWeek: (date: Date) => string,
+    today: () => Date,
+    tomorrow: (date?: Date) => Date,
+    yesterday: (date?: Date) => Date,
 }
 
 function getDayOfWeek(date: Date): string {
@@ -16,6 +19,33 @@ function getDayOfWeek(date: Date): string {
     return days[date.getDay()];
 }
 
-export const day: DayFunctions = {
-    getDayOfWeek: getDayOfWeek
+function yesterday(date?: Date): Date {
+    const yesterday = new Date(date?.getTime() ?? new Date().getTime());
+    yesterday.setDate(
+        (date?.getDate() ?? new Date().getDate()) - 1
+    );
+
+    return yesterday;
 }
+
+function today(): Date {
+    return new Date();
+}
+
+function tomorrow(date?: Date): Date {
+    const tomorrow = new Date(date?.getTime() ?? new Date().getTime());
+    tomorrow.setDate(
+        (date?.getDate() ?? new Date().getDate()) + 1
+    );
+
+    return tomorrow;
+}
+
+const Day: DayFunctions = {
+    getDayOfWeek: getDayOfWeek,
+    yesterday: yesterday,
+    tomorrow: tomorrow,
+    today: today
+}
+
+export default Day;
