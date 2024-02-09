@@ -8,10 +8,19 @@ import InputField from "./material/InputField";
 import Button from "./material/Button";
 import Select from "./material/Select";
 
+// Functions
+import Card from "../functions/Payment/cards";
+
+// Utils
+import { getApi } from "../utils/api";
+
 // Icons
 import { FaCreditCard } from "react-icons/fa";
+import { RiMastercardFill, RiVisaLine } from "react-icons/ri";
+import { SiAmericanexpress } from "react-icons/si";
 
 import styles from '../styles/components/CreditCardBox.module.css';
+import Day from "../functions/Date/Day";
 
 type FormCardDataT = {
     cardExpireDate: string,
@@ -34,8 +43,16 @@ type FormUserDataT = {
 
 type FormDataT = FormCardDataT & FormUserDataT;
 
+type CardData = {
+    clientName: string,
+    cardNumber: number,
+    expirationDate: string,
+    code: number
+}
+
 export default function CreditCardBox(): JSX.Element {
 
+    const api = getApi();
     const {
         register,
         handleSubmit,
@@ -50,14 +67,32 @@ export default function CreditCardBox(): JSX.Element {
     ];
 
     const [state, setState] = useState<typeof options[0] | undefined>(options[0]);
+    const [cardData, setCardData] = useState<CardData | undefined>();
 
+    useEffect(() => {
+        const controller = new AbortController();
+
+        api.get(`/paymentData?id=${'cartao'}`, {
+            signal: controller.signal
+        }).then((res) => {
+            console.log(res.data[0].info);
+            setCardData(res.data[0].info);
+        }).catch((err) => {
+            console.log(err);
+        });
+
+        return () => {
+            controller.abort();
+        };
+    }, []);
+    
     function finishPurchase(data: FormDataT): void {
         console.log(data);
-    };
+    }
 
-    // useEffect(() => {
-    //     console.log(state);
-    // }, [state]);
+    function returnCardIdentifierIcon(identifier: string) {
+        console.log(identifier);
+    }
 
     return (
         <form
@@ -71,37 +106,50 @@ export default function CreditCardBox(): JSX.Element {
                 </div>
 
                 <div className={styles.formStructure}>
-                    <label htmlFor="cardNumber">Número do cartão*:</label>
-                    <InputField
-                        name="cardNumber"
-                        type="number"
-                        placeholder="xxxx-xxxx-xxxx-xxxx"
-                        register={register}
-                    />
+                    <div className={styles.inputFieldContainer}>
+                        <label htmlFor="cardNumber">Número do cartão*:</label>
+                        <InputField
+                            name="cardNumber"
+                            type="number"
+                            defaultValue={cardData?.cardNumber.toString()}
+                            placeholder="xxxx-xxxx-xxxx-xxxx"
+                            onInput={(e) => returnCardIdentifierIcon(Card.getIdentifier(Number(e.currentTarget.value)))}
+                            register={register}
+                        />
+                    </div>
 
-                    <label htmlFor="cardName">Nome no cartão*:</label>
-                    <InputField
-                        name="cardName"
-                        type="text"
-                        placeholder="Nome do titular"
-                        register={register}
-                    />
+                    <div className={styles.inputFieldContainer}>
+                        <label htmlFor="cardName">Nome no cartão*:</label>
+                        <InputField
+                            name="cardName"
+                            type="text"
+                            defaultValue={cardData?.clientName}
+                            placeholder="Nome do titular"
+                            register={register}
+                        />
+                    </div>
 
-                    <label htmlFor="cardExpireDate">Data de expiração*:</label>
-                    <InputField
-                        name="cardExpireDate"
-                        type="text"
-                        placeholder="mm/aaaa"
-                        register={register}
-                    />
+                    <div className={styles.inputFieldContainer}>
+                        <label htmlFor="cardExpireDate">Data de expiração*:</label>
+                        <InputField
+                            name="cardExpireDate"
+                            type="text"
+                            defaultValue={cardData?.expirationDate}
+                            placeholder="mm/aaaa"
+                            register={register}
+                        />
+                    </div>
 
-                    <label htmlFor="securityCode">Código de segurança &#40;CVV&#41;*:</label>
-                    <InputField
-                        name="securityCode"
-                        type="text"
-                        placeholder="xxx"
-                        register={register}
-                    />
+                    <div className={styles.inputFieldContainer}>
+                        <label htmlFor="securityCode">Código de segurança &#40;CVV&#41;*:</label>
+                        <InputField
+                            name="securityCode"
+                            type="text"
+                            defaultValue={cardData?.code.toString()}
+                            placeholder="xxx"
+                            register={register}
+                        />
+                    </div>
                 </div>
             </div>
 
