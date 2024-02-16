@@ -24,6 +24,11 @@
     gap: 1rem;
 }
 
+.inputFieldContainer {
+    display: grid;
+    gap: 1rem;
+}
+
 .formStructure label {
     font-size: 1.3rem;
     text-align: left;
