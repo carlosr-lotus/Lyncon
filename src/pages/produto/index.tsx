@@ -42,17 +42,21 @@ export default function ProductPage(): JSX.Element {
     const [checkupProduct, setCheckupProduct] = useState<'colorMissing' | 'sizeMissing' | 'shippingMissing' | undefined>(undefined);
 
     useEffect(() => {
+        const controller = new AbortController();
         setProductData(JSON.parse(localStorage.getItem('product') || '{}'));
 
         let product: ProductProps = JSON.parse(localStorage.getItem('product') || '{}');
-        api.get(`/cart/${product.id}`)
-            .then((res) => {
-                if (res.data) {
-                    setAddedProduct(true);
-                };
-            }).catch((res) => {
-                console.log(res);
-            });
+        api.get(`/cart/${product.id}`, {
+            signal: controller.signal
+        }).then((res) => {
+            if (res.data)
+                setAddedProduct(true);
+        }).catch((res) => {
+        });
+
+        return () => {
+            controller.abort();
+        };
     }, []);
 
     function onClickAddToCart(productData: ProductProps): void {
