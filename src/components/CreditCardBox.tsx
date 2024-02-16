@@ -9,7 +9,8 @@ import Button from "./material/Button";
 import Select from "./material/Select";
 
 // Functions
-import Card from "../functions/Payment/cards";
+import Payment from "../functions/Payment";
+import Day from "../functions/Date/day";
 
 // Utils
 import { getApi } from "../utils/api";
@@ -20,7 +21,13 @@ import { RiMastercardFill, RiVisaLine } from "react-icons/ri";
 import { SiAmericanexpress } from "react-icons/si";
 
 import styles from '../styles/components/CreditCardBox.module.css';
-import Day from "../functions/Date/Day";
+
+type CardData = {
+    clientName: string,
+    cardNumber: string,
+    expirationDate: string,
+    code: number
+}
 
 type FormCardDataT = {
     cardExpireDate: string,
@@ -42,13 +49,6 @@ type FormUserDataT = {
 }
 
 type FormDataT = FormCardDataT & FormUserDataT;
-
-type CardData = {
-    clientName: string,
-    cardNumber: number,
-    expirationDate: string,
-    code: number
-}
 
 export default function CreditCardBox(): JSX.Element {
 
@@ -75,8 +75,14 @@ export default function CreditCardBox(): JSX.Element {
         api.get(`/paymentData?id=${'cartao'}`, {
             signal: controller.signal
         }).then((res) => {
-            console.log(res.data[0].info);
-            setCardData(res.data[0].info);
+            if (res.data[0].info) {
+                const formatTemp = res.data.map(data => {
+                    data.info.cardNumber = Payment.card.formatCardNumber(data.info.cardNumber);
+                    return data;
+                });
+                console.log(formatTemp[0].info);
+                setCardData(formatTemp[0].info);
+            }
         }).catch((err) => {
             console.log(err);
         });
@@ -87,9 +93,9 @@ export default function CreditCardBox(): JSX.Element {
     }, []);
 
     function finishPurchase(data: FormDataT): void {
-        console.log(data);
+        console.log(data); 
     }
-
+    
     function returnCardIdentifierIcon(identifier: string) {
         console.log(identifier);
     }
@@ -110,10 +116,11 @@ export default function CreditCardBox(): JSX.Element {
                         <label htmlFor="cardNumber">Número do cartão*:</label>
                         <InputField
                             name="cardNumber"
-                            type="number"
-                            // defaultValue={cardData?.cardNumber.toString()}
+                            type="text"
+                            defaultValue={cardData?.cardNumber}
                             placeholder="xxxx-xxxx-xxxx-xxxx"
-                            onInput={(e) => returnCardIdentifierIcon(Card.getIdentifier(Number(e.currentTarget.value)))}
+                            pattern="[0-9\s]{13,19}"
+                            onInput={(e) => returnCardIdentifierIcon(Payment.card.getIdentifier(Number(e.currentTarget.value)))}
                             register={register}
                         />
                     </div>
@@ -123,7 +130,7 @@ export default function CreditCardBox(): JSX.Element {
                         <InputField
                             name="cardName"
                             type="text"
-                            // defaultValue={cardData?.clientName}
+                            defaultValue={cardData?.clientName}
                             placeholder="Nome do titular"
                             register={register}
                         />
@@ -134,7 +141,7 @@ export default function CreditCardBox(): JSX.Element {
                         <InputField
                             name="cardExpireDate"
                             type="text"
-                            // defaultValue={cardData?.expirationDate}
+                            defaultValue={cardData?.expirationDate}
                             placeholder="mm/aaaa"
                             register={register}
                         />
@@ -145,7 +152,7 @@ export default function CreditCardBox(): JSX.Element {
                         <InputField
                             name="securityCode"
                             type="text"
-                            // defaultValue={cardData?.code.toString()}
+                            defaultValue={cardData?.code.toString()}
                             placeholder="xxx"
                             register={register}
                         />
